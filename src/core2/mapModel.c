@@ -179,6 +179,10 @@ struct {
 
 enum asset_e mapModel_getOpaModelId(void);
 
+
+/* Automated Forward Decls */
+static MapModelDescription *_mapModel_mapIdToDescription(enum map_e map_id);
+
 /* .code */
 static MapModelDescription *_mapModel_mapIdToDescription(enum map_e map_id){
     MapModelDescription *i_ptr;
@@ -504,7 +508,7 @@ BKCollisionTri *func_80309C74(f32 arg0[3], f32 arg1[3], f32 arg2[3], s32 flagFil
     return (phi_v0 != NULL) ? phi_v0 : sp2C;
 }
 
-bool func_80309D58(f32 arg0[3], UNK_TYPE(s32) arg1) {
+n64_bool func_80309D58(f32 arg0[3], UNK_TYPE(s32) arg1) {
     BKModelUnk14List *temp_v0;
 
     temp_v0 = func_8033A12C(mapModel.model_bin_opa);
@@ -546,11 +550,11 @@ UNK_TYPE(s32) func_80309EB0(f32 arg0[3], f32 arg1, f32 arg2[3], s32 arg3) {
     return (temp_v0_2 != 0) ? temp_v0_2 : sp24;
 }
 
-bool mapModel_has_xlu_bin(void) {
+n64_bool mapModel_has_xlu_bin(void) {
     return (mapModel.model_bin_opa != NULL) && (mapModel.model_bin_xlu != NULL);
 }
 
-bool func_80309FA4(enum map_e map_id){
+n64_bool func_80309FA4(enum map_e map_id){
     MapModelDescription *i_ptr;
 
     for(i_ptr = D_8036ABE0; i_ptr->map_id != 0; i_ptr++){

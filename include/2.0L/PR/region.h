@@ -35,7 +35,7 @@
 extern "C" {
 #endif
 
-#include <PR/ultratypes.h>
+/* Redirected */ #include <n64_types.h>
 
 
 /***************************************

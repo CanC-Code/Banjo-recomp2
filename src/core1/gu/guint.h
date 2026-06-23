@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**************************************************************************
  *									  *
  *		 Copyright (C) 1994, Silicon Graphics, Inc.		  *
@@ -10,9 +14,16 @@
  *									  *
  **************************************************************************/
 
-#include "mbi.h"
-#include "gu.h"
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
+#include "PR/mbi.h"
+#include "PR/gu.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 typedef union
 {
 	struct
@@ -40,3 +51,8 @@ typedef	float	Matrix[4][4];
 #define	ABS(d)		((d) > 0) ? (d) : -(d)
 
 extern float	__libm_qnan_f;
+
+
+#ifdef __cplusplus
+}
+#endif

@@ -1,6 +1,7 @@
-#include <os_internal.h>
-#include <rcp.h>
-#include <os_libc.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
+#include <PR/os_libc.h>
+#include <n64_types.h>
 
 OSPiHandle LeoDiskHandle;
 OSPiHandle *__osDiskHandle;

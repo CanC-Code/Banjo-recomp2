@@ -1,4 +1,5 @@
-#include <os_internal.h>
+#include <PR/os_internal.h>
+#include <n64_types.h>
 
 #define PI_Q_BUF_LEN 1
 u32 __osPiAccessQueueEnabled = 0;

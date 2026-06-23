@@ -509,7 +509,7 @@ enum bs_e func_8029BDBC(void) {
     return D_80364624[func_8029BAF0()];
 }
 
-bool func_8029BDE8(void) {
+n64_bool func_8029BDE8(void) {
     return D_80364640[func_8029BAF0()];
 }
 
@@ -674,7 +674,7 @@ void func_8029C3E8(f32 arg0, f32 arg1) {
     func_80354380(sp30, 0.45f);
 }
 
-void func_8029C4E4(bool arg0) {
+void func_8029C4E4(n64_bool arg0) {
     f32 sp3C[3];
     f32 sp38;
     ParticleEmitter *sp34;

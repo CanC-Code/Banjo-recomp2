@@ -173,7 +173,7 @@ void func_80388C88(Actor *this){
     local->unk18 = 1;
 }
 
-bool FP_func_80388CA0(Actor *this){
+n64_bool FP_func_80388CA0(Actor *this){
     ActorLocal_FP_2350 *local = (ActorLocal_FP_2350 *)&this->local;
     u32 sp20;
 
@@ -265,7 +265,7 @@ void func_80388F90(Actor *this){
     sfxSource_func_8030E2C4(this->unk44_31);
 }
 
-bool func_80388FE8(Actor *this, f32 arg1, f32 arg2){
+n64_bool func_80388FE8(Actor *this, f32 arg1, f32 arg2){
     if(arg2 < 0.0f && 0.0f < arg1){
         func_8030E878(SFX_8D_BOGGY_OHWW, randf2(1.04f, 1.12f), 32000, this->position, 600.0f, 1200.0f);
         return TRUE;
@@ -649,7 +649,7 @@ void func_8038A150(UNK_TYPE(s32) arg0, ActorMarker *marker){
     };
 }
 
-bool func_8038A1A0(ActorMarker *marker){
+n64_bool func_8038A1A0(ActorMarker *marker){
     Actor *actor = marker_getActor(marker);
     switch (actor->state){
         case 9:

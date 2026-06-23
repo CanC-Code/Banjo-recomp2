@@ -1,8 +1,19 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _CONTROLLER_H
 #define _CONTROLLER_H
-#include <os_internal.h>
-#include <rcp.h>
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 //should go somewhere else but
 #define ARRLEN(x) ((s32)(sizeof(x) / sizeof(x[0])))
 #define CHNL_ERR(format) ((format.rxsize & CHNL_ERR_MASK) >> 4)
@@ -205,3 +216,8 @@ extern u8 __osMaxControllers;
     __osSiRelAccess();                      \
     if (ret != 0)                           \
         return ret;
+
+
+#ifdef __cplusplus
+}
+#endif

@@ -2,7 +2,7 @@
 #include "n_synth.h"
 
 #ifndef MIN
-#   define MIN(a,b) (((a)<(b))?(a):(b))
+#define MIN(a,b) (((a)<(b))?(a):(b))
 #endif
 
 #ifdef AUD_PROFILE

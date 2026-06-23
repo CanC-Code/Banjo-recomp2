@@ -189,24 +189,24 @@ void drawRectangle2D(Gfx **gfx, s32 x, s32 y, s32 w, s32 h, s32 r, s32 g, s32 b)
 
 void graphicsCache_release(void) {
     if (sGfxStack[0]) {
-        free(sGfxStack[0]);
-        free(sGfxStack[1]);
-        free(sMtxStack[0]);
-        free(sMtxStack[1]);
-        free(sVtxStack[0]);
-        free(sVtxStack[1]);
+        n64_free(sGfxStack[0]);
+        n64_free(sGfxStack[1]);
+        n64_free(sMtxStack[0]);
+        n64_free(sMtxStack[1]);
+        n64_free(sVtxStack[0]);
+        n64_free(sVtxStack[1]);
         sGfxStack[0] = NULL;
     }
 }
 
 void graphicsCache_init(void){
     if(sGfxStack[0] == NULL){
-        sGfxStack[0] = (Gfx *)malloc(29600); // 3700 dlist commands
-        sGfxStack[1] = (Gfx *)malloc(29600);
-        sMtxStack[0] = (Mtx *)malloc(44800); // 700 matrices
-        sMtxStack[1] = (Mtx *)malloc(44800);
-        sVtxStack[0] = (Vtx *)malloc(6880); // 430 vertices
-        sVtxStack[1] = (Vtx *)malloc(6880);
+        sGfxStack[0] = (Gfx *)n64_malloc(29600); // 3700 dlist commands
+        sGfxStack[1] = (Gfx *)n64_malloc(29600);
+        sMtxStack[0] = (Mtx *)n64_malloc(44800); // 700 matrices
+        sMtxStack[1] = (Mtx *)n64_malloc(44800);
+        sVtxStack[0] = (Vtx *)n64_malloc(6880); // 430 vertices
+        sVtxStack[1] = (Vtx *)n64_malloc(6880);
         dummy_func_80254464();
     }
     sStackSelector = 0;

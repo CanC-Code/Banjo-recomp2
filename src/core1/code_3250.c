@@ -3,6 +3,11 @@
 
 extern f32 gu_sqrtf(f32);
 
+
+/* Automated Forward Decls */
+static void __guMtxF2L(float mf[4][4], Mtx *m);
+static void _guMtxIdentF(float mf[4][4]);
+
 static void __guMtxF2L(float mf[4][4], Mtx *m)
 {
     int	i, j;

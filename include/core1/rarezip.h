@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef BANJO_KAZOOIE_CORE1_RAREZIP_H
 #define BANJO_KAZOOIE_CORE1_RAREZIP_H
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 extern u8  D_80275670[]; 
 //border[]= {    /* Order of the bit length code lengths */
     //16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15};
@@ -51,7 +62,7 @@ extern u32 D_8027BF34; //hufts
 
 
 #ifndef WSIZE
-#  define WSIZE 0x8000     /* window size--must be a power of two, and */
+#define WSIZE 0x8000     /* window size--must be a power of two, and */
 #endif                     /*  at least 32K for zip's deflate method */
 
 //#define get_byte()  (D_8027BF18 < insize ? inbuf[D_8027BF18++] : fill_inbuf(0))
@@ -59,10 +70,10 @@ extern u32 D_8027BF34; //hufts
 
 #ifdef CRYPT
   uch cc;
-#  define NEXTBYTE() \
+#define NEXTBYTE() \
      (decrypt ? (cc = get_byte(), zdecode(cc), cc) : get_byte())
 #else
-#  define NEXTBYTE()  (u8)get_byte()
+#define NEXTBYTE()  (u8)get_byte()
 #endif
 #define NEEDBITS(n) {while(k<(n)){b|=((u32)NEXTBYTE())<<k;k+=8;}}
 #define DUMPBITS(n) {b>>=(n);k-=(n);}
@@ -82,4 +93,9 @@ struct huft {
 
 int bkboot_inflate(void);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

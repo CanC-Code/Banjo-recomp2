@@ -1,5 +1,6 @@
-#include <os_internal.h>
+#include <PR/os_internal.h>
 #include "controller.h"
+#include <n64_types.h>
 
 s32 corrupted_init(OSPfs *pfs, __OSInodeCache *cache);
 s32 corrupted(OSPfs *pfs, __OSInodeUnit fpage, __OSInodeCache *cache);

@@ -221,15 +221,15 @@ f32 baanim_getTimer(void){
     return anctrl_getAnimTimer(playerAnimCtrl);
 }
 
-bool baanim_isAnimID(enum asset_e anim_id){
+n64_bool baanim_isAnimID(enum asset_e anim_id){
     return anctrl_getIndex(playerAnimCtrl) == anim_id;
 }
 
-bool baanim_isStopped(void){
+n64_bool baanim_isStopped(void){
     return anctrl_isStopped(playerAnimCtrl);
 }
 
-bool baanim_isAt(f32 time){
+n64_bool baanim_isAt(f32 time){
     return anctrl_isAt(playerAnimCtrl, time);
 }
 

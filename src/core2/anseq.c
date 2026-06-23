@@ -149,7 +149,7 @@ void anSeq_PushStep_3Arg(vector(AnSeqElement) **ppAnSeq, f32 duration, void *fun
 
 void anSeq_PushStep_ManyArg(vector(AnSeqElement) **ppAnSeq, f32 duration, void *func_ptr, void* arg_ptr, s32 arg_size){
     AnSeqElement *out = __anSeq_pushStep(ppAnSeq, duration, 4, func_ptr, 0, 0, 0);
-    memcpy(&out->arg0, arg_ptr, arg_size);
+    n64_memcpy(&out->arg0, arg_ptr, arg_size);
 }
 
 void anSeq_func_80288E68(vector(AnSeqElement) **ppAnSeq, f32 duration, s32 arg2, s32 arg3, s32 arg4){
@@ -198,11 +198,11 @@ void anSeq_func_80289090(vector(AnSeqElement) **ppAnSeq, f32 duration, s32 arg2,
 
 void anSeq_free(vector(AnSeqElement)** ppAnSeq){
     vector_free(*ppAnSeq);
-    free(ppAnSeq);
+    n64_free(ppAnSeq);
 }
 
 vector(AnSeqElement) **anSeq_new(void) {
-    vector(AnSeqElement) **ptr = (vector(AnSeqElement) **)malloc(sizeof(vector(AnSeqElement) **));
+    vector(AnSeqElement) **ptr = (vector(AnSeqElement) **)n64_malloc(sizeof(vector(AnSeqElement) **));
     *ptr = vector_new(sizeof(AnSeqElement), 2);
     anSeq_clear(ptr);
     return ptr;

@@ -1,3 +1,4 @@
+#include <n64_types.h>
 unsigned char emptyLvl = 0;
 unsigned char emptyLvlBss[0x20];
 

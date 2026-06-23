@@ -89,6 +89,10 @@ ActorInfo gPalmTree = {
     0, 0, 0.0f, 0
 };
 
+
+/* Automated Forward Decls */
+static void __code26D0_spawnLighthouseB(s32 arg0);
+
 /* .code */
 void code26D0_resetSpawnableActorsForTTC(void)
 {

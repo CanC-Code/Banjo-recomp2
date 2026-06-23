@@ -291,7 +291,7 @@ f32 func_80324078(struct56s *arg0, f32 arg1, f32 arg2) {
     return func_80323A48(arg0->unk8, sp24, arg1, (f32) (arg2 * (1.0/30.0)), func_803237E8(arg0));
 }
 
-f32 func_803240E0(struct56s *arg0, f32 arg1, f32 arg2, bool *arg3) {
+f32 func_803240E0(struct56s *arg0, f32 arg1, f32 arg2, n64_bool *arg3) {
     f32 temp_f0;
     f32 temp_f2;
 

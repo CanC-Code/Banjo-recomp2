@@ -105,7 +105,7 @@ void func_802DAF2C(f32 *arg0, f32 arg1, f32 arg2) {
     arg0[2] += sp1C[2];
 }
 
-bool func_802DAFBC(Actor *this) {
+n64_bool func_802DAFBC(Actor *this) {
     ActorLocal_core2_53C10 *local;
     s32 temp_v0;
     f32 sp44;

@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**************************************************************************
  *									  *
  *		 Copyright (C) 1995, Silicon Graphics, Inc.		  *
@@ -21,8 +25,15 @@
 #ifndef __R4300_H__
 #define __R4300_H__
 
-#include <PR/ultratypes.h>
+/* Redirected */ #include <n64_types.h>
+#ifdef __cplusplus
+}
+#endif
+#include "bka_safe_base.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /*
  * Segment base addresses and sizes
  */
@@ -52,21 +63,21 @@
 
 #define	K0_TO_K1(x)	((x)|0xA0000000)	/* kseg0 to kseg1 */
 #define	K1_TO_K0(x)	((x)&0x9FFFFFFF)	/* kseg1 to kseg0 */
-#define	K0_TO_PHYS(x)	((x)&0x1FFFFFFF)	/* kseg0 to physical */
-#define	K1_TO_PHYS(x)	((x)&0x1FFFFFFF)	/* kseg1 to physical */
+#define K0_TO_PHYS(x) (BKA_Reverse_Addr(BKA_TRANSLATE_ADDR(x)))
+#define K1_TO_PHYS(x) (BKA_Reverse_Addr(BKA_TRANSLATE_ADDR(x)))
 #define	KDM_TO_PHYS(x)	((x)&0x1FFFFFFF)	/* direct mapped to physical */
-#define	PHYS_TO_K0(x)	((x)|0x80000000)	/* physical to kseg0 */
-#define	PHYS_TO_K1(x)	((x)|0xA0000000)	/* physical to kseg1 */
+#define PHYS_TO_K0(x) (BKA_TRANSLATE_ADDR(x))
+#define PHYS_TO_K1(x) (BKA_TRANSLATE_ADDR(x))
 
 #else /* _LANGUAGE_C */
 
 #define	K0_TO_K1(x)	((u32)(x)|0xA0000000)	/* kseg0 to kseg1 */
 #define	K1_TO_K0(x)	((u32)(x)&0x9FFFFFFF)	/* kseg1 to kseg0 */
-#define	K0_TO_PHYS(x)	((u32)(x)&0x1FFFFFFF)	/* kseg0 to physical */
-#define	K1_TO_PHYS(x)	((u32)(x)&0x1FFFFFFF)	/* kseg1 to physical */
+#define K0_TO_PHYS(x) (BKA_Reverse_Addr(BKA_TRANSLATE_ADDR(x)))
+#define K1_TO_PHYS(x) (BKA_Reverse_Addr(BKA_TRANSLATE_ADDR(x)))
 #define	KDM_TO_PHYS(x)	((u32)(x)&0x1FFFFFFF)	/* direct mapped to physical */
-#define	PHYS_TO_K0(x)	((u32)(x)|0x80000000)	/* physical to kseg0 */
-#define	PHYS_TO_K1(x)	((u32)(x)|0xA0000000)	/* physical to kseg1 */
+#define PHYS_TO_K0(x) (BKA_TRANSLATE_ADDR(x))
+#define PHYS_TO_K1(x) (BKA_TRANSLATE_ADDR(x))
 
 #endif	/* _LANGUAGE_ASSEMBLY */
 
@@ -451,3 +462,8 @@
 #define	FPCSR_RM_RM	0x00000003	/* round to negative infinity */
 
 #endif /* __R4300_H */
+
+
+#ifdef __cplusplus
+}
+#endif

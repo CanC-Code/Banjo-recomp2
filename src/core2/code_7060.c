@@ -11,16 +11,16 @@
 
 #include "snackerctl.h"
 
-extern bool player_isInHorizontalRadius(f32[3], f32);
-extern bool player_isInVerticalRange(f32[3], f32);
+extern n64_bool player_isInHorizontalRadius(f32[3], f32);
+extern n64_bool player_isInVerticalRange(f32[3], f32);
 extern void func_80295A8C(void);
 extern void climbSet(f32[3], f32[3], f32, u32);
 extern void func_80296C90(f32);
 extern void func_80296C9C(f32);
 extern void func_8029B73C(f32 arg0[3], f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
-bool func_8028F4B8(f32 arg0[3], f32 arg1, f32 arg2);
-bool func_8028F620(f32 arg0[3], f32 arg1, f32 arg2);
+n64_bool func_8028F4B8(f32 arg0[3], f32 arg1, f32 arg2);
+n64_bool func_8028F620(f32 arg0[3], f32 arg1, f32 arg2);
 void func_8028F85C(f32 arg0[3]);
 void player_setRotation(f32 rotation[3]);
 void func_8028F918(s32 arg0);
@@ -46,7 +46,7 @@ f32 D_8037BFCC;
 f32 D_8037BFD0;
 
 /* .code */
-bool func_8028DFF0(s32 arg0, s32 position[3]) {
+n64_bool func_8028DFF0(s32 arg0, s32 position[3]) {
     if (arg0 >= 0x80) {
         position[0] = func_802E4A98(arg0);
         position[1] = func_802E4AAC(arg0);
@@ -58,7 +58,7 @@ bool func_8028DFF0(s32 arg0, s32 position[3]) {
     }
 }
 
-bool func_8028E060(s32 arg0, s32 *arg1){
+n64_bool func_8028E060(s32 arg0, s32 *arg1){
     if(arg0 >= 0x80){
         *arg1 = func_802E4AD4();
         return TRUE;
@@ -79,8 +79,8 @@ void func_8028E0F0(s32 arg0, s32 arg1[3]) {
     f32 sp7C[3];
     f32 sp70[3];
     s32 sp6C;
-    bool sp68;
-    bool sp64;
+    n64_bool sp68;
+    n64_bool sp64;
     f32 sp58[3];
     f32 sp4C[3];
     f32 sp40[3];
@@ -551,11 +551,11 @@ f32 func_8028EF88(void){
     return playerPosition_getY();
 }
 
-bool func_8028EFC8(void){
+n64_bool func_8028EFC8(void){
     return bakey_getAndSetState(BUTTON_B, 2);
 }
 
-bool func_8028EFEC(void){
+n64_bool func_8028EFEC(void){
     return bakey_getAndSetState(BUTTON_A, 2);
 }
 
@@ -571,14 +571,14 @@ void func_8028F050(enum actor_e actor_id){
     bacarriedobj_displayOnHud(actor_id);
 }
 
-bool func_8028F070(void){
+n64_bool func_8028F070(void){
     if(!D_8037BFBA){
         return FALSE;
     }
     return D_8037BFB8;
 }
 
-bool func_8028F098(void){
+n64_bool func_8028F098(void){
     switch(player_movementGroup()){
         case BSGROUP_1_INTR:
         case BSGROUP_2:
@@ -588,7 +588,7 @@ bool func_8028F098(void){
     }
 }
 
-bool func_8028F0D4(void){
+n64_bool func_8028F0D4(void){
     enum transformation_e xform_id;
     
     xform_id = bsStoredState_getTransformation();
@@ -596,19 +596,19 @@ bool func_8028F0D4(void){
         || xform_id == TRANSFORM_7_WISHWASHY;
 }
 
-bool player_is_in_jiggy_jig(void){
+n64_bool player_is_in_jiggy_jig(void){
     return bs_getState() == BS_44_JIG_JIGGY;
 }
 
-bool func_8028F12C(void){
+n64_bool func_8028F12C(void){
     return bs_getState() == BS_B_UNKOWN;
 }
 
-bool func_8028F150(void){
+n64_bool func_8028F150(void){
     return baModel_isVisible();
 }
 
-bool func_8028F170(void){
+n64_bool func_8028F170(void){
     return baflag_isTrue(BA_FLAG_17_FIRST_PERSON_VIEW);
 }
 
@@ -616,52 +616,52 @@ int ability_isUnlocked(enum ability_e uid){
     return ability_hasLearned(uid);
 }
 
-bool func_8028F1B0(void){
+n64_bool func_8028F1B0(void){
     return !func_8028F2FC();
 }
 
-bool player_is_present(void){
+n64_bool player_is_present(void){
     return D_8037BFBA;
 }
 
-bool func_8028F1E0(void){
+n64_bool func_8028F1E0(void){
     return bsList_getInterruptMethod(bs_getState()) != NULL;
 }
 
-bool func_8028F20C(void){
+n64_bool func_8028F20C(void){
     return player_isStable();
 }
 
-bool player_isDead(void){
+n64_bool player_isDead(void){
     if(bs_getState() == BS_41_DIE){
         return TRUE;
     }
     return FALSE;
 }
 
-bool func_8028F25C(void){
+n64_bool func_8028F25C(void){
     return func_8028EC04() != 0;
 }
 
-bool func_8028F280(void){
+n64_bool func_8028F280(void){
     return func_8029453C();
 }
 
-bool func_8028F2A0(void) {
+n64_bool func_8028F2A0(void) {
     return (player_movementGroup() == BSGROUP_0_NONE) && !func_80294610(0xE000);
 }
 
 
-bool func_8028F2DC(void){
+n64_bool func_8028F2DC(void){
     return func_802949C8();
 }
 
-bool func_8028F2FC(void){
+n64_bool func_8028F2FC(void){
     return func_8028B528();
 }
 
 //sets carry actor if player is within a horizantal radius around a point
-bool player_setCarryObjectPoseInHorizontalRadius(f32 position[3], f32 radius, enum actor_e actor_id, Actor **arg3){
+n64_bool player_setCarryObjectPoseInHorizontalRadius(f32 position[3], f32 radius, enum actor_e actor_id, Actor **arg3){
     if (player_isInHorizontalRadius(position, radius)) {
         return player_setCarryObjectPose(actor_id, arg3);
     }
@@ -669,7 +669,7 @@ bool player_setCarryObjectPoseInHorizontalRadius(f32 position[3], f32 radius, en
 }
 
 //sets carry actor if player is within a cylinder around a point
-bool player_setCarryObjectPoseInCylinder(f32 position[3], f32 radius, f32 vert_range, enum actor_e actor_id, Actor **arg4) {
+n64_bool player_setCarryObjectPoseInCylinder(f32 position[3], f32 radius, f32 vert_range, enum actor_e actor_id, Actor **arg4) {
     if (player_isInVerticalRange(position, vert_range)) {
         return player_setCarryObjectPoseInHorizontalRadius(position, radius, actor_id, arg4);
     }
@@ -688,23 +688,23 @@ void func_8028F408(f32 arg0[3]){
     baphysics_set_goto_position(arg0);
 }
 
-bool func_8028F428(s32 arg0, ActorMarker *marker) {
+n64_bool func_8028F428(s32 arg0, ActorMarker *marker) {
     func_80296CB4(arg0);
     func_80296CA8(marker);
     return bs_checkInterrupt(BS_INTR_24) == 2;
 }
 
-bool func_8028F45C(s32 arg0, f32 arg1[3]) {
+n64_bool func_8028F45C(s32 arg0, f32 arg1[3]) {
     func_80296CB4(arg0);
     func_80296CC0(arg1);
     return bs_checkInterrupt(BS_INTR_23) == 2;
 }
 
-bool func_8028F490(f32 arg0[3]){
+n64_bool func_8028F490(f32 arg0[3]){
     return func_8028F4B8(arg0, 840.0f, -1500.0f);
 }
 
-bool func_8028F4B8(f32 arg0[3], f32 arg1, f32 arg2) {
+n64_bool func_8028F4B8(f32 arg0[3], f32 arg1, f32 arg2) {
     func_80296C90(arg1);
     func_80296C9C(arg2);
     func_80296CB4(0xE);
@@ -712,39 +712,39 @@ bool func_8028F4B8(f32 arg0[3], f32 arg1, f32 arg2) {
     return bs_checkInterrupt(BS_INTR_2D) == 2;
 }
 
-bool player_checkHazardInterrupt(s32 arg0) {
+n64_bool player_checkHazardInterrupt(s32 arg0) {
     func_80296CB4(arg0);
     return bs_checkInterrupt(BS_INTR_1F_HAZARD) == 2;
 }
 
-bool func_8028F530(s32 arg0) {
+n64_bool func_8028F530(s32 arg0) {
     func_80296CB4(arg0);
     return bs_checkInterrupt(BS_INTR_31) == 2;
 }
 
-bool func_8028F55C(s32 arg0, ActorMarker *marker) {
+n64_bool func_8028F55C(s32 arg0, ActorMarker *marker) {
     func_80296CB4(arg0);
     func_80296CA8(marker);
     return bs_checkInterrupt(BS_INTR_21) == 2;
 }
 
-bool func_8028F590(s32 arg0, ActorMarker *marker) {
+n64_bool func_8028F590(s32 arg0, ActorMarker *marker) {
     func_80296CB4(arg0);
     func_80296CA8(marker);
     return bs_checkInterrupt(BS_INTR_33) == 2;
 }
 
-bool func_8028F5C4(s32 arg0, f32 arg1[3]) {
+n64_bool func_8028F5C4(s32 arg0, f32 arg1[3]) {
     func_80296CB4(arg0);
     func_80296CC0(arg1);
     return bs_checkInterrupt(BS_INTR_20) == 2;
 }
 
-bool func_8028F5F8(f32 arg0[3]){
+n64_bool func_8028F5F8(f32 arg0[3]){
     return func_8028F620(arg0, 840.0f, -1500.0f);
 }
 
-bool func_8028F620(f32 arg0[3], f32 arg1, f32 arg2) {
+n64_bool func_8028F620(f32 arg0[3], f32 arg1, f32 arg2) {
     func_80296C90(arg1);
     func_80296C9C(arg2);
     func_80296CB4(0x10);
@@ -785,7 +785,7 @@ void func_8028F760(s32 arg0, f32 arg1, f32 arg2){
     D_8037BFB0[1] = arg2;
 }
 
-void func_8028F784(bool arg0){
+void func_8028F784(n64_bool arg0){
     if(arg0){
         bakey_disableAll(TRUE);
         bastick_lockAtzero(TRUE);
@@ -797,7 +797,7 @@ void func_8028F784(bool arg0){
 }
 
 //player_setLocked
-void func_8028F7C8(bool arg0){
+void func_8028F7C8(n64_bool arg0){
     D_8037BFB9 = arg0;
 }
 
@@ -834,7 +834,7 @@ void player_setRotation(f32 rotation[3]){
     roll_applyIdeal();
 }
 
-void func_8028F8F8(s32 arg0, bool arg1){
+void func_8028F8F8(s32 arg0, n64_bool arg1){
     func_8029026C(arg0, arg1);
 }
 
@@ -916,7 +916,7 @@ void func_8028FB68(void){
     func_80295D74();
 }
 
-bool func_8028FB88(enum transformation_e xform_id) {
+n64_bool func_8028FB88(enum transformation_e xform_id) {
     if (wishyWashyFlag_get() && xform_id == TRANSFORM_1_BANJO) {
         xform_id = TRANSFORM_7_WISHWASHY;
     }
@@ -924,7 +924,7 @@ bool func_8028FB88(enum transformation_e xform_id) {
     return bs_checkInterrupt(BS_INTR_A) == 2;
 }
 
-bool func_8028FBD4(f32 arg0[3]) {
+n64_bool func_8028FBD4(f32 arg0[3]) {
     if (gcdialog_hasCurrentTextId() || player_movementGroup()) {
         return FALSE;
     }
@@ -934,7 +934,7 @@ bool func_8028FBD4(f32 arg0[3]) {
     return bs_checkInterrupt(BS_INTR_8) == 2;
 }
 
-bool player_throwCarriedObject(void){
+n64_bool player_throwCarriedObject(void){
     if (func_8028E86C() && bscarry_inSet(bs_getState())) {
         return bs_checkInterrupt(BS_INTR_16_THROW_CARRIED_OBJ) == 2;
     }
@@ -954,7 +954,7 @@ void func_8028FCBC(void){
     D_8037BFB8 = FALSE;
 }
 
-void player_setModelVisible(bool visible) {
+void player_setModelVisible(n64_bool visible) {
     baModel_setVisible(visible);
 }
 

@@ -1,7 +1,11 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _STATIC_LENGTH_ARRAY_H_
 #define _STATIC_LENGTH_ARRAY_H_
 
-#include<ultratypes.h>
+/* Redirected */ #include <n64_types.h>
 
 typedef struct variable_length_array{
     s32 elem_size;
@@ -14,4 +18,9 @@ typedef struct variable_length_array{
 #define vector(T) struct variable_length_array
 //^defined to keep element type with vla
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**************************************************************************
  *									  *
  *		 Copyright (C) 1994, Silicon Graphics, Inc.		  *
@@ -20,7 +24,7 @@
 #ifndef _GBI_H_
 #define	_GBI_H_
 
-#include <PR/ultratypes.h>
+/* Redirected */ #include <n64_types.h>
 
 /*
  * To use the F3DEX ucodes, define F3DEX_GBI before include this file.
@@ -89,7 +93,7 @@
 
 #ifdef    F3DEX_GBI_2
 # ifndef  F3DEX_GBI
-#  define F3DEX_GBI
+#define F3DEX_GBI
 # endif
 #define	G_NOOP			0x00
 #define	G_RDPHALF_2		0xf1
@@ -149,12 +153,12 @@
 #define G_RDPHALF_1		(G_IMMFIRST-11)
 #define G_RDPHALF_2		(G_IMMFIRST-12)
 #if (defined(F3DEX_GBI)||defined(F3DLP_GBI))
-#  define G_MODIFYVTX		(G_IMMFIRST-13)
-#  define G_TRI2		(G_IMMFIRST-14)
-#  define G_BRANCH_Z		(G_IMMFIRST-15)
-#  define G_LOAD_UCODE		(G_IMMFIRST-16)
+#define G_MODIFYVTX		(G_IMMFIRST-13)
+#define G_TRI2		(G_IMMFIRST-14)
+#define G_BRANCH_Z		(G_IMMFIRST-15)
+#define G_LOAD_UCODE		(G_IMMFIRST-16)
 #else
-#  define G_RDPHALF_CONT	(G_IMMFIRST-13)
+#define G_RDPHALF_CONT	(G_IMMFIRST-13)
 #endif
 
 /* We are overloading 2 of the immediate commands
@@ -297,19 +301,19 @@
  * G_MTX: parameter flags
  */
 #ifdef	F3DEX_GBI_2
-# define G_MTX_MODELVIEW	0x00	/* matrix types */
-# define G_MTX_PROJECTION	0x04
-# define G_MTX_MUL		0x00	/* concat or load */
-# define G_MTX_LOAD		0x02
-# define G_MTX_NOPUSH		0x00	/* push or not */
-# define G_MTX_PUSH		0x01
+#define G_MTX_MODELVIEW	0x00	/* matrix types */
+#define G_MTX_PROJECTION	0x04
+#define G_MTX_MUL		0x00	/* concat or load */
+#define G_MTX_LOAD		0x02
+#define G_MTX_NOPUSH		0x00	/* push or not */
+#define G_MTX_PUSH		0x01
 #else	/* F3DEX_GBI_2 */
-# define G_MTX_MODELVIEW	0x00	/* matrix types */
-# define G_MTX_PROJECTION	0x01
-# define G_MTX_MUL		0x00	/* concat or load */
-# define G_MTX_LOAD		0x02
-# define G_MTX_NOPUSH		0x00	/* push or not */
-# define G_MTX_PUSH		0x04
+#define G_MTX_MODELVIEW	0x00	/* matrix types */
+#define G_MTX_PROJECTION	0x01
+#define G_MTX_MUL		0x00	/* concat or load */
+#define G_MTX_LOAD		0x02
+#define G_MTX_NOPUSH		0x00	/* push or not */
+#define G_MTX_PUSH		0x04
 #endif	/* F3DEX_GBI_2 */
 
 /*
@@ -341,17 +345,17 @@
 #define G_SHADE			0x00000004	/* enable Gouraud interp */
 /* rest of low byte reserved for setup ucode */
 #ifdef	F3DEX_GBI_2
-# define G_TEXTURE_ENABLE	0x00000000	/* Ignored               */
-# define G_SHADING_SMOOTH	0x00200000	/* flat or smooth shaded */
-# define G_CULL_FRONT		0x00000200
-# define G_CULL_BACK		0x00000400
-# define G_CULL_BOTH		0x00000600	/* To make code cleaner */
+#define G_TEXTURE_ENABLE	0x00000000	/* Ignored               */
+#define G_SHADING_SMOOTH	0x00200000	/* flat or smooth shaded */
+#define G_CULL_FRONT		0x00000200
+#define G_CULL_BACK		0x00000400
+#define G_CULL_BOTH		0x00000600	/* To make code cleaner */
 #else
-# define G_TEXTURE_ENABLE	0x00000002	/* Microcode use only */
-# define G_SHADING_SMOOTH	0x00000200	/* flat or smooth shaded */
-# define G_CULL_FRONT		0x00001000
-# define G_CULL_BACK		0x00002000
-# define G_CULL_BOTH		0x00003000	/* To make code cleaner */
+#define G_TEXTURE_ENABLE	0x00000002	/* Microcode use only */
+#define G_SHADING_SMOOTH	0x00000200	/* flat or smooth shaded */
+#define G_CULL_FRONT		0x00001000
+#define G_CULL_BACK		0x00002000
+#define G_CULL_BOTH		0x00003000	/* To make code cleaner */
 #endif
 #define G_FOG			0x00010000
 #define G_LIGHTING		0x00020000
@@ -359,9 +363,9 @@
 #define G_TEXTURE_GEN_LINEAR	0x00080000
 #define G_LOD			0x00100000	/* NOT IMPLEMENTED */
 #if	(defined(F3DEX_GBI)||defined(F3DLP_GBI))
-# define G_CLIPPING		0x00800000
+#define G_CLIPPING		0x00800000
 #else
-# define G_CLIPPING		0x00000000
+#define G_CLIPPING		0x00000000
 #endif
 
 #ifdef _LANGUAGE_ASSEMBLY
@@ -371,7 +375,7 @@
 #define G_TEXTURE_GEN_LINEAR_H	(G_TEXTURE_GEN_LINEAR/0x10000)
 #define G_LOD_H			(G_LOD/0x10000)	/* NOT IMPLEMENTED */
 #if	(defined(F3DEX_GBI)||defined(F3DLP_GBI))
-#  define G_CLIPPING_H		(G_CLIPPING/0x10000)
+#define G_CLIPPING_H		(G_CLIPPING/0x10000)
 #endif
 #endif
 
@@ -1194,39 +1198,39 @@ typedef union {
  */
 #ifdef	F3DEX_GBI_2
 /* 0,4 are reserved by G_MTX */
-# define G_MV_MMTX	2	
-# define G_MV_PMTX	6
-# define G_MV_VIEWPORT	8
-# define G_MV_LIGHT	10
-# define G_MV_POINT	12
-# define G_MV_MATRIX	14		/* NOTE: this is in moveword table */
-# define G_MVO_LOOKATX	(0*24)
-# define G_MVO_LOOKATY	(1*24)
-# define G_MVO_L0	(2*24)
-# define G_MVO_L1	(3*24)
-# define G_MVO_L2	(4*24)
-# define G_MVO_L3	(5*24)
-# define G_MVO_L4	(6*24)
-# define G_MVO_L5	(7*24)
-# define G_MVO_L6	(8*24)
-# define G_MVO_L7	(9*24)
+#define G_MV_MMTX	2	
+#define G_MV_PMTX	6
+#define G_MV_VIEWPORT	8
+#define G_MV_LIGHT	10
+#define G_MV_POINT	12
+#define G_MV_MATRIX	14		/* NOTE: this is in moveword table */
+#define G_MVO_LOOKATX	(0*24)
+#define G_MVO_LOOKATY	(1*24)
+#define G_MVO_L0	(2*24)
+#define G_MVO_L1	(3*24)
+#define G_MVO_L2	(4*24)
+#define G_MVO_L3	(5*24)
+#define G_MVO_L4	(6*24)
+#define G_MVO_L5	(7*24)
+#define G_MVO_L6	(8*24)
+#define G_MVO_L7	(9*24)
 #else	/* F3DEX_GBI_2 */
-# define G_MV_VIEWPORT	0x80
-# define G_MV_LOOKATY	0x82
-# define G_MV_LOOKATX	0x84
-# define G_MV_L0	0x86
-# define G_MV_L1	0x88
-# define G_MV_L2	0x8a
-# define G_MV_L3	0x8c
-# define G_MV_L4	0x8e
-# define G_MV_L5	0x90
-# define G_MV_L6	0x92
-# define G_MV_L7	0x94
-# define G_MV_TXTATT	0x96
-# define G_MV_MATRIX_1	0x9e	/* NOTE: this is in moveword table */
-# define G_MV_MATRIX_2	0x98
-# define G_MV_MATRIX_3	0x9a
-# define G_MV_MATRIX_4	0x9c
+#define G_MV_VIEWPORT	0x80
+#define G_MV_LOOKATY	0x82
+#define G_MV_LOOKATX	0x84
+#define G_MV_L0	0x86
+#define G_MV_L1	0x88
+#define G_MV_L2	0x8a
+#define G_MV_L3	0x8c
+#define G_MV_L4	0x8e
+#define G_MV_L5	0x90
+#define G_MV_L6	0x92
+#define G_MV_L7	0x94
+#define G_MV_TXTATT	0x96
+#define G_MV_MATRIX_1	0x9e	/* NOTE: this is in moveword table */
+#define G_MV_MATRIX_2	0x98
+#define G_MV_MATRIX_3	0x9a
+#define G_MV_MATRIX_4	0x9c
 #endif	/* F3DEX_GBI_2 */
 
 /*
@@ -1244,9 +1248,9 @@ typedef union {
 #define G_MW_FOG		0x08
 #define G_MW_LIGHTCOL		0x0a
 #ifdef	F3DEX_GBI_2
-# define G_MW_FORCEMTX		0x0c
+#define G_MW_FORCEMTX		0x0c
 #else	/* F3DEX_GBI_2 */
-# define G_MW_POINTS		0x0c
+#define G_MW_POINTS		0x0c
 #endif	/* F3DEX_GBI_2 */
 #define	G_MW_PERSPNORM		0x0e
 
@@ -1751,13 +1755,13 @@ typedef union {
 #define	gsSPNoOp()		gsDma0p(G_SPNOOP, 0, 0)
 
 #ifdef	F3DEX_GBI_2
-# define	gSPMatrix(pkt, m, p)	\
+#define	gSPMatrix(pkt, m, p)	\
 		gDma2p((pkt),G_MTX,(m),sizeof(Mtx),(p)^G_MTX_PUSH,0)
-# define	gsSPMatrix(m, p)	\
+#define	gsSPMatrix(m, p)	\
 		gsDma2p(     G_MTX,(m),sizeof(Mtx),(p)^G_MTX_PUSH,0)
 #else	/* F3DEX_GBI_2 */
-# define	gSPMatrix(pkt, m, p)	gDma1p(pkt, G_MTX, m, sizeof(Mtx), p)
-# define	gsSPMatrix(m, p)	gsDma1p(G_MTX, m, sizeof(Mtx), p)
+#define	gSPMatrix(pkt, m, p)	gDma1p(pkt, G_MTX, m, sizeof(Mtx), p)
+#define	gsSPMatrix(m, p)	gsDma1p(G_MTX, m, sizeof(Mtx), p)
 #endif	/* F3DEX_GBI_2 */
 
 #if	defined(F3DEX_GBI_2)
@@ -1770,14 +1774,14 @@ typedef union {
  *        | |seg|         address             |
  *        +-+---+-----------------------------+
  */
-# define	gSPVertex(pkt, v, n, v0)				\
+#define	gSPVertex(pkt, v, n, v0)				\
 {									\
 	Gfx *_g = (Gfx *)(pkt);						\
 	_g->words.w0 =							\
 	  _SHIFTL(G_VTX,24,8)|_SHIFTL((n),12,8)|_SHIFTL((v0)+(n),1,7);	\
 	_g->words.w1 = (unsigned int)(v);				\
 }
-# define	gsSPVertex(v, n, v0)					\
+#define	gsSPVertex(v, n, v0)					\
 {{									\
 	(_SHIFTL(G_VTX,24,8)|_SHIFTL((n),12,8)|_SHIFTL((v0)+(n),1,7)),	\
         (unsigned int)(v)						\
@@ -1792,27 +1796,27 @@ typedef union {
  *        | |seg|          address            |
  *        +-+---+-----------------------------+
  */
-# define	gSPVertex(pkt, v, n, v0) \
+#define	gSPVertex(pkt, v, n, v0) \
                 gDma1p((pkt),G_VTX,(v),((n)<<10)|(sizeof(Vtx)*(n)-1),(v0)*2)
-# define	gsSPVertex(v, n, v0) \
+#define	gsSPVertex(v, n, v0) \
                 gsDma1p(G_VTX,(v),((n)<<10)|(sizeof(Vtx)*(n)-1),(v0)*2)
 #else
-# define	gSPVertex(pkt, v, n, v0) \
+#define	gSPVertex(pkt, v, n, v0) \
                 gDma1p(pkt, G_VTX, v, sizeof(Vtx)*(n),((n)-1)<<4|(v0))
-# define	gsSPVertex(v, n, v0) \
+#define	gsSPVertex(v, n, v0) \
                 gsDma1p(G_VTX, v, sizeof(Vtx)*(n), ((n)-1)<<4|(v0))
 #endif
 
 	
 #ifdef	F3DEX_GBI_2
-# define gSPViewport(pkt, v)	\
+#define gSPViewport(pkt, v)	\
 		gDma2p((pkt), G_MOVEMEM, (v), sizeof(Vp), G_MV_VIEWPORT, 0)
-# define gsSPViewport(v)	\
+#define gsSPViewport(v)	\
 		gsDma2p(      G_MOVEMEM, (v), sizeof(Vp), G_MV_VIEWPORT, 0)
 #else	/* F3DEX_GBI_2 */
-# define gSPViewport(pkt,v)	\
+#define gSPViewport(pkt,v)	\
 		gDma1p((pkt), G_MOVEMEM, (v), sizeof(Vp), G_MV_VIEWPORT)
-# define gsSPViewport(v)	\
+#define gsSPViewport(v)	\
 		gsDma1p(      G_MOVEMEM, (v), sizeof(Vp), G_MV_VIEWPORT)
 #endif	/* F3DEX_GBI_2 */
 
@@ -1952,32 +1956,32 @@ typedef union {
  * by 10, this is an optimization for the microcode.
  */
 #if	(defined(F3DLP_GBI)||defined(F3DEX_GBI))
-#  define __gsSP1Triangle_w1(v0, v1, v2)			\
+#define __gsSP1Triangle_w1(v0, v1, v2)			\
      (_SHIFTL((v0)*2,16,8)|_SHIFTL((v1)*2,8,8)|_SHIFTL((v2)*2,0,8))
-#  define __gsSP1Triangle_w1f(v0, v1, v2, flag)			\
+#define __gsSP1Triangle_w1f(v0, v1, v2, flag)			\
      (((flag) == 0) ? __gsSP1Triangle_w1(v0, v1, v2):		\
       ((flag) == 1) ? __gsSP1Triangle_w1(v1, v2, v0):		\
 	              __gsSP1Triangle_w1(v2, v0, v1))
-#  define __gsSPLine3D_w1(v0, v1, wd)				\
+#define __gsSPLine3D_w1(v0, v1, wd)				\
      (_SHIFTL((v0)*2,16,8)|_SHIFT((v1)*2,8,8)|_SHIFT((wd),0,8))
-#  define __gsSPLine3D_w1f(v0, v1, wd, flag)			\
+#define __gsSPLine3D_w1f(v0, v1, wd, flag)			\
      (((flag) == 0) ? __gsSPLine3D_w1(v0, v1, wd):		\
 	              __gsSPLine3D_w1(v1, v0, wd))
-#  define __gsSP1Quadrangle_w1f(v0, v1, v2, v3, flag)	\
+#define __gsSP1Quadrangle_w1f(v0, v1, v2, v3, flag)	\
   (((flag) == 0) ? __gsSP1Triangle_w1(v0, v1, v2):      \
    ((flag) == 1) ? __gsSP1Triangle_w1(v1, v2, v3):      \
    ((flag) == 2) ? __gsSP1Triangle_w1(v2, v3, v0):      \
                    __gsSP1Triangle_w1(v3, v0, v1))
-#  define __gsSP1Quadrangle_w2f(v0, v1, v2, v3, flag)	\
+#define __gsSP1Quadrangle_w2f(v0, v1, v2, v3, flag)	\
   (((flag) == 0) ? __gsSP1Triangle_w1(v0, v2, v3):      \
    ((flag) == 1) ? __gsSP1Triangle_w1(v1, v3, v0):      \
    ((flag) == 2) ? __gsSP1Triangle_w1(v2, v0, v1):      \
                    __gsSP1Triangle_w1(v3, v1, v2))
 #else
-#  define __gsSP1Triangle_w1f(v0, v1, v2, flag)			\
+#define __gsSP1Triangle_w1f(v0, v1, v2, flag)			\
      (_SHIFTL((flag), 24,8)|_SHIFTL((v0)*10,16,8)|		\
       _SHIFTL((v1)*10, 8,8)|_SHIFTL((v2)*10, 0,8))
-#  define __gsSPLine3D_w1f(v0, v1, wd, flag)			\
+#define __gsSPLine3D_w1f(v0, v1, wd, flag)			\
      (_SHIFTL((flag), 24,8)|_SHIFTL((v0)*10,16,8)| 		\
       _SHIFTL((v1)*10, 8,8)|_SHIFTL((wd),    0,8))
 #endif
@@ -2282,23 +2286,23 @@ typedef union {
  * num   = new value (32 bit)
  */
 #if	(defined(F3DEX_GBI)||defined(F3DLP_GBI))
-# define gSPModifyVertex(pkt, vtx, where, val)				\
+#define gSPModifyVertex(pkt, vtx, where, val)				\
 {									\
 	Gfx *_g = (Gfx *)(pkt);						\
 	_g->words.w0 = (_SHIFTL(G_MODIFYVTX,24,8)|			\
 		        _SHIFTL((where),16,8)|_SHIFTL((vtx)*2,0,16));	\
 	_g->words.w1 = (unsigned int)(val);				\
 }
-# define gsSPModifyVertex(vtx, where, val)				\
+#define gsSPModifyVertex(vtx, where, val)				\
 {{									\
 	_SHIFTL(G_MODIFYVTX,24,8)|					\
 	_SHIFTL((where),16,8)|_SHIFTL((vtx)*2,0,16),			\
 	(unsigned int)(val)						\
 }}
 #else
-# define gSPModifyVertex(pkt, vtx, where, val)				\
+#define gSPModifyVertex(pkt, vtx, where, val)				\
 	 gMoveWd(pkt, G_MW_POINTS, (vtx)*40+(where), val)
-# define gsSPModifyVertex(vtx, where, val)				\
+#define gsSPModifyVertex(vtx, where, val)				\
 	 gsMoveWd(G_MW_POINTS, (vtx)*40+(where), val)
 #endif
 
@@ -2440,9 +2444,9 @@ typedef union {
  * Lighting Macros
  */
 #ifdef	F3DEX_GBI_2
-# define NUML(n)	((n)*24)
+#define NUML(n)	((n)*24)
 #else
-# define NUML(n)	(((n)+1)*32 + 0x80000000)
+#define NUML(n)	(((n)+1)*32 + 0x80000000)
 #endif
 #define NUMLIGHTS_0	1
 #define NUMLIGHTS_1	1
@@ -2479,14 +2483,14 @@ typedef union {
  *       LIGHT_4 will be the ambient light.
  */
 #ifdef	F3DEX_GBI_2
-# define gSPLight(pkt, l, n)	\
+#define gSPLight(pkt, l, n)	\
 	  gDma2p((pkt),G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,(n)*24+24)
-# define gsSPLight(l, n)	\
+#define gsSPLight(l, n)	\
 	 gsDma2p(      G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,(n)*24+24)
 #else	/* F3DEX_GBI_2 */
-# define gSPLight(pkt, l, n)	\
+#define gSPLight(pkt, l, n)	\
 	 gDma1p(pkt, G_MOVEMEM, l, sizeof(Light),((n)-1)*2+G_MV_L0)
-# define gsSPLight(l, n)	\
+#define gsSPLight(l, n)	\
 	 gsDma1p(    G_MOVEMEM, l, sizeof(Light),((n)-1)*2+G_MV_L0)
 #endif	/* F3DEX_GBI_2 */
 
@@ -2643,22 +2647,22 @@ typedef union {
  * Reflection/Hiliting Macros
  */
 #ifdef	F3DEX_GBI_2
-# define gSPLookAtX(pkt, l)	\
+#define gSPLookAtX(pkt, l)	\
 	 gDma2p((pkt),G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,G_MVO_LOOKATX)
-# define gsSPLookAtX(l)		\
+#define gsSPLookAtX(l)		\
 	 gsDma2p(     G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,G_MVO_LOOKATX)
-# define gSPLookAtY(pkt, l)	\
+#define gSPLookAtY(pkt, l)	\
 	 gDma2p((pkt),G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,G_MVO_LOOKATY)
-# define gsSPLookAtY(l)		\
+#define gsSPLookAtY(l)		\
 	 gsDma2p(     G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,G_MVO_LOOKATY)
 #else	/* F3DEX_GBI_2 */
-# define gSPLookAtX(pkt, l)	\
+#define gSPLookAtX(pkt, l)	\
 	 gDma1p(pkt, G_MOVEMEM, l, sizeof(Light),G_MV_LOOKATX)
-# define gsSPLookAtX(l)		\
+#define gsSPLookAtX(l)		\
 	 gsDma1p(    G_MOVEMEM, l, sizeof(Light),G_MV_LOOKATX)
-# define gSPLookAtY(pkt, l)	\
+#define gSPLookAtY(pkt, l)	\
 	 gDma1p(pkt, G_MOVEMEM, l, sizeof(Light),G_MV_LOOKATY)
-# define gsSPLookAtY(l)		\
+#define gsSPLookAtY(l)		\
 	 gsDma1p(    G_MOVEMEM, l, sizeof(Light),G_MV_LOOKATY)
 #endif	/* F3DEX_GBI_2 */
 
@@ -2715,7 +2719,7 @@ typedef union {
 /*
  * Macros to turn texture on/off
  */
-# define gSPTexture(pkt, s, t, level, tile, on)				\
+#define gSPTexture(pkt, s, t, level, tile, on)				\
 {									\
 	Gfx *_g = (Gfx *)(pkt);						\
 									\
@@ -2725,7 +2729,7 @@ typedef union {
 			_SHIFTL((on),1,7));				\
 	_g->words.w1 = (_SHIFTL((s),16,16) | _SHIFTL((t),0,16));	\
 }
-# define gsSPTexture(s, t, level, tile, on)				\
+#define gsSPTexture(s, t, level, tile, on)				\
 {{									\
 	(_SHIFTL(G_TEXTURE,24,8) | _SHIFTL(BOWTIE_VAL,16,8) |		\
 	 _SHIFTL((level),11,3) | _SHIFTL((tile),8,3) | _SHIFTL((on),1,7)),\
@@ -2735,7 +2739,7 @@ typedef union {
  * Different version of SPTexture macro, has an additional parameter
  * which is currently reserved in the microcode.
  */
-# define gSPTextureL(pkt, s, t, level, xparam, tile, on)		\
+#define gSPTextureL(pkt, s, t, level, xparam, tile, on)		\
 {									\
 	Gfx *_g = (Gfx *)(pkt);						\
 									\
@@ -2745,7 +2749,7 @@ typedef union {
 			_SHIFTL((on),1,7));				\
 	_g->words.w1 = (_SHIFTL((s),16,16) | _SHIFTL((t),0,16));	\
 }
-# define gsSPTextureL(s, t, level, xparam, tile, on)			\
+#define gsSPTextureL(s, t, level, xparam, tile, on)			\
 {{									\
 	(_SHIFTL(G_TEXTURE,24,8) | _SHIFTL((xparam),16,8) |		\
 	 _SHIFTL((level),11,3) | _SHIFTL((tile),8,3) | _SHIFTL((on),1,7)),\
@@ -2755,7 +2759,7 @@ typedef union {
 /*
  * Macros to turn texture on/off
  */
-# define gSPTexture(pkt, s, t, level, tile, on)				\
+#define gSPTexture(pkt, s, t, level, tile, on)				\
 {									\
 	Gfx *_g = (Gfx *)(pkt);						\
 									\
@@ -2764,7 +2768,7 @@ typedef union {
 			_SHIFTL((on),0,8));				\
 	_g->words.w1 = (_SHIFTL((s),16,16)|_SHIFTL((t),0,16));		\
 }
-# define gsSPTexture(s, t, level, tile, on)				\
+#define gsSPTexture(s, t, level, tile, on)				\
 {{									\
 	(_SHIFTL(G_TEXTURE,24,8)|_SHIFTL(BOWTIE_VAL,16,8)|		\
 	 _SHIFTL((level),11,3)|_SHIFTL((tile),8,3)|_SHIFTL((on),0,8)),	\
@@ -2774,7 +2778,7 @@ typedef union {
  * Different version of SPTexture macro, has an additional parameter
  * which is currently reserved in the microcode.
  */
-# define gSPTextureL(pkt, s, t, level, xparam, tile, on)		\
+#define gSPTextureL(pkt, s, t, level, xparam, tile, on)		\
 {									\
 	Gfx *_g = (Gfx *)(pkt);						\
 									\
@@ -2783,7 +2787,7 @@ typedef union {
 			_SHIFTL((on),0,8));				\
 	_g->words.w1 = (_SHIFTL((s),16,16)|_SHIFTL((t),0,16));		\
 }
-# define gsSPTextureL(s, t, level, xparam, tile, on)			\
+#define gsSPTextureL(s, t, level, xparam, tile, on)			\
 {{									\
 	(_SHIFTL(G_TEXTURE,24,8)|_SHIFTL((xparam),16,8)|		\
 	 _SHIFTL((level),11,3)|_SHIFTL((tile),8,3)|_SHIFTL((on),0,8)),	\
@@ -2795,13 +2799,13 @@ typedef union {
 #define gsSPPerspNormalize(s)		gsMoveWd(    G_MW_PERSPNORM, 0, (s))
 
 #ifdef	F3DEX_GBI_2
-# define gSPPopMatrixN(pkt, n, num)	gDma2p((pkt),G_POPMTX,(num)*64,64,2,0)
-# define gsSPPopMatrixN(n, num)		gsDma2p(     G_POPMTX,(num)*64,64,2,0)
-# define gSPPopMatrix(pkt, n)		gSPPopMatrixN((pkt), (n), 1)
-# define gsSPPopMatrix(n)		gsSPPopMatrixN(      (n), 1)
+#define gSPPopMatrixN(pkt, n, num)	gDma2p((pkt),G_POPMTX,(num)*64,64,2,0)
+#define gsSPPopMatrixN(n, num)		gsDma2p(     G_POPMTX,(num)*64,64,2,0)
+#define gSPPopMatrix(pkt, n)		gSPPopMatrixN((pkt), (n), 1)
+#define gsSPPopMatrix(n)		gsSPPopMatrixN(      (n), 1)
 #else	/* F3DEX_GBI_2 */
-# define gSPPopMatrix(pkt, n)		gImmp1(pkt, G_POPMTX, n)
-# define gsSPPopMatrix(n)		gsImmp1(    G_POPMTX, n)
+#define gSPPopMatrix(pkt, n)		gImmp1(pkt, G_POPMTX, n)
+#define gsSPPopMatrix(n)		gsImmp1(    G_POPMTX, n)
 #endif	/* F3DEX_GBI_2 */
 
 #define gSPEndDisplayList(pkt)						\
@@ -4570,3 +4574,8 @@ typedef union {
 
 
 #endif /* _GBI_H_ */
+
+
+#ifdef __cplusplus
+}
+#endif

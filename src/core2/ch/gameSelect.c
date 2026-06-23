@@ -119,13 +119,13 @@ struct {
 } selectInstructions;
 
 s32 previousGameNumber;
-bool isFileMoving; // Is the camera / player moving between save files?
+n64_bool isFileMoving; // Is the camera / player moving between save files?
 GcZoombox *chGameSelectTopZoombox;
 GcZoombox *chGameSelectBottomZoombox;
 f32 cameraPositions[2][3];
 f32 cameraDelta[2][3];
 s32 cookingSoundEffectIndex;
-bool isTopTextNotFinishedDisplaying;
+n64_bool isTopTextNotFinishedDisplaying;
 f32 gameSelectCameraDelta;
 f32 cycleInstructionsTimer;
 
@@ -228,8 +228,8 @@ void setGameInformationZoombox(s32 gamenum) {
         gameFile_load(gamenum);
         D_8037DCCE[gamenum] = (itemscore_timeScores_get(LEVEL_6_LAIR)) ? 1 : 0;
     
-        strcpy(upperTextLine, "");
-        strcat(upperTextLine, "GAME ");
+        n64_strcpy(upperTextLine, "");
+        n64_strcat(upperTextLine, "GAME ");
 
         // Game number to human readable. Interestingly, gamenumber 1 is Banjo playing gameboy as opposed to cooking
         switch (gamenum) {
@@ -244,31 +244,31 @@ void setGameInformationZoombox(s32 gamenum) {
                 break;
         } //L802C4858
 
-        strcat(upperTextLine, ": TIME ");
-        strcat(upperTextLine, gcpausemenu_TimeToA(itemscore_timeScores_getTotal()));
-        strcat(upperTextLine, ",");
-        strcat(upperTextLine, "");
+        n64_strcat(upperTextLine, ": TIME ");
+        n64_strcat(upperTextLine, gcpausemenu_TimeToA(itemscore_timeScores_getTotal()));
+        n64_strcat(upperTextLine, ",");
+        n64_strcat(upperTextLine, "");
 
-        strcpy(lowerTextLine, "");
+        n64_strcpy(lowerTextLine, "");
         strIToA(lowerTextLine, jiggyscore_total());
-        strcat(lowerTextLine, " JIGSAW");
+        n64_strcat(lowerTextLine, " JIGSAW");
         if (jiggyscore_total() != 1) {
-            strcat(lowerTextLine, "S");
+            n64_strcat(lowerTextLine, "S");
         }
 
-        strcat(lowerTextLine, ", ");
+        n64_strcat(lowerTextLine, ", ");
         strIToA(lowerTextLine, itemscore_noteScores_getTotal());
-        strcat(lowerTextLine, " NOTE");
+        n64_strcat(lowerTextLine, " NOTE");
         if (itemscore_noteScores_getTotal() != 1) {
-            strcat(lowerTextLine, "S");
+            n64_strcat(lowerTextLine, "S");
         }
 
-        strcat(lowerTextLine, ".");
-        strcat(lowerTextLine, "");
+        n64_strcat(lowerTextLine, ".");
+        n64_strcat(lowerTextLine, "");
     } else { //L802C49AC
         D_8037DCCE[gamenum] = 0;
-        strcpy(upperTextLine, "");
-        strcat(upperTextLine, "GAME ");
+        n64_strcpy(upperTextLine, "");
+        n64_strcat(upperTextLine, "GAME ");
 
         // Game number to human readable
         switch (gamenum){
@@ -283,8 +283,8 @@ void setGameInformationZoombox(s32 gamenum) {
                 break;
         } //L802C4A40
 
-        strcat(upperTextLine, ": EMPTY");
-        strcpy(lowerTextLine, "");
+        n64_strcat(upperTextLine, ": EMPTY");
+        n64_strcpy(lowerTextLine, "");
     } //L802C4A68
 
     // Can't delete backslash

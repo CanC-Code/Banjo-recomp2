@@ -49,13 +49,13 @@
 
 /* this file should be #included AFTER gbi.h */
 
-#include "sptask.h"
+#include "PR/sptask.h"
 
 #ifdef	_LANGUAGE_C_PLUS_PLUS
 extern "C" {
 #endif	/* _LANGUAGE_C_PLUS_PLUS */
 
-#include <PR/ultratypes.h>
+/* Redirected */ #include <n64_types.h>
 
 /* the following #defines seem out of order, but we need them
  * for the microcode.

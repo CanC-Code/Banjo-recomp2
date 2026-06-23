@@ -1,9 +1,19 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __ANIM_CTRL_H__
 #define __ANIM_CTRL_H__
 
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
 #include "generic.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #ifndef NONMATCHING
 #define anctrl_start(this, file, line) _anctrl_start(this, file, line)
 #else
@@ -97,4 +107,9 @@ void anctrl_drawSetup(AnimCtrl *this, f32 *arg1, s32 arg2);
 s32 anctrl_isStopped(AnimCtrl *this);
 int anctrl_isAt(AnimCtrl *this, f32 arg1);
 s32 anctrl_isContiguous(AnimCtrl *this);
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

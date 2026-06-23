@@ -62,7 +62,7 @@ f32 D_803936A8[] = {0.293f, 0.376f, 0.42f, 0.453f, 0.488f, 0.522f, 0.556f, 0.59f
 f32 D_803936E4[] = {0.03f, 0.09f, 0.2f, 0.25f, 0.32f, 0.4f, 0.45f, 1.0f};
 
 /* .code */
-bool func_8038A690(Actor *this) {
+n64_bool func_8038A690(Actor *this) {
     if (this->actorTypeSpecificField != 3) {
         return subaddie_playerIsWithinCylinder(this, 400, 90);
     }
@@ -200,7 +200,7 @@ void __chWarpCauldron_dingpotDialogCallback(ActorMarker *marker, enum asset_e te
     fileProgressFlag_set(FILEPROG_F3_MET_DINGPOT, TRUE);
 }
 
-bool lair_func_8038ADF0(s32 arg0, s32 arg1) {
+n64_bool lair_func_8038ADF0(s32 arg0, s32 arg1) {
     s32 phi_v1;
 
     phi_v1 = arg1 - arg0;

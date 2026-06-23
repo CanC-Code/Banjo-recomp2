@@ -1,5 +1,6 @@
-#include <os_internal.h>
+#include <PR/os_internal.h>
 #include "piint.h"
+#include <n64_types.h>
 
 s32 osEPiRawWriteIo(OSPiHandle *pihandle, u32 devAddr, u32 data)
 {

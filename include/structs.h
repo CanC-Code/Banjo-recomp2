@@ -1,11 +1,21 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
 #include "model.h"
 #include "core2/vla.h"
 #include "enums.h"
-#include "bool.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
+/* Redirected */ #include <n64_bool.h>
 
 #define MERGE(a, b) a ## b
 
@@ -796,4 +806,9 @@ typedef struct {
     ALHeap *unkC; //heap
     u16 unk10;
 }Struct87s;
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

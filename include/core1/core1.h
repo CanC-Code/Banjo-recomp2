@@ -1,8 +1,21 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef BANJO_KAZOOIE_CORE1_CORE1_H
 #define BANJO_KAZOOIE_CORE1_CORE1_H
 
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
-#include "bool.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
+/* Redirected */ #include <n64_bool.h>
+#ifdef __cplusplus
+}
+#endif
 #include "enums.h"
 #include "structs.h"
 #include "prop.h"
@@ -23,6 +36,9 @@
 #include "core1/vimgr.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /* need to sort out in individual header files */
 
 void glcrc_calc_checksum(void *start, void *end, u32 checksum[2]);
@@ -49,17 +65,17 @@ void core1_7090_freeSfxSource(int idx);
 
 void core1_ce60_setChanMask(s32 chan_mask);
 void core1_ce60_setChanMaskWithValue(s32 chan_mask, f32 arg1);
-bool core1_ce60_isPlayerInRange(s32 x, s32 z, s32 distance);
+n64_bool core1_ce60_isPlayerInRange(s32 x, s32 z, s32 distance);
 f32 core1_ce60_getPlayerDistance(f32 x, f32 z);
-bool core1_ce60_isPlayerInsideBoundingBox(s32 box_idx);
+n64_bool core1_ce60_isPlayerInsideBoundingBox(s32 box_idx);
 void core1_ce60_func_8024A9EC(s32 arg0);
 void core1_ce60_func_8024AAB0(void);
-void core1_ce60_func_8024ADF0(bool arg0);
+void core1_ce60_func_8024ADF0(n64_bool arg0);
 void core1_ce60_func_8024AE74(void);
 void core1_ce60_resetState(void);
 void core1_ce60_setChanMaskFromWaterState(s32 chan_mask_underwater, s32 chan_mask_surface);
 void core1_ce60_func_8024AF48(void);
-void core1_ce60_incOrDecCounter(bool increment);
+void core1_ce60_incOrDecCounter(n64_bool increment);
 void core1_ce60_func_8024BD40(s32 arg0, s32 arg1);
 
 
@@ -70,8 +86,8 @@ extern u8 D_8000E800;
 
 void func_80253190(Gfx **gfx);
 void func_80253208(Gfx **gfx, s32 x, s32 y, s32 w, s32 h, void *color_buffer);
-bool func_80253400(void);
-bool depthBuffer_isPointerSet(void);
+n64_bool func_80253400(void);
+n64_bool depthBuffer_isPointerSet(void);
 void depthBuffer_stub(void);
 void func_80253428(int arg0);
 void func_802534A8(int arg0);
@@ -140,4 +156,9 @@ void defragManager_resume(void);
 void defragManager_pause(void);
 void defragManager_setPriority(OSPri pri);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

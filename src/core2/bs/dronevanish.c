@@ -106,7 +106,7 @@ void bsDroneVanish_init(void){
 
 void bsDroneVanish_update(void) {
     s32 next_state;
-    bool sp20;
+    n64_bool sp20;
 
     next_state = 0;
     switch (D_8037D468) {

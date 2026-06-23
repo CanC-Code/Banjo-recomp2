@@ -27,6 +27,12 @@ f32 D_8037D290;
 u8 bsant_substate;
 s32 D_8037D298;
 
+
+/* Automated Forward Decls */
+static void __bsant_recoil_init(int take_damage);
+static void __bsant_recoil_update(void);
+static void __bsant_recoil_end(void);
+
 /* .code */
 void func_8029E3E0(void){
     func_8030EB88(D_8036497C[D_80364978], 1.75f, 1.85f);

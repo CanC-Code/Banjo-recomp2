@@ -8,9 +8,9 @@
 Actor *chVile_draw(ActorMarker*, Gfx **, Mtx **, Vtx **);
 void chVile_update(Actor *);
 void func_8038BB40(ActorMarker *);
-extern bool func_80320C94(f32[3], f32[3], f32, f32[3], s32, u32);
+extern n64_bool func_80320C94(f32[3], f32[3], f32, f32[3], s32, u32);
 
-extern bool chvilegame_find_closest_piece(ActorMarker *, f32[3], f32, f32[3]);
+extern n64_bool chvilegame_find_closest_piece(ActorMarker *, f32[3], f32, f32[3]);
 
 typedef struct chmrvile_s{
     u8 unk0;
@@ -251,7 +251,7 @@ f32 *chVile_getPostion(ActorMarker *marker){
     return this->position;
 }
 
-bool func_8038C2A8(ActorMarker *marker) {
+n64_bool func_8038C2A8(ActorMarker *marker) {
     f32 player_position[3];
     Actor *this;
     ActorLocal_MrVile *local;
@@ -266,7 +266,7 @@ bool func_8038C2A8(ActorMarker *marker) {
 }
 
 
-bool BGS_func_8038C338(ActorMarker *marker){
+n64_bool BGS_func_8038C338(ActorMarker *marker){
     Actor *this;
 
     this = marker_getActor(marker);
@@ -324,7 +324,7 @@ void chVile_update(Actor *this) {
     f32 player_position[3];
     f32 sp90;
     f32 temp_a0;
-    bool var_v1;
+    n64_bool var_v1;
     f32 sp84;
     f32 sp80;
     f32 sp7C;

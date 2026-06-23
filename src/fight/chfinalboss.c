@@ -317,7 +317,7 @@ void chfinalboss_func_80386B54(f32 *arg0, f32 arg1) {
     }
 }
 
-bool chfinalboss_turnTowardPlayer(Actor *this, f32 arg1) {
+n64_bool chfinalboss_turnTowardPlayer(Actor *this, f32 arg1) {
     this->yaw_ideal = (f32) subaddie_getYawToPlayer(this);
     subaddie_turnToYaw(this, arg1);
     if ((this->yaw_ideal < (this->yaw + arg1)) && ((this->yaw - arg1) < this->yaw_ideal)) {
@@ -326,7 +326,7 @@ bool chfinalboss_turnTowardPlayer(Actor *this, f32 arg1) {
     return FALSE;
 }
 
-bool chfinalboss_func_80386C68(Actor *this, f32 arg1) {
+n64_bool chfinalboss_func_80386C68(Actor *this, f32 arg1) {
     f32 sp2C[3];
 
     chjinjonator_8039129C(sp2C);
@@ -498,7 +498,7 @@ void chfinalboss_func_803873DC(Actor *actor, f32 arg1, f32 arg2) {
     }
 }
 
-bool chfinalboss_flyTo(Actor *this, f32 arg1[3], f32 v_max, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
+n64_bool chfinalboss_flyTo(Actor *this, f32 arg1[3], f32 v_max, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
     f32 dt;
     f32 diff[3];
     TUPLE(f32, pos) temp;
@@ -1978,7 +1978,7 @@ void chfinalboss_phase0_update(ActorMarker *marker) {
     return;
 }
 
-bool chfinalboss_func_8038B834(ActorMarker *marker, ActorMarker *other_marker) {
+n64_bool chfinalboss_func_8038B834(ActorMarker *marker, ActorMarker *other_marker) {
     Actor *this;
     ActorLocal_FinalBoss *local;
 
@@ -2269,7 +2269,7 @@ void chfinalboss_setBossDefeated(void) {
     timed_setStaticCameraToNode(temp_f20 + sp40 + 2.88f, camera_node + 3);
 }
 
-void chfinalboss_setJinjoStatueActivated(bool state) {
+void chfinalboss_setJinjoStatueActivated(n64_bool state) {
     sFinalBossJinjoStatueActivated = state;
 }
 
@@ -2281,11 +2281,11 @@ s32 chfinalboss_func_8038C298() {
     return D_803927C7;
 }
 
-bool chfinalboss_isJinjoSpawned() {
+n64_bool chfinalboss_isJinjoSpawned() {
     return chFinalBossJinjoSpawned;
 }
 
-bool chfinalboss_isJinjonatorSpawned() {
+n64_bool chfinalboss_isJinjonatorSpawned() {
     return chFinalBossJinjonatorSpawned;
 }
 

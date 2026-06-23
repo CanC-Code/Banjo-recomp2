@@ -3,7 +3,7 @@
 #include "functions.h"
 #include "variables.h"
 
-#include "time.h"
+/* Redirected */ #include <n64_time.h>
 
 extern void func_8023DFF0(s32);
 extern void coMusicPlayer_update(void);

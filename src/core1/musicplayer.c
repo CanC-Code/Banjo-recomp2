@@ -11,7 +11,7 @@ extern func_8024FDDC(u8, s32);
 
 void func_8025AE50(s32, f32);
 
-bool func_80250074(u8);
+n64_bool func_80250074(u8);
 void musicTrack_setVolume(u8, s32);
 void func_8024FC1C(u8, s32);
 void func_8025AC20(enum comusic_e, s32, s32, f32, char*, s32);
@@ -89,7 +89,7 @@ void coMusicPlayer_init(void) {
         coMusicPlayer_free();
     }
 
-    musicTracks = (CoMusic *) malloc(MAX_MUSIC_STRUCT_COUNT * sizeof(CoMusic));
+    musicTracks = (CoMusic *) n64_malloc(MAX_MUSIC_STRUCT_COUNT * sizeof(CoMusic));
     for (iPtr = musicTracks; iPtr < musicTracks + MAX_MUSIC_STRUCT_COUNT; iPtr++) {
         iPtr->track_id = -1;
         iPtr->volume = 0;
@@ -117,7 +117,7 @@ void coMusicPlayer_free(void){
         freelist_free(iPtr->unk18);
     }
 
-    free(musicTracks);
+    n64_free(musicTracks);
     musicTracks = NULL;
 }
 

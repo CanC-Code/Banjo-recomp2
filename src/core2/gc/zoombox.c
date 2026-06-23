@@ -5,7 +5,7 @@
 #include "variables.h"
 #include "zoombox.h"
 
-#include "time.h"
+/* Redirected */ #include <n64_time.h>
 
 extern void func_80344090(BKSpriteDisplayData *self, s32 frame, Gfx **gfx);
 BKSprite *codeB3A80_getSprite(enum asset_e sprite_id, BKSpriteDisplayData **arg1);
@@ -429,6 +429,11 @@ void sfxsource_freeSfxsourceByIndex(u8);
 void codeAEDA0_setPrimaryColorRGB(s32, s32, s32);
 void func_803382FC(u8);
 
+
+/* Automated Forward Decls */
+static int __get_str_print_len(u8 *arg0, s32 len);
+static s32 _gczoombox_findLineBreak(char *string, s32 line_length);
+
 /* .code */
 void func_80315200(GcZoombox *this){
      s32 s1 = 0;
@@ -476,7 +481,7 @@ void gczoombox_free(GcZoombox *this){
     if(this){
         func_80315200(this);
         func_80315300(this);
-        free(this);
+        n64_free(this);
     }
 }
 
@@ -571,7 +576,7 @@ int func_803156F0(u8 arg0, u8 arg1){
 static int __get_str_print_len(u8 *arg0, s32 len){
      int i;
      s32 phi_v1 = 0;
-     bool skip_next = FALSE;
+     n64_bool skip_next = FALSE;
      for(i = 0; i < len; i++){
           if(arg0[i] == 0xFD){ //escape character 
                skip_next = TRUE;
@@ -1049,7 +1054,7 @@ void func_80316E84(GcZoombox *this, s32 state){
 }
 
 s32 gczoombox_strlen(u8 *arg0){
-    return strlen(arg0);
+    return n64_strlen(arg0);
 }
 
 void gczoombox_update(GcZoombox *this){
@@ -1379,7 +1384,7 @@ GcZoombox *gczoombox_new(s32 y, GcZoomboxSprite portrait_id, s32 arg2, s32 arg3,
     s32 i;
     s32 temp_v1;
 
-    this = (GcZoombox *)malloc(sizeof(GcZoombox));
+    this = (GcZoombox *)n64_malloc(sizeof(GcZoombox));
     this->callback = callback;
     this->state = 0xB;
     this->portrait_id = portrait_id;
@@ -1470,7 +1475,7 @@ GcZoombox *gczoombox_new(s32 y, GcZoomboxSprite portrait_id, s32 arg2, s32 arg3,
  *     `str_cnt <= ZOOMBOX_MAX_STRING_COUNT`. Returns 1 on success, 0 on 
  *     failure
  */
-bool gczoombox_setStrings(GcZoombox *this, s32 str_cnt, char **str_ptrs) {
+n64_bool gczoombox_setStrings(GcZoombox *this, s32 str_cnt, char **str_ptrs) {
      // assert!(str_cnt <= ZOOMBOX_MAX_STRING_COUNT)
     s32 phi_v0;
 
@@ -1491,7 +1496,7 @@ bool gczoombox_setStrings(GcZoombox *this, s32 str_cnt, char **str_ptrs) {
     return 1;
 }
 
-bool func_803183A4(GcZoombox *this, char *arg1) {
+n64_bool func_803183A4(GcZoombox *this, char *arg1) {
     char *sp1C;
 
     if ((this->unk13A & 4) || (arg1 == NULL)) {
@@ -1554,7 +1559,7 @@ void func_803184B8(GcZoombox *this){
     this->unk13A &= (u8)~(0x20);
 }
 
-void gczoombox_func_803184C8(GcZoombox *this, f32 arg1, s32 arg2, s32 arg3, f32 animation_duration, bool arg5, bool arg6) {
+void gczoombox_func_803184C8(GcZoombox *this, f32 arg1, s32 arg2, s32 arg3, f32 animation_duration, n64_bool arg5, n64_bool arg6) {
 
     if (this != NULL) {
         this->unk182 = arg2;
@@ -1568,7 +1573,7 @@ void gczoombox_func_803184C8(GcZoombox *this, f32 arg1, s32 arg2, s32 arg3, f32 
     }
 }
 
-bool func_8031857C(GcZoombox *this, u8 *str){
+n64_bool func_8031857C(GcZoombox *this, u8 *str){
      if(func_803183A4(this, str)){
           gczoombox_open(this);
           gczoombox_maximize(this);
@@ -1579,14 +1584,14 @@ bool func_8031857C(GcZoombox *this, u8 *str){
      return FALSE;
 }
 
-void gczoombox_highlight(GcZoombox *this, bool should_highlight){
+void gczoombox_highlight(GcZoombox *this, n64_bool should_highlight){
      if(should_highlight)
           this->highlighted = 1;
      else
           this->highlighted = 0;
 }
 
-bool gczoombox_is_highlighted(GcZoombox *this){
+n64_bool gczoombox_is_highlighted(GcZoombox *this){
      return this->highlighted;
 }
 
@@ -1632,7 +1637,7 @@ void gczoombox_setUnk13ATo0(GcZoombox *this){
      this->unk13A = 0;
 }
 
-bool func_8031877C(GcZoombox *this){
+n64_bool func_8031877C(GcZoombox *this){
     if( this == NULL 
         || this->state == 0 || this->state == 0xb || this->state == 0x9 || this->state == 0x6 || this->state == 0x7
     ){
@@ -1655,7 +1660,7 @@ bool func_8031877C(GcZoombox *this){
     return TRUE;
 }
 
-bool func_803188B4(GcZoombox *this) {
+n64_bool func_803188B4(GcZoombox *this) {
 
     if ((this == NULL) || (this->state == 0) || (this->state == 7) || (this->state == 9)) {
         return FALSE;
@@ -1675,7 +1680,7 @@ bool func_803188B4(GcZoombox *this) {
 }
 
 
-bool func_80318964(GcZoombox *this) {
+n64_bool func_80318964(GcZoombox *this) {
     if (this == NULL || this->state == 0 || this->state == 7 || this->state == 9) {
         return FALSE;
     }
@@ -1685,7 +1690,7 @@ bool func_80318964(GcZoombox *this) {
     return TRUE;
 }
 
-bool gczoombox_loadSprite(GcZoombox *this, GcZoomboxSprite arg1){
+n64_bool gczoombox_loadSprite(GcZoombox *this, GcZoomboxSprite arg1){
      if( this == NULL
          || arg1 == this->portrait_id
          || ( this->state != 6
@@ -1747,7 +1752,7 @@ void func_80318B7C(GcZoombox *this, s32 arg1) {
     }
 }
 
-bool func_80318BEC(GcZoombox *this){
+n64_bool func_80318BEC(GcZoombox *this){
      return this != NULL && !this->state;
 }
 
@@ -1761,7 +1766,7 @@ void gczoombox_defrag(GcZoombox *this) {
     }
 }
 
-void gczoombox_func_80318C48(GcZoombox *this, bool arg1) {
+void gczoombox_func_80318C48(GcZoombox *this, n64_bool arg1) {
     if (this != NULL) {
         if (this->unk1A4_30) {
             if (arg1 != FALSE) {

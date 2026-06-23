@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef BANJO_KAZOOIE_CORE1_FRAMEBUFFERDRAW_H
 #define BANJO_KAZOOIE_CORE1_FRAMEBUFFERDRAW_H
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 void framebufferdraw_drawSpriteCI4(s32 x, s32 y, BKSprite *sprite, s32 frame, s32 alpha_enabled);
 void framebufferdraw_drawSpriteCI8(s32 x, s32 y, BKSprite *sprite, s32 frame, s32 alpha_enabled);
 void framebufferdraw_drawSpriteRGBA16(s32 x, s32 y, BKSprite *sprite, s32 frame, bool alpha_enabled);
@@ -25,4 +36,9 @@ void framebufferdraw_setPrimColor(s32 r, s32 g, s32 b);
 void framebufferdraw_setBufferIndex(s32 buffer_indx);
 s32 framebufferdraw_getBufferIndex(void);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

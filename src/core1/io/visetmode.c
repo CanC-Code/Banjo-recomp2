@@ -1,5 +1,6 @@
-#include <os_internal.h>
+#include <PR/os_internal.h>
 #include "viint.h"
+#include <n64_types.h>
 
 void osViSetMode(OSViMode *modep)
 {

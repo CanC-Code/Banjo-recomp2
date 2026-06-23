@@ -276,7 +276,7 @@ void chTwinklyBox_activateBox(ActorMarker *this_marker, ActorMarker *other_marke
 
 void chTwinklyBox_update(Actor *this){
     f32 sp24;
-    bool sp20;
+    n64_bool sp20;
     
     sp24 = time_getDelta();
     mapSpecificFlags_set(FP_SPECIFIC_FLAG_D_UNKNOWN, BOOL(this->state != 1 && this->state != 2));
@@ -420,11 +420,11 @@ void chTwinklyBox_update(Actor *this){
     }
 }
 
-bool func_8038DD14(void){
+n64_bool func_8038DD14(void){
     return mapSpecificFlags_get(FP_SPECIFIC_FLAG_D_UNKNOWN);
 }
 
-bool preventSnowmanAttack(ActorMarker *marker){
+n64_bool preventSnowmanAttack(ActorMarker *marker){
     Actor *this = marker_getActor(marker);
     if(subaddie_playerIsWithinSphereAndActive(this, 800))
         return TRUE;

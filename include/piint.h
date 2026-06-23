@@ -1,8 +1,19 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _PIINT_H
 #define _PIINT_H
-#include <os_internal.h>
-#include <rcp.h>
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 //https://github.com/LuigiBlood/64dd/wiki/Memory-Map
 
 #define LEO_BASE_REG 0x05000000
@@ -142,4 +153,9 @@ OSMesgQueue *osPiGetCmdQueue(void);
         __osCurrentHandle[domain] = pihandle;             \
     }
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

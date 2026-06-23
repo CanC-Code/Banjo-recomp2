@@ -1,3 +1,14 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
 #define MAX_EMITTER_COUNT 16 // Effectively reduced by 1, as 0 is saved for an in-progress initialization and empty
 
 typedef struct {
@@ -18,3 +29,8 @@ void pem_freeEmitters(void);
 void pem_defragAll(void);
 void pem_freeDependencies(void);
 void pem_initDependencies(void);
+
+
+#ifdef __cplusplus
+}
+#endif

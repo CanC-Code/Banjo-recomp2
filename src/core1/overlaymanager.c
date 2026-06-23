@@ -137,11 +137,11 @@ int overlayManagergetLoadedId(void){
     return overlayMgrLoadedId;
 }
 
-bool overlayManagerisOverlayLoaded(int overlay_id){
+n64_bool overlayManagerisOverlayLoaded(int overlay_id){
     return overlayMgrLoadedId == overlay_id;
 }
 
-bool overlayManagerload(enum overlay_e overlay_id){ 
+n64_bool overlayManagerload(enum overlay_e overlay_id){ 
     s32 rom_addr;
     
     if(overlay_id == 0)

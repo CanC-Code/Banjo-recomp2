@@ -1,6 +1,7 @@
-#include <os.h>
-#include <rcp.h>
+#include <PR/os.h>
+#include <PR/rcp.h>
 #include "viint.h"
+#include <n64_types.h>
 
 OSViMode osViModeNtscLan1 = {
     OS_VI_NTSC_LAN1,  // type

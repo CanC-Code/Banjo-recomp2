@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _PARTICLE_EMITTER_H_
 #define _PARTICLE_EMITTER_H_
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #define PART_EMIT_NO_OPA   0x20
 #define PART_EMIT_NO_DEPTH 0x10
 #define PART_EMIT_NO_LOOP  0x8
@@ -22,4 +33,9 @@ void func_802EFF9C(ParticleEmitter *this, f32);
 void partEmitMgr_freeEmitter(ParticleEmitter *this);
 
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

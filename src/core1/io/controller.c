@@ -1,7 +1,8 @@
-#include <os_internal.h>
-#include <rcp.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
 #include "controller.h"
 #include "siint.h"
+#include <n64_types.h>
 
 #define HALF_A_SECOND OS_USEC_TO_CYCLES(500000)
 

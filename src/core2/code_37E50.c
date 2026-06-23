@@ -67,11 +67,11 @@ void func_802BEE2C(Gfx **gfx, Mtx **mtx, Vtx **vtx) {
     gcbound_draw(gfx);
 }
 
-bool func_802BEF58(void){
+n64_bool func_802BEF58(void){
     return D_8037DA80.unk8;
 }
 
-bool func_802BEF64(void){
+n64_bool func_802BEF64(void){
     return D_8037DA80.unkC;
 }
 

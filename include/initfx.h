@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*====================================================================
  * initfx.h
  *
@@ -20,7 +24,14 @@
 
 #ifndef __initfx__
 #define __initfx__
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #define MAX_L0 AL_FX_BUFFER_SIZE/4
 #define MAX_L1 AL_FX_BUFFER_SIZE/4
 #define MAX_L2 AL_FX_BUFFER_SIZE/2
@@ -56,4 +67,9 @@
 #define ECHO_L0 7936		/* 180 ms */
 #define ECHO_C0 0x6000
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

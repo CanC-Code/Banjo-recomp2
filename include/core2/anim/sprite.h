@@ -1,9 +1,19 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __CORE2_ANIM_SPRITE_H__
 #define __CORE2_ANIM_SPRITE_H__
 
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 typedef struct{
     u8 index;
     u8 duration;
@@ -48,4 +58,9 @@ s32 animsprite_get_unknown(AnimSprite *this);
 f32 animsprite_get_speed(AnimSprite *this);
 int animsprite_is_stopped(AnimSprite *this);
 int animsprite_is_at_step(AnimSprite *this, s32 frame);
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

@@ -135,7 +135,7 @@ int wishyWashyFlag_get(void){
     return volatileFlag_get(VOLATILE_FLAG_9D_SANDCASTLE_WISHY_WASHY);
 }
 
-bool dummy_player_withinIdealYaw(void) {
+n64_bool dummy_player_withinIdealYaw(void) {
     f32 right_angle;
     f32 left_angle;
     f32 position[3];
@@ -153,7 +153,7 @@ bool dummy_player_withinIdealYaw(void) {
     }
 }
 
-bool func_8028AED4(f32 arg0[3], f32 arg1) {
+n64_bool func_8028AED4(f32 arg0[3], f32 arg1) {
     f32 position[3];
     f32 sp28;
     u16 sp26;
@@ -187,11 +187,11 @@ int player_isOnDangerousGround(void){
     return baflag_isTrue(BA_FLAG_13_TOUCHING_DANGEROUS_GROUND);
 }
 
-bool player_isInRBB(void){
+n64_bool player_isInRBB(void){
     return level_get() == LEVEL_9_RUSTY_BUCKET_BAY;
 }
 
-bool player_isInVerticalRange(f32 position[3], f32 range) {
+n64_bool player_isInVerticalRange(f32 position[3], f32 range) {
     f32 plyr_pos[3];
 
     playerPosition_get(plyr_pos);
@@ -203,7 +203,7 @@ int player_shouldSlideTrot(void){
         || (1.0 == get_slope_timer() && func_80294610(0x40));
 }
 
-bool func_8028B254(s32 arg0) {
+n64_bool func_8028B254(s32 arg0) {
     return (player_isStable() || (baphysics_get_vertical_velocity() < 0.0f && (playerPosition_getY() - func_80294438()) < (f32) arg0));
 }
 
@@ -220,9 +220,9 @@ int func_8028B394(void){
     return func_8029CF20(4);
 }
 
-bool player_isActive(void) {
-    bool sp1C;
-    bool sp18;
+n64_bool player_isActive(void) {
+    n64_bool sp1C;
+    n64_bool sp18;
 
     sp1C = func_80294610(0x10) && baflag_isFalse(BA_FLAG_3);
     sp18 = func_80294610(0x40) && baflag_isFalse(BA_FLAG_4);
@@ -231,7 +231,7 @@ bool player_isActive(void) {
     return FALSE;
 }
 
-bool player_isFallTumbling(void){
+n64_bool player_isFallTumbling(void){
     s32 damage;
 
     if (player_isStable()) {
@@ -243,8 +243,8 @@ bool player_isFallTumbling(void){
     return TRUE;
 }
 
-bool player_isSwimming(void){
-    bool out;
+n64_bool player_isSwimming(void){
+    n64_bool out;
     switch(bs_getState()){
         case BS_2B_DIVE_IDLE:
         case BS_2C_DIVE_B:

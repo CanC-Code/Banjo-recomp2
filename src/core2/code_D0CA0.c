@@ -2,7 +2,7 @@
 #include "functions.h"
 #include "variables.h"
 
-extern bool func_80320DB0(f32[3], f32, f32[3], u32);
+extern n64_bool func_80320DB0(f32[3], f32, f32[3], u32);
 
 /* .h */
 Actor *func_80358344(ActorMarker *marker, Gfx **gfx, Mtx **mtx, Vtx **vtx);
@@ -33,7 +33,7 @@ ActorInfo D_803728A0 = {
 
 
 /* .code */
-bool func_80357C30(Actor *this) {
+n64_bool func_80357C30(Actor *this) {
     ActorLocal_core2_D0CA0 *local;
     f32 pad;
     f32 sp2C[3];

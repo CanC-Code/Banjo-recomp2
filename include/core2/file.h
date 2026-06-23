@@ -1,10 +1,26 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef BANJO_KAZOOIE_FILE_H
 #define BANJO_KAZOOIE_FILE_H
 
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
-#include <bool.h> // for bool
+#ifdef __cplusplus
+extern "C" {
+#endif
+/* Redirected */ #include <n64_bool.h> // for bool
+#ifdef __cplusplus
+}
+#endif
 #include <enums.h> // for enum asset_e, enum map_e 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 enum file_mode_e {
     FILE_MODE_0_UNKNOWN,
     FILE_MODE_1_UNKNOWN,
@@ -41,15 +57,20 @@ void file_getNWords(File *file, s32 *dst, s32 cnt);
 void file_read(File *file, void *dst, s32 len);
 void file_getShort(File *file, s16 *dst);
 void file_getNShorts(File *file, s16 *dst, s32 cnt);
-bool file_isNextByteExpected(File *file, s32 expected);
-bool file_getByte_ifExpected(File *file, s32 expected, u8 *dst);
-bool file_getNBytes_ifExpected(File *file, s32 expected, void *dst, s32 cnt);
-bool file_getFloat_ifExpected(File *file, s32 expected, f32 *dst);
-bool file_getNFloats_ifExpected(File *file, s32 expected, f32 *dst, s32 cnt);
-bool file_getWord_ifExpected(File *file, s32 expected, s32 *dst);
-bool file_getNWords_ifExpected(File *file, s32 expected, s32 *dst, s32 cnt);
-bool file_get_ifExpected(File *file, s32 expected, void *dst, s32 len);
-bool file_getShort_ifExpected(File *file, s32 expected, s16 *dst);
-bool file_getNShorts_ifExpected(File *file, s32 expected, s16 *dst, s32 cnt);
+n64_bool file_isNextByteExpected(File *file, s32 expected);
+n64_bool file_getByte_ifExpected(File *file, s32 expected, u8 *dst);
+n64_bool file_getNBytes_ifExpected(File *file, s32 expected, void *dst, s32 cnt);
+n64_bool file_getFloat_ifExpected(File *file, s32 expected, f32 *dst);
+n64_bool file_getNFloats_ifExpected(File *file, s32 expected, f32 *dst, s32 cnt);
+n64_bool file_getWord_ifExpected(File *file, s32 expected, s32 *dst);
+n64_bool file_getNWords_ifExpected(File *file, s32 expected, s32 *dst, s32 cnt);
+n64_bool file_get_ifExpected(File *file, s32 expected, void *dst, s32 len);
+n64_bool file_getShort_ifExpected(File *file, s32 expected, s16 *dst);
+n64_bool file_getNShorts_ifExpected(File *file, s32 expected, s16 *dst, s32 cnt);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

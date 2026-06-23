@@ -469,11 +469,11 @@ int func_80294560(void){
      return D_8037C280 == 3;
 }
 
-bool floor_isCurrentFloorunk59(void){
+n64_bool floor_isCurrentFloorunk59(void){
      return func_8031C594(D_8037C200);
 }
 
-bool func_80294598(void) {
+n64_bool func_80294598(void) {
     return (D_8037C248[0] != 0.0f) || (D_8037C248[1] != 0.0f) || (D_8037C248[2] != 0.0f);
 }
 
@@ -505,7 +505,7 @@ BKCollisionTri *func_802946F0(void){
      return D_8037C204;
 }
 
-bool func_802946FC(f32 arg0[3][3], s32 arg1){
+n64_bool func_802946FC(f32 arg0[3][3], s32 arg1){
      if(arg1 == 0){
           return 0;
      }

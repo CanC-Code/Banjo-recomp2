@@ -362,7 +362,7 @@ void chjinjonator_update(Actor *this){
     func_8034A174(this->marker->unk44, 0x1f, D_80392920);
 }
 
-void chjinjonator_attack(ActorMarker *marker, s32 hit_count, bool mirrored) {
+void chjinjonator_attack(ActorMarker *marker, s32 hit_count, n64_bool mirrored) {
     Actor *actor_jinjonator = marker_getActor(marker);
     ActorLocal_Jinjonator *local = (ActorLocal_Jinjonator *) &actor_jinjonator->local;
     s32 pad;
@@ -412,7 +412,7 @@ f32 chjinjonator_80391250(void) {
     return 4.62f;
 }
 
-bool chjinjonator_8039125C(ActorMarker *marker) {
+n64_bool chjinjonator_8039125C(ActorMarker *marker) {
     u32 state = (u32) (marker_getActor(marker))->state;
 
     if (state == JINJONATOR_STATE_7_ATTACK_END || state == JINJONATOR_STATE_12_FINAL_ATTACK_END) {

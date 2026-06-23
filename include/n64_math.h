@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __BANJO_KAZOOIE_MATH_H__
 #define __BANJO_KAZOOIE_MATH_H__
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #define SQ(x) ((x)*(x))
 
 #define TUPLE_ASSIGN(out, a, b, c) {\
@@ -69,3 +80,8 @@
 #define TUPLE_DOT_PRODUCT(vec1, vec2) (vec1[0] * vec2[0] + vec1[1] * vec2[1] + vec1[2] * vec2[2])
 
 #endif // __BANJO_KAZOOIE_MATH_H__
+
+
+#ifdef __cplusplus
+}
+#endif

@@ -54,6 +54,10 @@ ActorInfo D_80372D78 = {
     2500, 0, 1.0f, 0
 };
 
+
+/* Automated Forward Decls */
+static void _chskeleton_init(Actor *this);
+
 /* .code */
 void func_8035CCA0(ParticleEmitter *pCtrl, Actor *this, enum asset_e model_id) {
     func_802DABA0(pCtrl, this->position, this->scale, model_id);

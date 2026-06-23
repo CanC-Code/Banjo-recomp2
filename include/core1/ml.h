@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef BANJO_KAZOOIE_CORE1_ML_H
 #define BANJO_KAZOOIE_CORE1_ML_H
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 f32 ml_acosf_deg(f32 x);
 void ml_vec3f_sub_and_rotate(f32 vec1[3], f32 rotation[3], f32 vec2[3], f32 dst[3]);
 f32 ml_vec3f_cos_between(f32 vec1[3], f32 vec2[3]);
@@ -119,4 +130,9 @@ s32 ml_getViewportYawWithOffset(f32 x);
 bool ml_isViewportYawWithOffsetNormalized(f32 x);
 void ml_vec3f_interpolate(f32 dst[3], f32 start[3], f32 end[3], f32 t);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

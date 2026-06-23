@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __SAVE_H__
 #define __SAVE_H__
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 typedef struct{
     u8 magic;
     u8 slotIndex;
@@ -15,4 +26,9 @@ typedef struct {
     u32 checksum;
 }GlobalData;
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

@@ -3,7 +3,7 @@
 #include "functions.h"
 #include "variables.h"
 
-extern bool func_8028F170(f32, f32);
+extern n64_bool func_8028F170(f32, f32);
 
 typedef struct {
     f32 unk0;

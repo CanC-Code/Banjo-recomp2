@@ -1,5 +1,6 @@
-#include <os_internal.h>
+#include <PR/os_internal.h>
 #include "osint.h"
+#include <n64_types.h>
 
 
 OSTime osGetTime()

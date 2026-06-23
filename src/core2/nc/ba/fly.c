@@ -7,7 +7,7 @@ extern f32 player_getPitch(void);
 extern void func_802BD870(f32, f32, f32, f32);
 
 void ncbafly_func_802BFE50(f32 arg0, f32 arg1, f32 arg2);
-void ncbafly_func_802BFE74(bool);
+void ncbafly_func_802BFE74(n64_bool);
 
 /* .bss */
 f32 D_8037DB10;
@@ -87,7 +87,7 @@ void ncbafly_func_802BFE50(f32 arg0, f32 arg1, f32 arg2){
     D_8037DB18 = arg2;
 }
 
-void ncbafly_func_802BFE74(bool arg0) {
+void ncbafly_func_802BFE74(n64_bool arg0) {
     if (arg0) {
         D_8037DB1C = 6.0f;
         D_8037DB20 = 270.0f;

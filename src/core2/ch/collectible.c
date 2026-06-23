@@ -6,7 +6,7 @@
 extern void actor_setOpacity(Actor*,s32);
 extern void progressDialog_showDialogMaskZero(u32);
 
-bool chCollectible_collectItem(Actor*, enum file_progress_e, enum asset_e, enum comusic_e, enum item_e, f32);
+n64_bool chCollectible_collectItem(Actor*, enum file_progress_e, enum asset_e, enum comusic_e, enum item_e, f32);
 Actor *chCollectible_draw(ActorMarker *this, Gfx **gdl, Mtx **mptr, Vtx **arg3);
 void chCollectible_update(Actor *this);
 
@@ -76,7 +76,7 @@ void func_802D8C98(Actor *this, s32 arg1) {
     chCollectible_setState(this, (phi_v0 ) ? 2 : 3);
 }
 
-bool chCollectible_collectItem(Actor* actor, enum file_progress_e arg1, enum asset_e dialogId, enum comusic_e sfxId, enum item_e itemId, f32 arg5){
+n64_bool chCollectible_collectItem(Actor* actor, enum file_progress_e arg1, enum asset_e dialogId, enum comusic_e sfxId, enum item_e itemId, f32 arg5){
     coMusicPlayer_playMusic(sfxId,32000);
     timedFunc_set_1(0.75f, (GenFunction_1)progressDialog_showDialogMaskZero, arg1);
     if(!func_802FADD4(0x1b)){

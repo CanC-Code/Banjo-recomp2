@@ -34,9 +34,9 @@
 extern "C" {
 #endif
 
-#include <PR/ultratypes.h>
-#include "os_thread.h"
-#include "os_message.h"
+/* Redirected */ #include <n64_types.h>
+#include "PR/os_thread.h"
+#include "PR/os_message.h"
 
 
 #if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)

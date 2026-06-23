@@ -1,5 +1,16 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
+
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
 #define KILL_TIME	50000	/* 50 ms */
 
 #ifndef MIN
@@ -35,3 +46,8 @@ void            __n_seqpStopOsc(ALSeqPlayer *seqp, ALVoiceState *vs);
 
 void		__postNextSeqEvent(ALSeqPlayer *seqp);			/* sct 11/7/95 */
 
+
+
+#ifdef __cplusplus
+}
+#endif

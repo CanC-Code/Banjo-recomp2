@@ -44,8 +44,8 @@ typedef struct
 static void __maCastle_resetSecretCheatCodeProgress(void);
 static u32 __maCastle_scrambleAddressForSecretCheatCode();
 static s32 __maCastle_getNumberOfBannedCheatCodesEntered();
-static bool __maCastle_isFloorTileValidForSecretCheatCode(LetterFloorTile *floor_tile);
-static bool __maCastle_isCurrentSecretCheatCodeCharacter0();
+static n64_bool __maCastle_isFloorTileValidForSecretCheatCode(LetterFloorTile *floor_tile);
+static n64_bool __maCastle_isCurrentSecretCheatCodeCharacter0();
 
 /* .data */
 static s32 sSecretCheatCodeRelatedValue = NULL;
@@ -148,6 +148,31 @@ struct
     f32 unkC; // time in map?
     u8 timerState; // 0 = nothing, 1 = timer running, 2 = no timer required / time trial completed
 } sMapState;
+
+
+/* Automated Forward Decls */
+static void __maCastle_transformMeshCallbackOverlayUpdate(s32 arg0, BKVtxRef *vtx_ref, Vtx *vtx, s32 arg2);
+static void __maCastle_transformMeshCallbackOverlayInit(s32 arg0, BKVtxRef *vtx_ref, Vtx *vtx, s32 arg2);
+static void __maCastle_setupCheatCodeTimer(s32 new_timer_state);
+static LetterFloorTile* __maCastle_getFloorTileForMeshId(s32 mesh_id);
+static void __maCastle_initFloorTiles(void);
+static void __maCastle_meshCallbackFloorTileState_1(s32 arg0, BKVtxRef *ref, Vtx *dst, s32 arg3);
+static void __maCastle_setLetterFloorTileState(LetterFloorTile *arg0, s32 arg1);
+static void __maCastle_meshCallbackFloorTileState_3(s32 arg0, BKVtxRef *ref, Vtx *dst, s32 arg3);
+static void __maCastle_meshCallbackFloorTileState_5(s32 arg0, BKVtxRef *ref, Vtx *dst, s32 arg3);
+static void __maCastle_updateTimeDeltaSumForFloorTiles();
+static void __maCastle_setsecretCheatCodeRelatedValue(void);
+static u32 __maCastle_cheatoCodeUnlocked(s32 cheato_code_index);
+static void __maCastle_setVolatileFlags(u32 arg0);
+static void __maCastle_checkFloorTileForRegularCheatCode(LetterFloorTile *letter_floor_tile);
+static void __maCastle_resetCheatCodeProgress(void);
+static void __maCastle_showUnlockedSnSCode(s32 secret_cheat_code_index, s32 codeId, enum map_e map_id, s32 arg3, s32 arg4);
+static void __maCastle_setFileProgressForSecretCheatCode( s32 always_0, s32 secret_cheat_code_index, enum volatile_flags_e volatile_flag, enum file_progress_e prog_id, s32 prog_val, s32 prog_bit_size, enum file_progress_e file_progress_to_mark_true );
+static void __maCastle_setNumberOfBannedCheatcodesEntered(s32 arg0);
+static void __maCastle_setItemForSecretCheatCode(s32 always_0, s32 secret_cheat_code_index, enum volatile_flags_e volatile_flag, enum item_e item_id, s32 always_0_2, s32 item_val);
+static void __maCastle_checkSecretCheatCodeIndex(s32 secret_cheat_code_index);
+static void __maCastle_eraseGameplayDialogCallback(ActorMarker *caller, enum asset_e text_id, s32 confirmed);
+static void __maCastle_checkIfBannedCheatCodeEntered(s32 secret_cheat_code_index);
 
 /* .code */
 static void __maCastle_transformMeshCallbackOverlayUpdate(s32 arg0, BKVtxRef *vtx_ref, Vtx *vtx, s32 arg2)
@@ -354,13 +379,13 @@ static void __maCastle_checkFloorTileForRegularCheatCode(LetterFloorTile *letter
 {
     s32 pad0[4];
 
-    bool floor_is_valid_or_correct;
-    bool is_in_ff_minigame;
+    n64_bool floor_is_valid_or_correct;
+    n64_bool is_in_ff_minigame;
     s32 i;
     u32 var_v0;
     CheatCode *cheatcode_ptr;
     s32 unlocked_cheat_flags;
-    bool is_correct_input;
+    n64_bool is_correct_input;
 
     is_in_ff_minigame = volatileFlag_get(VOLATILE_FLAG_2_FF_IN_MINIGAME);
     is_correct_input = FALSE;
@@ -496,9 +521,9 @@ static void __maCastle_resetCheatCodeProgress(void)
     }
 
     if (volatileFlag_get(VOLATILE_FLAG_2_FF_IN_MINIGAME))
-        strcpy(sCheatCodes[0].code, "j4663n86pink"); // EIOOZAKOJNAB
+        n64_strcpy(sCheatCodes[0].code, "j4663n86pink"); // EIOOZAKOJNAB
     else
-        strcpy(sCheatCodes[0].code, "knip68n3664j"); // BANJOKAZOOIE
+        n64_strcpy(sCheatCodes[0].code, "knip68n3664j"); // BANJOKAZOOIE
 
     __maCastle_resetSecretCheatCodeProgress();
 }
@@ -648,7 +673,7 @@ void maCastle_update(void)
 }
 
 // is used to determine whether to spawn the crab or not
-bool maCastle_hasBanjoKazooieCodeBeenEntered(void)
+n64_bool maCastle_hasBanjoKazooieCodeBeenEntered(void)
 {
     return NOT(sMapState.banjoKazooieCodeEnteredState < 2);
 }
@@ -1081,7 +1106,7 @@ static void __maCastle_checkIfBannedCheatCodeEntered(s32 secret_cheat_code_index
     __maCastle_resetSecretCheatCodeProgress();
 }
 
-static bool __maCastle_isFloorTileValidForSecretCheatCode(LetterFloorTile *floor_tile)
+static n64_bool __maCastle_isFloorTileValidForSecretCheatCode(LetterFloorTile *floor_tile)
 {
     SecretCheatCode *var_s0;
     SecretCheatCode *var_v0;
@@ -1182,12 +1207,12 @@ static bool __maCastle_isFloorTileValidForSecretCheatCode(LetterFloorTile *floor
     return TRUE;
 }
 
-static bool __maCastle_isCurrentSecretCheatCodeCharacter0()
+static n64_bool __maCastle_isCurrentSecretCheatCodeCharacter0()
 {
     return *(u8 *)(sSecretsCheatCodes[0].codeCharacterIdx + (s32)sSecretsCheatCodes[0].code) == 0;
 }
 
-bool maCastle_isSecretCheatCodeRelatedValueEqualToScrambledAddressValue()
+n64_bool maCastle_isSecretCheatCodeRelatedValueEqualToScrambledAddressValue()
 {
     return __maCastle_scrambleAddressForSecretCheatCode() == sSecretCheatCodeRelatedValue;
 }

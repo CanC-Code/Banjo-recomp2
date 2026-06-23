@@ -16,6 +16,11 @@ const f32 D_80364AE4 = -1200.0f;
 float D_8037D3B0;
 u8 D_8037D3B4;
 
+
+/* Automated Forward Decls */
+static void __bsbwhirl_end(void);
+static void __bsbwhirl_spawnSparkle(void);
+
 /* .code */
 void func_802AA400(void){
     f32 sp1C = bastick_getZonePosition();

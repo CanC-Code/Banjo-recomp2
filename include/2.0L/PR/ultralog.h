@@ -33,7 +33,7 @@
 extern "C" {
 #endif
 
-#include <PR/ultratypes.h>
+/* Redirected */ #include <n64_types.h>
 
 #define OS_LOG_MAX_ARGS         16
 #define OS_LOG_MAGIC            0x20736a73

@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _OSINT_H
 #define _OSINT_H
-#include <os_internal.h>
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
+#include <PR/os_internal.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
 typedef struct __OSEventState
 {
     OSMesgQueue *messageQueue;
@@ -45,4 +56,9 @@ extern s32 osViClock;
 extern void __osTimerServicesInit(void);
 extern s32 __osAiDeviceBusy(void);
 extern int __osDpDeviceBusy(void);
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

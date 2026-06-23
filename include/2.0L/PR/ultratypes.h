@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _ULTRATYPES_H_
 #define _ULTRATYPES_H_
 
@@ -88,3 +92,8 @@ typedef unsigned long   size_t;
 
 #endif  /* _ULTRATYPES_H_ */
 
+
+
+#ifdef __cplusplus
+}
+#endif

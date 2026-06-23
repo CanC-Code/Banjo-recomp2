@@ -1,4 +1,5 @@
 #include <ultra64.h>
+#include "bka_safe_base.h"
 #include "core1/core1.h"
 
 
@@ -102,7 +103,7 @@ static int _rarezip_uncompress(u8 **srcPtr, u8 **dstPtr, struct huft * arg2){
     int result;
     result = _rarezip_inflate(*srcPtr, *dstPtr, arg2);
     *dstPtr = *dstPtr + D_8027BF1C;
-    *dstPtr = ((u32)*dstPtr & 0xF) ? (u8 *) ((u32)*dstPtr & -0x10) + 0x10: *dstPtr;
+    *dstPtr = ((u32)*dstPtr & 0xF) ? (u8 *)BKA_TRANSLATE_ADDR(((u32)*dstPtr & -0x10)) + 0x10: *dstPtr;
     *srcPtr = *srcPtr + D_8027BF18 + COMP_HEADER_SIZE;
     return result;
 }

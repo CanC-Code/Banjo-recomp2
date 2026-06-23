@@ -11,6 +11,7 @@
  **************************************************************************/
 
 /*---------------------------------------------------------------------*
+#include <n64_types.h>
         Copyright (C) 1998 Nintendo. (Originated by SGI)
         
         $RCSfile: os_internal.h,v $
@@ -29,16 +30,16 @@ extern "C" {
 
 #if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)
 
-#include "os_internal_reg.h"
-#include "os_internal_exception.h"
-#include "os_internal_tlb.h"
-#include "os_internal_si.h"
-#include "os_internal_rsp.h"
-#include "os_internal_error.h"
-#include "os_internal_gio.h"
-#include "os_internal_thread.h"
-#include "os_internal_debug.h"
-#include "os_internal_host.h"
+#include "PR/os_internal_reg.h"
+#include "PR/os_internal_exception.h"
+#include "PR/os_internal_tlb.h"
+#include "PR/os_internal_si.h"
+#include "PR/os_internal_rsp.h"
+#include "PR/os_internal_error.h"
+#include "PR/os_internal_gio.h"
+#include "PR/os_internal_thread.h"
+#include "PR/os_internal_debug.h"
+#include "PR/os_internal_host.h"
 
 #endif /* _LANGUAGE_C */
 

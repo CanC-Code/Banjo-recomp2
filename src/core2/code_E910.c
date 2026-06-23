@@ -243,7 +243,7 @@ void func_80295A8C(void){
 void func_80295B04(void){
     f32 sp24;
     enum bs_e sp20 = bs_getState();
-    bool is_in_talon_trot;
+    n64_bool is_in_talon_trot;
     
     sp24 = (bslongleg_inSet(sp20)) ? stateTimer_get(STATE_TIMER_2_LONGLEG) : 0.0f;
     bsStoredState_setLongLegTimer(sp24);

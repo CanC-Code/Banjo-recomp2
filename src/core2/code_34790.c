@@ -41,7 +41,7 @@ f32 D_8037D908[3];
 f32 D_8037D918[3];
 
 /* .code */
-bool func_802BB720(s32 arg0, f32 arg1[3], f32 arg2[3], s32 *arg3) {
+n64_bool func_802BB720(s32 arg0, f32 arg1[3], f32 arg2[3], s32 *arg3) {
     f32 temp_f6;
     NodeProp *temp_v0;
 
@@ -74,7 +74,7 @@ bool func_802BB720(s32 arg0, f32 arg1[3], f32 arg2[3], s32 *arg3) {
 }
 
 
-bool func_802BB884(f32 arg0[3], f32 *arg1) {
+n64_bool func_802BB884(f32 arg0[3], f32 *arg1) {
     f32 sp24[3];
     f32 sp18[3];
 
@@ -367,7 +367,7 @@ void func_802BC2CC(s32 arg0) {
     }
 }
 
-bool func_802BC428(void){
+n64_bool func_802BC428(void){
     return D_8037D8C6;
 }
 

@@ -1,4 +1,5 @@
 #include <ultra64.h>
+#include "bka_safe_base.h"
 #include "core1/core1.h"
 #include "functions.h"
 #include "variables.h"
@@ -599,7 +600,7 @@ enum model_render_color_mode_e{
 struct5Bs *D_80383650;
 s32  D_80383658[0x2A];
 BoneTransformList *modelRenderBoneTransformList;
-bool D_80383704;
+n64_bool D_80383704;
 f32  D_80383708;
 f32  D_8038370C;
 s32  D_80383710;
@@ -1327,7 +1328,7 @@ BKEffectsList *func_8033A0B0(BKModelBin *arg0){
 }
 
 f32 func_8033A0CC(UNK_TYPE(void *) arg0){
-    return *(f32 *)((s32)arg0 + 0x34);
+    return *(f32 *)BKA_TRANSLATE_ADDR(((s32)arg0 + 0x34));
 }
 
 BKAnimationList *model_getAnimationList(BKModelBin *arg0){
@@ -1400,7 +1401,7 @@ f32 func_8033A244(f32 arg0){
     return out;
 }
 
-void func_8033A25C(bool arg0){
+void func_8033A25C(n64_bool arg0){
     D_80383704 = BOOL(arg0);
 }  
 
@@ -1408,11 +1409,11 @@ void func_8033A280(f32 arg0){
     D_8038370C = arg0;
 }
 
-void func_8033A28C(bool arg0){
+void func_8033A28C(n64_bool arg0){
     D_80383710 = arg0;
 }
 
-void func_8033A298(bool arg0){
+void func_8033A298(n64_bool arg0){
     D_80383758.unk18 = arg0;
     if(arg0){
         viewport_getPosition_vec3f(D_80383758.unk0);

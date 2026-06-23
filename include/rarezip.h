@@ -1,7 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef RAREZIP_H
 #define RAREZIP_H
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 extern struct huft *D_80007270;
 
 extern u8 *inbuf; //inbuf
@@ -17,7 +27,7 @@ extern u32 hufts; //hufts
 
 
 #ifndef WSIZE
-#  define WSIZE 0x8000     /* window size--must be a power of two, and */
+#define WSIZE 0x8000     /* window size--must be a power of two, and */
 #endif                     /*  at least 32K for zip's deflate method */
 
 //#define get_byte()  (inptr < insize ? inbuf[inptr++] : fill_inbuf(0))
@@ -25,10 +35,10 @@ extern u32 hufts; //hufts
 
 #ifdef CRYPT
   uch cc;
-#  define NEXTBYTE() \
+#define NEXTBYTE() \
      (decrypt ? (cc = get_byte(), zdecode(cc), cc) : get_byte())
 #else
-#  define NEXTBYTE()  (u8)get_byte()
+#define NEXTBYTE()  (u8)get_byte()
 #endif
 #define NEEDBITS(n) {while(k<(n)){b|=((u32)NEXTBYTE())<<k;k+=8;}}
 #define DUMPBITS(n) {b>>=(n);k-=(n);}
@@ -48,4 +58,9 @@ struct huft {
 
 int bkboot_inflate(void);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

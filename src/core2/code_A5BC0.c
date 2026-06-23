@@ -1,4 +1,5 @@
 #include <ultra64.h>
+#include "bka_safe_base.h"
 #include "core1/core1.h"
 #include "functions.h"
 #include "variables.h"
@@ -96,9 +97,16 @@ vector(ActorMarker *) *D_80383554;
 Method_Core2_A5BC0 D_80383558;
 s32 D_8038355C;
 
+
+/* Automated Forward Decls */
+static void __cube_sort(Cube *cube, n64_bool global);
+static void __marker_draw(ActorMarker *this, Gfx **gfx, Mtx **mtx, Vtx **vtx);
+static void __codeA5BC0_freeCube1Pointer(Cube *cube, s32 cnt);
+static void __codeA5BC0_initPropPointerForCube(NodeProp *node, Cube *cube, s32 cnt);
+
 /* .code */
 // This function sorts a cube's props based on distance
-static void __cube_sort(Cube *cube, bool global) {
+static void __cube_sort(Cube *cube, n64_bool global) {
     s32 ref_position[3];
     Prop *var_v1;
     Prop *start_prop;
@@ -176,12 +184,12 @@ void func_8032CD60(Prop *prop) {
     s32 sp48;
     s32 sp44;
     s32 sp40;
-    bool sp3C;
+    n64_bool sp3C;
     s32 sp38;
-    bool sp34;
-    bool sp30;
+    n64_bool sp34;
+    n64_bool sp30;
     s32 sp2C;
-    bool var_t5;
+    n64_bool var_t5;
     s32 var_v1;
 
     var_v0 = ((u32)(((u16*)prop)[5]) & 1) ? func_80330F50(prop->actorProp.marker)
@@ -351,14 +359,14 @@ void func_8032D510(Cube *cube, Gfx **gfx, Mtx **mtx, Vtx **vtx){
     for(i = 0; i < cube->prop2Cnt; i++){//L8032D5A0
         iOffset = i * 0xC;
         iProp = (Prop *)((s32)cube->prop2Ptr + iOffset);
-        tmp_v0.word = *(u32 *)((s32)iProp + 0x8);
+        tmp_v0.word = *(u32 *)BKA_TRANSLATE_ADDR(((s32)iProp + 0x8));
         if(!tmp_v0.unk4){
         
         }else{
             if(!tmp_v0.unk1){
                 func_8032CD60(iProp);
             }
-            tmp_v0.word = *(u32 *)((s32)iProp + 0x8);
+            tmp_v0.word = *(u32 *)BKA_TRANSLATE_ADDR(((s32)iProp + 0x8));
             if(tmp_v0.unk0){//actorProp;
                 if(iProp->actorProp.marker->unk40_22){
                     markerPtr = (ActorMarker **)vector_pushBackNew(&D_80383550);
@@ -403,10 +411,10 @@ Prop *__codeA5BC0_initProp2Ptr(Cube *cube) {
 
     if (cube->prop2Ptr != NULL) {
         cube->prop2Cnt++;
-        cube->prop2Ptr = realloc(cube->prop2Ptr, cube->prop2Cnt * sizeof(Prop));
+        cube->prop2Ptr = n64_realloc(cube->prop2Ptr, cube->prop2Cnt * sizeof(Prop));
     } else {
         cube->prop2Cnt = 1;
-        cube->prop2Ptr = malloc(sizeof(Prop));
+        cube->prop2Ptr = n64_malloc(sizeof(Prop));
     }
     sp1C = &cube->prop2Ptr[cube->prop2Cnt-1];
     sp1C->isActorProp = FALSE;
@@ -417,10 +425,10 @@ Prop *__codeA5BC0_initProp2Ptr(Cube *cube) {
 NodeProp *__codeA5BC0_pad_func_8032D8F0(Cube *cube) {
     if (cube->prop1Ptr != 0) {
         cube->prop1Cnt++;
-        cube->prop1Ptr = realloc(cube->prop1Ptr, cube->prop1Cnt * sizeof(NodeProp));
+        cube->prop1Ptr = n64_realloc(cube->prop1Ptr, cube->prop1Cnt * sizeof(NodeProp));
     } else {
         cube->prop1Cnt = 1;
-        cube->prop1Ptr = malloc(sizeof(NodeProp));
+        cube->prop1Ptr = n64_malloc(sizeof(NodeProp));
     }
     return &cube->prop1Ptr[cube->prop1Cnt - 1];
 }
@@ -437,14 +445,14 @@ s32 func_8032D9C0(Cube *cube, Prop* prop){
             func_80305CD8(func_803058C0(prop->position_y), -1);
         }
         if((prop - cube->prop2Ptr) < (cube->prop2Cnt - 1)){
-            memcpy(prop, prop + 1, (s32)(&cube->prop2Ptr[cube->prop2Cnt-1]) - (s32)(prop));
+            n64_memcpy(prop, prop + 1, (s32)(&cube->prop2Ptr[cube->prop2Cnt-1]) - (s32)(prop));
         }
         cube->prop2Cnt--;
         if(cube->prop2Cnt){
-            cube->prop2Ptr = realloc(cube->prop2Ptr, cube->prop2Cnt*sizeof(Prop));
+            cube->prop2Ptr = n64_realloc(cube->prop2Ptr, cube->prop2Cnt*sizeof(Prop));
             code_A5BC0_initCubePropActorProp(cube);
         }else{
-            free(cube->prop2Ptr);
+            n64_free(cube->prop2Ptr);
             cube->prop2Ptr = NULL;
         }
         return sp24;
@@ -460,7 +468,7 @@ void func_8032DB2C(Cube *cube, NodeProp *arg1) {
 
     sp24 = arg1 - cube->prop1Ptr;
     if (sp24 < cube->prop1Cnt - 1) {
-        memcpy(arg1, arg1 + 1, (s32)&cube->prop1Ptr[cube->prop1Cnt] - (s32)arg1 - sizeof(NodeProp));
+        n64_memcpy(arg1, arg1 + 1, (s32)&cube->prop1Ptr[cube->prop1Cnt] - (s32)arg1 - sizeof(NodeProp));
     }
     if (sp24 < cube->unk0_4) {
         cube->unk0_4--;
@@ -468,10 +476,10 @@ void func_8032DB2C(Cube *cube, NodeProp *arg1) {
 
     cube->prop1Cnt--;
     if (cube->prop1Cnt != 0) {
-        cube->prop1Ptr = realloc(cube->prop1Ptr, cube->prop1Cnt * sizeof(NodeProp));
+        cube->prop1Ptr = n64_realloc(cube->prop1Ptr, cube->prop1Cnt * sizeof(NodeProp));
     }
     else{
-        free(cube->prop1Ptr);
+        n64_free(cube->prop1Ptr);
         cube->prop1Ptr = NULL;
         cube->unk0_4 = 0;
     }
@@ -563,11 +571,11 @@ void func_8032DF04(ModelProp *prop_prop, s32 *arg1){
     *arg1 = prop_prop->scale;
 }
 
-void func_8032DF10(SpriteProp *sprite_prop, bool *arg1){
+void func_8032DF10(SpriteProp *sprite_prop, n64_bool *arg1){
     *arg1 = sprite_prop->unk0_19;
 }
 
-void func_8032DF24(SpriteProp *sprite_prop, bool arg1){
+void func_8032DF24(SpriteProp *sprite_prop, n64_bool arg1){
     sprite_prop->isMirrored = arg1;
 }
 
@@ -588,7 +596,7 @@ void func_8032DF60(SpriteProp *sprite_prop,
     sprite_prop->rgb_remove_blue = rgb_remove_blue;
 }
 
-void func_8032DFA0(SpriteProp *sprite_prop, bool arg1){
+void func_8032DFA0(SpriteProp *sprite_prop, n64_bool arg1){
     sprite_prop->unk0_19 = arg1;
 }
 
@@ -636,11 +644,11 @@ void cube_free(Cube *cube){
                 func_80332B2C(iProp->actorProp.marker);
             }
         }
-        free(cube->prop2Ptr);
+        n64_free(cube->prop2Ptr);
         cube->prop2Ptr = NULL;
     }
     if(cube->prop1Ptr){
-        free(cube->prop1Ptr);
+        n64_free(cube->prop1Ptr);
         cube->prop1Ptr = NULL;
     }
     cube->prop2Cnt = 0;
@@ -648,7 +656,7 @@ void cube_free(Cube *cube){
     cube->unk0_4 = 0;
 }
 
-bool __codeA5BC0_pad_func_8032E178(Cube *arg0, s32 *arg1, s32 arg2) {
+n64_bool __codeA5BC0_pad_func_8032E178(Cube *arg0, s32 *arg1, s32 arg2) {
     NodeProp *last_node_ptr;
     NodeProp *node_ptr;
 
@@ -689,7 +697,7 @@ NodeProp *cube_findNodePropByActorId(Cube *cube, enum actor_e actor_id) {
     return NULL;
 }
 
-bool func_8032E2D4(Cube *arg0, s32 arg1[3], s32 arg2) {
+n64_bool func_8032E2D4(Cube *arg0, s32 arg1[3], s32 arg2) {
     NodeProp * temp_a2;
     NodeProp *var_v1;
 
@@ -714,7 +722,7 @@ bool func_8032E2D4(Cube *arg0, s32 arg1[3], s32 arg2) {
     return FALSE;
 }
 
-bool func_8032E398(Cube *cube, bool (*arg1)(NodeProp *), bool (*arg2)(Prop *)) {
+n64_bool func_8032E398(Cube *cube, n64_bool (*arg1)(NodeProp *), n64_bool (*arg2)(Prop *)) {
     NodeProp *var_s0;
     Prop *var_s0_2;
     NodeProp *var_s1;
@@ -803,7 +811,7 @@ s32 func_8032E5A8(Cube *cube, s32 arg1, f32 (*arg2)[3], s32 capacity) {
     return count;
 }
 
-bool func_8032E6CC(Cube *cube, s32 *arg1, s32 arg2) {
+n64_bool func_8032E6CC(Cube *cube, s32 *arg1, s32 arg2) {
     NodeProp *end_node;
     NodeProp *i_node;
 
@@ -829,7 +837,7 @@ bool func_8032E6CC(Cube *cube, s32 *arg1, s32 arg2) {
 
 static void __codeA5BC0_freeCube1Pointer(Cube *cube, s32 cnt){
     if(cube->prop1Ptr != NULL){
-        free(cube->prop1Ptr);
+        n64_free(cube->prop1Ptr);
     }
 
     cube->prop1Cnt = cnt;
@@ -852,15 +860,15 @@ static void __codeA5BC0_initPropPointerForCube(NodeProp *node, Cube *cube, s32 c
             || (iPtr->category == 0xA) 
             || (iPtr->bit0 == 1)
         ){
-            memcpy(&cube->prop1Ptr[cube_ptr_idx], &node[i], sizeof(NodeProp));
+            n64_memcpy(&cube->prop1Ptr[cube_ptr_idx], &node[i], sizeof(NodeProp));
             cube_ptr_idx--;
         } else {
-            memcpy(&cube->prop1Ptr[cube->unk0_4], &node[i], sizeof(NodeProp));
+            n64_memcpy(&cube->prop1Ptr[cube->unk0_4], &node[i], sizeof(NodeProp));
             cube->unk0_4++;
         }
     }
 
-    free(node);
+    n64_free(node);
     
     for(i = 0; i < cnt; i++){
         iPtr = &cube->prop1Ptr[i];
@@ -882,15 +890,15 @@ void code7AF80_initCubeFromFile(File *file_ptr, Cube *cube) {
     cube_free(cube);
     if (file_getByte_ifExpected(file_ptr, 0xA, &cube1_count)) {
         __codeA5BC0_freeCube1Pointer(cube, cube1_count);
-        cube->prop1Ptr = (NodeProp*) malloc(cube1_count * sizeof(NodeProp));
-        node_prop_ptr = (NodeProp*) malloc(cube1_count * sizeof(NodeProp));
+        cube->prop1Ptr = (NodeProp*) n64_malloc(cube1_count * sizeof(NodeProp));
+        node_prop_ptr = (NodeProp*) n64_malloc(cube1_count * sizeof(NodeProp));
         file_getNBytes_ifExpected(file_ptr, 0xB, node_prop_ptr, cube->prop1Cnt * sizeof(NodeProp));
         __codeA5BC0_initPropPointerForCube(node_prop_ptr, cube, cube1_count);
         
     } else if (file_getByte_ifExpected(file_ptr, 6, &cube1_count)) {
         __codeA5BC0_freeCube1Pointer(cube, cube1_count);
-        cube->prop1Ptr = (NodeProp*) malloc(cube1_count * sizeof(OtherNode));
-        node_prop_ptr = (NodeProp*) malloc(cube1_count * sizeof(OtherNode));
+        cube->prop1Ptr = (NodeProp*) n64_malloc(cube1_count * sizeof(OtherNode));
+        node_prop_ptr = (NodeProp*) n64_malloc(cube1_count * sizeof(OtherNode));
         file_getNBytes_ifExpected(file_ptr, 7, node_prop_ptr, cube->prop1Cnt * sizeof(OtherNode));
         for(other_prop_ptr = (OtherNode *)node_prop_ptr; other_prop_ptr < (OtherNode*)&node_prop_ptr[cube1_count]; other_prop_ptr++){
             if(other_prop_ptr->unk4_0 && !other_prop_ptr->unkC_0){
@@ -908,10 +916,10 @@ void code7AF80_initCubeFromFile(File *file_ptr, Cube *cube) {
             sp34 = 0;
         }
         if (cube->prop2Ptr != NULL) {
-            free(cube->prop2Ptr);
+            n64_free(cube->prop2Ptr);
         }
         cube->prop2Cnt = sp47;
-        cube->prop2Ptr = (Prop *) malloc(sp47 * sizeof(Prop));
+        cube->prop2Ptr = (Prop *) n64_malloc(sp47 * sizeof(Prop));
         file_getNBytes_ifExpected(file_ptr, 9, cube->prop2Ptr, cube->prop2Cnt * sizeof(Prop));
         for(var_v1_2 = cube->prop2Ptr; var_v1_2 < cube->prop2Ptr + sp47; var_v1_2++){
                 var_v1_2->isNotFeatherEggOrNote = TRUE;
@@ -930,12 +938,12 @@ void code7AF80_initCubeFromFile(File *file_ptr, Cube *cube) {
             
     }
     if ((cube->prop2Ptr != NULL) && ((cube->prop2Cnt) == 0)) {
-        free(cube->prop2Ptr);
+        n64_free(cube->prop2Ptr);
         cube->prop2Ptr = NULL;
     }
     
     if ((cube->prop1Ptr != NULL) && (cube->prop1Cnt == 0)) {
-        free(cube->prop1Ptr);
+        n64_free(cube->prop1Ptr);
         cube->prop1Ptr = NULL;
         cube->unk0_4 = 0;
     }
@@ -1044,7 +1052,7 @@ void func_8032F194(ActorMarker *marker, s32 position[3], Cube *cube) {
     propPtr->words[2] = sp24.words[2];
 }
 
-void func_8032F21C(Cube *cube, s32 position[3], ActorMarker *marker, bool arg3) {
+void func_8032F21C(Cube *cube, s32 position[3], ActorMarker *marker, n64_bool arg3) {
     ActorProp *sp1C;
 
     sp1C = &__codeA5BC0_initProp2Ptr(cube)->actorProp;
@@ -1077,7 +1085,7 @@ void marker_free(ActorMarker *this){
     func_80332B2C(this);
 }
 
-void func_8032F464(bool arg0){
+void func_8032F464(n64_bool arg0){
     D_8036E7B0 = arg0;
 }
 
@@ -1283,7 +1291,7 @@ void func_803300B8(ActorMarker *marker, MarkerCollisionFunc method){
     marker->unk54 = method;
 }
 
-void func_803300C0(ActorMarker *marker, bool (*method)(ActorMarker *, ActorMarker *)){
+void func_803300C0(ActorMarker *marker, n64_bool (*method)(ActorMarker *, ActorMarker *)){
     marker->unk58 = method;
 }
 
@@ -1401,7 +1409,7 @@ void func_803303B8(Cube *cube) {
     }
 }
 
-bool func_80330534(Actor *actor){
+n64_bool func_80330534(Actor *actor){
     if(D_80383444 != 0){
         return FALSE;
     }
@@ -1410,7 +1418,7 @@ bool func_80330534(Actor *actor){
     return TRUE;
 }
 
-bool func_8033056C(Actor *actor){
+n64_bool func_8033056C(Actor *actor){
     if((D_80383444 == 0) || (D_80383444 != actor->modelCacheIndex)){
         return FALSE;
     }
@@ -1422,7 +1430,7 @@ bool func_8033056C(Actor *actor){
 void func_803305AC(void){
     s32 i;
 
-    modelCache = (ModelCache *)malloc(AssetCacheSize * sizeof(ModelCache));
+    modelCache = (ModelCache *)n64_malloc(AssetCacheSize * sizeof(ModelCache));
     for(i = 0; i<AssetCacheSize; i++){
         modelCache[i].modelPtr = NULL;
         modelCache[i].unk4 = 0;
@@ -1497,7 +1505,7 @@ void func_803308A0(void) {
         }
     }
     
-    free(modelCache);
+    n64_free(modelCache);
     modelCache = 0;
 }
 
@@ -1658,13 +1666,13 @@ s32 codeA5BC0_getPositionAndSelectorOrRadius(NodeProp *arg0, s32 arg1[3]){
 // is used to set global timer time?
 void codeA5BC0_setNodePropUnkC(NodeProp *arg0, s32 arg1){
     // writes unkC_31 / unkC_22
-    *(s32*)((s32)arg0 + 0xC) = arg1;
+    *(s32*)BKA_TRANSLATE_ADDR(((s32)arg0 + 0xC)) = arg1;
 }
 
 // is used to retrieve global timer time?
 s32 codeA5BC0_getNodePropUnkC(NodeProp *arg0){
     // reads unkC_31 / unkC_22
-    return *(s32*)((s32)arg0 + 0xC);
+    return *(s32*)BKA_TRANSLATE_ADDR(((s32)arg0 + 0xC));
 }
 
 void func_80330FCC(ActorMarker *marker, s32 arg1[3]){
@@ -1708,7 +1716,7 @@ void func_80330FF4(void){
     //L80331144
 }
 
-bool func_80331158(ActorMarker *arg0, s32 arg1, s32 arg2) {
+n64_bool func_80331158(ActorMarker *arg0, s32 arg1, s32 arg2) {
     Actor *actor;
     u32 temp_a0;
 
@@ -2232,7 +2240,7 @@ void func_80332894(void) {
     s32 i;
 
     size = 0x579;
-    D_8036E7C4 = malloc(size);
+    D_8036E7C4 = n64_malloc(size);
     i = 0;
     do{
         D_8036E7C4[i] = 0;
@@ -2246,7 +2254,7 @@ void func_80332894(void) {
 }
 
 void func_8033297C(void){
-    free(D_8036E7C4);
+    n64_free(D_8036E7C4);
     D_8036E7C4 = NULL;
     func_8032D36C();
 }
@@ -2255,7 +2263,7 @@ void func_8033297C(void){
 void func_803329AC(void){
     s32 i;
     
-    D_8036E7C8 = (ActorMarker *)malloc(0xE0*sizeof(ActorMarker));
+    D_8036E7C8 = (ActorMarker *)n64_malloc(0xE0*sizeof(ActorMarker));
 
     for( i = 0; i < 0x1C; i++){
         D_80383428[i] = 0;
@@ -2267,7 +2275,7 @@ void func_803329AC(void){
 }
 
 void func_80332A38(void){
-    free(D_8036E7C8);
+    n64_free(D_8036E7C8);
     D_8036E7C8 = NULL;
 }
 

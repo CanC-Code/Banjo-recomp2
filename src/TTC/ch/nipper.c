@@ -34,6 +34,19 @@ ActorInfo gChNipper = {
     0, 0x299, 10.0f, 0
 };
 
+
+/* Automated Forward Decls */
+static void __chNipper_drawParticlesAtPosition(f32 *position, s32 count);
+static void __chNipper_setAnimationDuration(Actor *this);
+static void __chNipper_spawnedShowTextCallback(ActorMarker *caller, enum asset_e text_id, s32 arg2);
+static void __chNipper_playDeathAnimation(Actor *this);
+static n64_bool __func_80388088(Actor *this);
+static n64_bool __chNipper_shouldShowActor(Actor *this);
+static void __chNipper_dieFunc(ActorMarker *this_marker, ActorMarker *other_marker);
+static n64_bool __chNipper_determineMarkerId(ActorMarker * this_marker, ActorMarker * other_marker);
+static void __chNipper_ow2Func(ActorMarker * this_marker, ActorMarker *other_marker);
+static void __chNipper_owFunc(ActorMarker * this_marker, ActorMarker *other_marker);
+
 /* .code */
 static void __chNipper_drawParticlesAtPosition(f32 *position, s32 count) {
     static s32 D_8038C5A4[3] = {180, 180, 180};
@@ -110,10 +123,10 @@ static void __chNipper_playDeathAnimation(Actor *this) {
 
 // if player too far away -> false
 // otherwise return whether sp2C is within -35 and 35?
-static bool __func_80388088(Actor *this){
+static n64_bool __func_80388088(Actor *this){
     f32 sp2C;
     f32 sp20[3];
-    bool out;
+    n64_bool out;
 
     sp2C = this->yaw - subaddie_getYawToPlayer(this);
     player_getPosition(sp20);
@@ -124,7 +137,7 @@ static bool __func_80388088(Actor *this){
     return BOOL(-35.0f < sp2C && sp2C < 35.0f);
 }
 
-static bool __chNipper_shouldShowActor(Actor *this){
+static n64_bool __chNipper_shouldShowActor(Actor *this){
     return BOOL(subaddie_playerIsWithinSphereAndActive(this, 1300) && __func_80388088(this));
 }
 
@@ -160,7 +173,7 @@ static void __chNipper_dieFunc(ActorMarker *this_marker, ActorMarker *other_mark
     return;
 }
 
-static bool __chNipper_determineMarkerId(ActorMarker * this_marker, ActorMarker * other_marker){
+static n64_bool __chNipper_determineMarkerId(ActorMarker * this_marker, ActorMarker * other_marker){
     if(this_marker->unk40_31 == 1){
         this_marker->id = MARKER_16C_NIPPER;
     }
@@ -340,7 +353,7 @@ static void __chNipper_updateFunc(Actor *this){
     }
 }
 
-bool chNipper_isInState7(s16 arg0[3]){
+n64_bool chNipper_isInState7(s16 arg0[3]){
     f32 sp1C[3];
     Actor *nipper;
 

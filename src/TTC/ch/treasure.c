@@ -19,6 +19,11 @@ ActorInfo gChTreasure = {
     0, 0, 1.7f, 0
 }; 
 
+
+/* Automated Forward Decls */
+static void __chTreasure_die(ActorMarker *marker, ActorMarker *otherMarker);
+static void __chTreasure_updateFuncPosition(Actor *this);
+
 /* .code */
 static void __chTreasure_die(ActorMarker *marker, ActorMarker *otherMarker){
     Actor *this = marker_getActor(marker);

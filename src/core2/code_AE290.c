@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 #include "variables.h"
-#include "n_libaudio.h"
+#include "PR/n_libaudio.h"
 
 extern ALBank *music_get_sound_bank(void);
 extern OSIoMesg *func_802405D0(void);
@@ -30,7 +30,7 @@ void sfxInstruments_init(void){
     
     
     size = soundfont1ctl_ROM_END - soundfont1ctl_ROM_START;
-    bnkf = (ALBankFile *)malloc(size);
+    bnkf = (ALBankFile *)n64_malloc(size);
     osWritebackDCache(bnkf, size);
     osPiStartDma(func_802405D0(), 0, 0, (u32)soundfont1ctl_ROM_START, bnkf, size, func_802405C4());
     osRecvMesg(func_802405C4(), NULL, 1);
@@ -78,7 +78,7 @@ void func_8033543C(Struct81s *arg0){
     }
 }
 
-bool func_80335470(Struct81s *arg0){
+n64_bool func_80335470(Struct81s *arg0){
     return  func_802445AC(arg0) != 0;
 }
 
@@ -94,10 +94,10 @@ s32 func_803354C8(void){
     return music_get_sound_bank()->instArray[0]->soundCount;
 }
 
-bool func_803354EC(enum sfx_e sfx_id){
+n64_bool func_803354EC(enum sfx_e sfx_id){
     return func_802445C4(sfx_sound_bank, (s16)(sfx_id + 1));
 }
 
-bool func_80335520(s32 arg0){
+n64_bool func_80335520(s32 arg0){
     return func_802445C4(music_get_sound_bank(), (s16)(arg0 + 1));
 }

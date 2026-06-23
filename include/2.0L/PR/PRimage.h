@@ -8,6 +8,7 @@
 
 #ifndef	__GL_IMAGE_H__
 #define	__GL_IMAGE_H__
+#include <n64_types.h>
 #ifdef __cplusplus
 extern "C" {
 #endif

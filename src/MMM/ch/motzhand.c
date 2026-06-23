@@ -103,7 +103,7 @@ void func_80387654(ActorMarker *marker) {
     }
 }
 
-bool func_8038769C(ActorMarker *marker) {
+n64_bool func_8038769C(ActorMarker *marker) {
     return marker_getActor(marker)->state == MOTZHAND_STATE_1_UNKNOWN;
 }
 

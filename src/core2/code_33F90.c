@@ -490,7 +490,7 @@ void func_802BB22C(void){
     }
 }
 
-bool func_802BB270(void) {
+n64_bool func_802BB270(void) {
     return BOOL(!D_80364E00);
 }
 

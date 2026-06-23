@@ -1,6 +1,7 @@
-#include <os_internal.h>
-#include <rcp.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
 #include "viint.h"
+#include <n64_types.h>
 
 void osViSetSpecialFeatures(u32 func){
     

@@ -33,6 +33,12 @@ f32 D_8037D3F0;
 u8 D_8037D3F4;
 u8 s_ate_wrong;
 
+
+/* Automated Forward Decls */
+static void __bscroc_recoil_init(s32 damage);
+static void __bscroc_recoil_update(void);
+static void func_802ACF58(void);
+
 /* .code */
 f32 __bscroc_getMaxVelocity(void){
     if(stateTimer_get(STATE_TIMER_3_TURBO_TALON) != 0.0f)

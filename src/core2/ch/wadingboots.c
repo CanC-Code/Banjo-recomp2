@@ -100,7 +100,7 @@ void chwadingboots_update(Actor *this){
     }//L802D6DFC
 }
 
-bool chwadingboots_802D6E0C(Actor *this){
+n64_bool chwadingboots_802D6E0C(Actor *this){
     return this->unk10_12 && ability_isUnlocked(ABILITY_E_WADING_BOOTS);
 }
 

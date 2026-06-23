@@ -39,7 +39,7 @@ Actor *func_80387DD0(ActorMarker *marker, Gfx **gfx, Mtx **mtx, Vtx **vtx){
     return actor_draw(marker, gfx, mtx, vtx);
 }
 
-bool func_80387EE4(Actor *this) {
+n64_bool func_80387EE4(Actor *this) {
     ActorLocal_FP_19E0 *local  = (ActorLocal_FP_19E0 *)&this->local;
     f32 temp_f2;
     f32 temp_f0;
@@ -66,7 +66,7 @@ bool func_80387EE4(Actor *this) {
     return 1;
 }
 
-bool func_80388000(Actor *this) {
+n64_bool func_80388000(Actor *this) {
     ActorLocal_FP_19E0 *local  = (ActorLocal_FP_19E0 *)&this->local;
     f32 temp_f2;
     f32 temp_f0;

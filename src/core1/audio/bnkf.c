@@ -3,6 +3,13 @@
 #include "variables.h"
 
 
+
+/* Automated Forward Decls */
+static void _bnkfPatchWaveTable(ALWaveTable *w, s32 offset, s32 table);
+static void _bnkfPatchSound(ALSound *s, s32 offset, s32 table);
+static void _bnkfPatchInst(ALInstrument *inst, s32 offset, s32 table);
+static void _bnkfPatchBank(ALBank *bank, s32 offset, s32 table);
+
 /* copt used??? */
 
 void alSeqFileNew(ALSeqFile *file, u8 *base)

@@ -5,7 +5,7 @@
 
 
 
-bool func_8034A6FC(f32, f32);
+n64_bool func_8034A6FC(f32, f32);
 void chTermite_update(Actor *this);
 
 /* .data */

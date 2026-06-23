@@ -128,7 +128,7 @@ f32 bastick_getZonePosition(void){
     return bastick.zone_position;
 }
 
-void bastick_lockAtzero(bool arg0){
+void bastick_lockAtzero(n64_bool arg0){
     bastick.locked_at_zero = arg0;
 }
 
@@ -151,10 +151,10 @@ s32 bastick_getCenteredCount(void){
     return bastick.zeroed_count;
 }
 
-bool bastick_newlyActive(void){
+n64_bool bastick_newlyActive(void){
     return bastick.nonzero_count == 1;
 }
 
-bool bastick_newlyCentered(void){
+n64_bool bastick_newlyCentered(void){
     return bastick.zeroed_count == 1;
 }

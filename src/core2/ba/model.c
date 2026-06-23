@@ -37,6 +37,11 @@ struct {
 //public
 void baModel_set(enum asset_e asset_id);
 
+
+/* Automated Forward Decls */
+static void _baModel_updateModelYaw(void);
+static void _baModel_preDraw(int arg0);
+
 //.data
 static void _baModel_updateModelYaw(void){
     switch(baModelDirection){

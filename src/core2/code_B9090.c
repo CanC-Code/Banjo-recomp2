@@ -5,7 +5,7 @@
 #define ABS(s) (((s) >= 0) ? (s) : -(s))
 
 /* .code */
-bool func_80340020(Struct83s *self, f32 position[3], f32 arg2[3], f32 arg3, f32 *arg4, BKVertexList *arg5, f32 arg6[3], f32 arg7[3]) {
+n64_bool func_80340020(Struct83s *self, f32 position[3], f32 arg2[3], f32 arg3, f32 *arg4, BKVertexList *arg5, f32 arg6[3], f32 arg7[3]) {
     f32 sp6C[3];
     f32 sp60[3];
     s32 i;
@@ -127,11 +127,11 @@ void func_80340200(Struct83s *self, f32 position[3], f32 arg2[3], f32 arg3, f32 
 }
 
 void func_80340690(Struct83s *self){
-    free(self);
+    n64_free(self);
 }
 
 Struct83s * func_803406B0(void){
-    Struct83s *self = malloc(sizeof(Struct83s));
+    Struct83s *self = n64_malloc(sizeof(Struct83s));
     self->unk1A = 0;
     return self;
 }

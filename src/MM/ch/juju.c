@@ -157,7 +157,7 @@ void func_803892A8(ActorMarker **ptr) {
     }
 }
 
-bool __chjuju_isEveryJujuDespawned(ActorMarker **ptr) {
+n64_bool __chjuju_isEveryJujuDespawned(ActorMarker **ptr) {
     s32 i;
     ActorLocal_Juju_2 *jujuPtr;
 
@@ -172,7 +172,7 @@ bool __chjuju_isEveryJujuDespawned(ActorMarker **ptr) {
     return TRUE;
 }
 
-bool __chjuju_isEveryJujuStable(ActorMarker **ptr) {
+n64_bool __chjuju_isEveryJujuStable(ActorMarker **ptr) {
     s32 i;
     ActorLocal_Juju_2 *jujuPtr;
 

@@ -9,7 +9,7 @@ extern MtxF *animMtxList_get(AnimMtxList *this, s32 arg1);
 MtxF D_80380880;
 
 /* .code */
-bool func_802EA760(BKModelUnk14List *arg0, s32 arg1, f32 arg2[3], f32 rotation[3], f32 scale, f32 arg5[3], f32 arg6[3], f32 *arg7) {
+n64_bool func_802EA760(BKModelUnk14List *arg0, s32 arg1, f32 arg2[3], f32 rotation[3], f32 scale, f32 arg5[3], f32 arg6[3], f32 *arg7) {
     s32 start;
     BKModelUnk14_2 *temp_v0;
 
@@ -352,7 +352,7 @@ s32 func_802EB8A0(BKModelUnk14List *arg0, f32 *position, f32 *rotation, f32 scal
     return 0;
 }
 
-bool func_802EBA98(BKModelUnk14List *arg0, f32 arg1[3], f32 rotation[3], f32 scale, f32 arg4[3], f32 arg5[3], f32 arg6, f32 arg7[3]){
+n64_bool func_802EBA98(BKModelUnk14List *arg0, f32 arg1[3], f32 rotation[3], f32 scale, f32 arg4[3], f32 arg5[3], f32 arg6, f32 arg7[3]){
     return func_802EBAE0(arg0, arg1, rotation, scale, arg4, NULL, arg5, arg6, arg7);
 }
 

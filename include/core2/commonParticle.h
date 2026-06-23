@@ -1,11 +1,21 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef CORE2_COMMON_PARTICLE_H
 #define CORE2_COMMON_PARTICLE_H
 
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
 #include "functions.h"
 #include "variables.h"
 #include "core2/anim/sprite.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #define PARTICLE_LIMIT 40 
 
 typedef s32 (*FuncUnk40)(ActorMarker *, s32, f32[3]);
@@ -72,4 +82,9 @@ void func_80344E3C(u8, f32[3]);
 void func_80344D94(u8, f32[3]);
 void func_80344EE4(u8, f32, f32);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

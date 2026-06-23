@@ -41,8 +41,15 @@ u8 D_8037DDF1;
 u8 sHasWarnedBanjoAboutDetransform;
 u8 D_8037DDF3;
 
+
+/* Automated Forward Decls */
+static n64_bool __chMumbo_actorExists(enum actor_e actorId);
+static s32 __transformation_getCost(enum transformation_e trans_id);
+static enum file_progress_e __bkProgId_from_transformationId(enum transformation_e trans_id);
+static void __chMumbo_textCallback(ActorMarker *caller, enum asset_e text_id, s32 arg2);
+
 /* .code */
-static bool __chMumbo_actorExists(enum actor_e actorId) {
+static n64_bool __chMumbo_actorExists(enum actor_e actorId) {
     f32 var[3];
 
     if (nodeProp_findPositionFromActorId(actorId, var) != 0) {
@@ -95,7 +102,7 @@ static enum file_progress_e __bkProgId_from_transformationId(enum transformation
     return (trans_id - TRANSFORM_2_TERMITE) + FILEPROG_90_PAID_TERMITE_COST;
 }
 
-bool chMumbo_withinHorzDistToPlayer(s32 x, s32 z, s32 dist) {
+n64_bool chMumbo_withinHorzDistToPlayer(s32 x, s32 z, s32 dist) {
     s32 player_position[3];
 
     player_getPosition_s32(player_position);
@@ -103,8 +110,9 @@ bool chMumbo_withinHorzDistToPlayer(s32 x, s32 z, s32 dist) {
 }
 
 
-bool chMumbo_func_802D181C(s32 arg0) {
-    s32 search_start_cube[3] = D_80367504;
+n64_bool chMumbo_func_802D181C(s32 arg0) {
+    s32 search_start_cube[3];
+    n64_memcpy(search_start_cube, D_80367504, 3 * sizeof(s32));
     return BOOL(cubeList_findNodePropByActorIdAndPosition_s32(arg0, search_start_cube));
 }
 
@@ -116,7 +124,7 @@ void chMumbo_func_802D186C(Actor *this) {
 }
 
 void chMumbo_func_802D18B4(Actor *this) {
-    bool player_is_within_range;
+    n64_bool player_is_within_range;
 
     if (gsworld_get_map() == MAP_7A_GL_CRYPT) {
         player_is_within_range = chMumbo_withinHorzDistToPlayer(1107, 0, 188);
@@ -215,8 +223,8 @@ void chMumbo_func_802D1B8C(Actor *this, enum transformation_e transform_id) {
 void chMumbo_update(Actor *this) {
     s32 face_buttons[6];
     f32 sp4C[3];
-    bool sp48;
-    bool sp44;
+    n64_bool sp48;
+    n64_bool sp44;
     s32 sp40;
     f32 temp_f12;
 
@@ -481,7 +489,8 @@ Actor *chMumbo_draw(ActorMarker *marker, Gfx **gfx, Mtx **mtx, Vtx **vtx) {
     Actor *this = marker_getActor(marker);
     Actor *out;
     f32 sp44[3];
-    f32 sp38[3] = D_80367510;
+    f32 sp38[3];
+    n64_memcpy(sp38, D_80367510, 3 * sizeof(f32));
 
     func_8033A45C(4, (this->lifetime_value == 0.0f));
     func_8033A45C(5, (this->lifetime_value == 1.0f));

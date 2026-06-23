@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "math.h"
+/* Redirected */ #include <n64_math.h>
 #include "variables.h"
 
 extern f32 *chVile_getPostion(ActorMarker *);
@@ -111,7 +111,7 @@ enum asset_e D_80390A18[] = {
 };
 
 /* .code */
-bool BGS_func_80389810(f32 arg0[3]) {
+n64_bool BGS_func_80389810(f32 arg0[3]) {
     if (player_movementGroup() != BSGROUP_7_CROC_ATTACK) {
         return FALSE;
     }
@@ -415,7 +415,7 @@ void func_8038A068(Actor *this, s32 next_state) {
 
 void chvilegame_player_consume_piece(Actor *this) {
     ActorLocal_BGS_3420 *local;
-    bool is_correct_type;
+    n64_bool is_correct_type;
     f32 sp44[3];
     struct vilegame_piece *begin;
     struct vilegame_piece *end;
@@ -451,7 +451,7 @@ void chvilegame_player_consume_piece(Actor *this) {
     }
 }
 
-bool chvilegame_cpu_consume_piece(ActorMarker *marker, f32 position[3]) {
+n64_bool chvilegame_cpu_consume_piece(ActorMarker *marker, f32 position[3]) {
     Actor *this;
     ActorLocal_BGS_3420 *local;
     struct vilegame_piece *begin;
@@ -517,7 +517,7 @@ s32 chvilegame_get_score_difference(ActorMarker *marker){
     return local->vile_score - local->player_score;
 }
 
-bool chvilegame_find_closest_piece(ActorMarker *marker, f32 position[0], f32 yaw, f32 dst[3]) {
+n64_bool chvilegame_find_closest_piece(ActorMarker *marker, f32 position[0], f32 yaw, f32 dst[3]) {
     f32 piece_direction[3];
     f32 target_direction[3];
     Actor *this;

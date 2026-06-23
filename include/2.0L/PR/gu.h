@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _GU_H_
 #define _GU_H_
 
@@ -21,10 +25,22 @@
  *
  **************************************************************************/
 
+#ifdef __cplusplus
+}
+#endif
 #include <PR/mbi.h>
-#include <PR/ultratypes.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
+/* Redirected */ #include <n64_types.h>
+#ifdef __cplusplus
+}
+#endif
 #include <PR/sptask.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #ifndef MAX
 #define MAX(a,b) (((a)>(b))?(a):(b))
 #endif
@@ -267,3 +283,8 @@ void guSprite2DInit(uSprite *SpritePointer,
 		    int SourceImageOffsetT);
 
 #endif /* !_GU_H_ */
+
+
+#ifdef __cplusplus
+}
+#endif

@@ -16,7 +16,7 @@ f32 playerPosition[3];
 f32 effectTimer;
 
 /*.code */
-bool isOnFloor(void) {
+n64_bool isOnFloor(void) {
     return floor_isCurrentFloorunk59() && floor_getCurrentFloorYPosition() > playerPosition_getY();
 }
 
@@ -187,7 +187,7 @@ void updateHazardEffects(void) {
     }
 }
 
-bool isPlayerInHazard(void) {
+n64_bool isPlayerInHazard(void) {
     f32 player_position[3];
 
     switch (gsworld_get_map()) {
@@ -216,7 +216,7 @@ bool isPlayerInHazard(void) {
     return FALSE;
 }
 
-bool canTakeGroundDamage(void) {
+n64_bool canTakeGroundDamage(void) {
     enum bs_e bs_state;
 
     bs_state = bs_getState();
@@ -254,7 +254,7 @@ bool canTakeGroundDamage(void) {
 }
 
 void hazards_update(void) {
-    bool can_take_ground_damage;
+    n64_bool can_take_ground_damage;
     BKCollisionTri *collision;
     s32 sp1C;
     s32 sp18;

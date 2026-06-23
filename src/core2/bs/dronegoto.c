@@ -14,6 +14,10 @@ void func_802AEC70(void);
 void func_802AEC78(void);
 void func_802AEDC8(void);
 
+
+/* Automated Forward Decls */
+static void __bsDroneGoTo_set_substate(s32 arg0);
+
 static void __bsDroneGoTo_set_substate(s32 arg0){
     switch(bsdronetogo_substate){
         case 1:

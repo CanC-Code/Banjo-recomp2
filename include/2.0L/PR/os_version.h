@@ -1,5 +1,16 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /*---------------------------------------------------------------------*
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
         Copyright (C) 1998 Nintendo.
         
         $RCSfile: os_version.h,v $
@@ -14,3 +25,8 @@
 #define OS_MINOR_VERSION	0	/* patch level */
 
 #endif /* !_OS_VERSION_H_ */
+
+
+#ifdef __cplusplus
+}
+#endif

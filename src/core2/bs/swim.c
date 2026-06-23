@@ -7,7 +7,7 @@
 
 extern void bainput_setDiveCooldown(s32, f32);
 
-bool bsswim_inset(enum bs_e state_id);
+n64_bool bsswim_inset(enum bs_e state_id);
 
 /* .data */
 f32 bsSwimHorzVelocityMin = 30.0f;
@@ -96,7 +96,7 @@ void __bsswim_end(void) {
     }
 }
 
-bool bsswim_inset(enum bs_e state_id){
+n64_bool bsswim_inset(enum bs_e state_id){
     return state_id == BS_2D_SWIM_IDLE
         || state_id == BS_2E_SWIM
         || state_id == BS_4C_LANDING_IN_WATER

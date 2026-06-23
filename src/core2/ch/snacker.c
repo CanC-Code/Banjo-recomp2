@@ -62,6 +62,12 @@ f32 s_chSnacker_respawnDelay_s;
 s32 s_chSnacker_inRbb;
 s32 D_8037E630;
 
+
+/* Automated Forward Decls */
+static void __chsnacker_start_dialog(Actor *this);
+static void __chsnacker_die(ActorMarker *marker, ActorMarker *other);
+static void __chsnacker_ow(ActorMarker *marker, ActorMarker *other);
+
 /* .code */
 void func_802E0CD0(Actor *this){
     this->actor_specific_1_f = 4.0f;
@@ -92,7 +98,7 @@ static void __chsnacker_start_dialog(Actor *this) {
     }
 }
 
-bool func_802E0DC0(f32 snacker_position[3]){
+n64_bool func_802E0DC0(f32 snacker_position[3]){
     f32 player_position[3];
     f32 pad0;
 

@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef BANJO_KAZOOIE_CORE1_PFSMANAGER_H
 #define BANJO_KAZOOIE_CORE1_PFSMANAGER_H
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 typedef struct pfs_manager_face_buttons_s {
     bool button_a;
     bool button_b;
@@ -65,4 +76,9 @@ void func_8024F400(void);
 void func_8024F450(void);
 void func_8024F4AC(void);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

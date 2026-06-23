@@ -46,7 +46,7 @@ f32 func_8035D590(f32 arg0) {
 }
 
 
-bool func_8035D608(Actor *this) {
+n64_bool func_8035D608(Actor *this) {
     f32 sp1C[3];
 
     player_getPosition(sp1C);
@@ -123,7 +123,7 @@ void func_8035DA1C(Actor *this) {
     f32 sp44;
     f32 sp40;
     s32 sp3C;
-    bool sp38;
+    n64_bool sp38;
 
     if (!this->initialized) {
         this->initialized = TRUE;

@@ -31,6 +31,12 @@ f32  D_8037D5C0;
 f32  D_8037D5C4;
 u8   D_8037D5C8;
 
+
+/* Automated Forward Decls */
+static void __bswalrus_recoil_init(s32 damage);
+static void __bswalrus_recoil_update(void);
+static void __bswalrus_recoil_end(void);
+
 /* .code */
 void func_802B7E00(void) {
     u8 temp_t9;

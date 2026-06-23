@@ -33,7 +33,7 @@ ActorInfo D_80368124 = {
 
 /* .bss */
 ActorMarker *D_8037DE80;
-bool D_8037DE84;
+n64_bool D_8037DE84;
 
 /* .code */
 Actor *chOverlayPressStart_draw(ActorMarker *marker, Gfx **gdl, Mtx **mptr, Vtx **vptr){

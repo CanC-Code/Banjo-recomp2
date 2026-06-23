@@ -3,7 +3,7 @@
 #include "variables.h"
 #include "core2/ba/carry.h"
 
-bool player_setCarryObjectPose(enum actor_e actor_id, Actor **arg1){
+n64_bool player_setCarryObjectPose(enum actor_e actor_id, Actor **arg1){
     ActorMarker *m1;
     ActorMarker *m2;
     Actor *actor;

@@ -1,5 +1,6 @@
-#include <os_internal.h>
+#include <PR/os_internal.h>
 #include "osint.h"
+#include <n64_types.h>
 int osSetTimer(OSTimer *t, OSTime value, OSTime interval, OSMesgQueue *mq, OSMesg msg)
 {
     OSTime time;

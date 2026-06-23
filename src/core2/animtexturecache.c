@@ -11,7 +11,7 @@ typedef struct {
 FREE_LIST(AnimTextureList) *AnimTextureListCache;
 
 /* .code */
-bool AnimTextureListCache_tryGetTextureOffset(s32 list_index, s32 texture_index, s32 *current_frame) {
+n64_bool AnimTextureListCache_tryGetTextureOffset(s32 list_index, s32 texture_index, s32 *current_frame) {
     AnimTextureList * temp_v0;
 
     temp_v0 = (AnimTextureList *)freelist_at(AnimTextureListCache, list_index);
@@ -53,7 +53,7 @@ void AnimTextureListCache_at(s32 arg0, AnimTexture arg1[4]){
 
 
     sp1C = (AnimTextureList *) freelist_at(AnimTextureListCache, arg0);
-    memcpy(sp1C, arg1, 0x20);
+    n64_memcpy(sp1C, arg1, 0x20);
     for(i = 0; i < 4; i++){
         sp1C->current_frame[i] = 0.0f;
     }

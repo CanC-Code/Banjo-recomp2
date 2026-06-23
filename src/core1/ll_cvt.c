@@ -1,3 +1,4 @@
+#include <n64_types.h>
 long long __d_to_ll(double a0)
 {
     return a0;

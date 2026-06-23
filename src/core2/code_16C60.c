@@ -2,14 +2,14 @@
 #include "functions.h"
 #include "variables.h"
 
-void func_8029E070(bool);
-void func_8029E064(bool);
-void func_8029E058(bool);
+void func_8029E070(n64_bool);
+void func_8029E064(n64_bool);
+void func_8029E058(n64_bool);
 void func_8029E0C4(f32);
 void func_8029E0D0(f32);
-void func_8029E0DC(bool);
-void func_8029E0F4(bool);
-void func_8029E0E8(bool);
+void func_8029E0DC(n64_bool);
+void func_8029E0F4(n64_bool);
+void func_8029E0E8(n64_bool);
 
 /* .bss */
 f32 D_8037D230;
@@ -58,7 +58,7 @@ void func_8029DBF0(void){
 
 
 void func_8029DD6C(void) {
-    bool temp_s0;
+    n64_bool temp_s0;
 
     func_8033A1FC();
     switch (baModel_getModelId()) {
@@ -109,15 +109,15 @@ void func_8029DD6C(void) {
     func_8029DBF0();
 }
 
-bool func_8029DFA4(void){
+n64_bool func_8029DFA4(void){
     return D_8037D235;
 }
 
-bool func_8029DFB0(void){
+n64_bool func_8029DFB0(void){
     return D_8037D236;
 }
 
-bool func_8029DFBC(void){
+n64_bool func_8029DFBC(void){
     return D_8037D238;
 }
 
@@ -129,11 +129,11 @@ f32 func_8029DFD4(void){
     return D_8037D240;
 }
 
-bool func_8029DFE0(void){
+n64_bool func_8029DFE0(void){
     return D_8037D237;
 }
 
-bool func_8029DFEC(void){
+n64_bool func_8029DFEC(void){
     return D_8037D239;
 }
 
@@ -148,19 +148,19 @@ void func_8029DFF8(void) {
     func_8029E0E8(0);
 }
 
-void func_8029E058(bool arg0){
+void func_8029E058(n64_bool arg0){
     D_8037D235 = arg0;
 }
 
-void func_8029E064(bool arg0){
+void func_8029E064(n64_bool arg0){
     D_8037D236 = arg0;
 }
 
-void func_8029E070(bool arg0) {
+void func_8029E070(n64_bool arg0) {
     func_8029E090(arg0, 0.0f);
 }
 
-void func_8029E090(bool arg0, f32 arg1) {
+void func_8029E090(n64_bool arg0, f32 arg1) {
     D_8037D230 = arg1;
     D_8037D234 = arg0;
     if (arg1 == 0.0f) {
@@ -176,15 +176,15 @@ void func_8029E0D0(f32 arg0){
     D_8037D240 = arg0;
 }
 
-void func_8029E0DC(bool arg0){
+void func_8029E0DC(n64_bool arg0){
     D_8037D237 = arg0;
 }
 
-void func_8029E0E8(bool arg0){
+void func_8029E0E8(n64_bool arg0){
     D_8037D23A = arg0;
 }
 
-void func_8029E0F4(bool arg0){
+void func_8029E0F4(n64_bool arg0){
     D_8037D239 = arg0;
 }
 

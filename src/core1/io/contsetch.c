@@ -1,6 +1,7 @@
-#include <os_internal.h>
+#include <PR/os_internal.h>
 #include "controller.h"
 #include "siint.h"
+#include <n64_types.h>
 
 s32 osContSetCh(u8 ch)
 {

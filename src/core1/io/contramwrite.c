@@ -1,7 +1,8 @@
-#include <os_internal.h>
-#include <rcp.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
 #include "controller.h"
 #include "siint.h"
+#include <n64_types.h>
 
 static void __osPackRamWriteData(int channel, u16 address, u8 *buffer);
 s32 __osContRamWrite(OSMesgQueue *mq, int channel, u16 address, u8 *buffer, int force)

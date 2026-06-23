@@ -64,7 +64,12 @@ f32 D_8036E598[4] = {1000.f, 20.0f, 10.5f, 1.0f};
 /* .bss */
 Actor *suLastBaddie;
 s32 D_80383394;
-Actor *suBaddieJiggyArray[14]; //array of jiggy actor ptrs
+Actor *suBaddieJiggyArray[14]; 
+/* Automated Forward Decls */
+static void __actor_free(ActorMarker *arg0, Actor *arg1);
+static n64_bool __subaddie_set_state(Actor *this, s32 state);
+
+//array of jiggy actor ptrs
 
 
 Actor * marker_getActorAndRotation(ActorMarker *marker,f32 rotation[3])
@@ -87,7 +92,7 @@ Actor *func_80325340(ActorMarker *marker, Gfx **gfx, Mtx **mtx, Vtx **vtx){
 void actor_predrawMethod(Actor *this){
     s32 pad4C;
     BKModelBin *sp48;
-    bool sp44;
+    n64_bool sp44;
     BKVertexList *sp40;
     f32 sp34[3];
     
@@ -422,7 +427,7 @@ void actorArray_free(void) {
             }
             var_s0->marker = NULL;
         }
-        free(suBaddieActorArray);
+        n64_free(suBaddieActorArray);
         suBaddieActorArray = NULL;
     }
     func_8034A2A8(D_8036E568);
@@ -523,7 +528,7 @@ void func_803268B4(void) {
     s32 position[3];
     s32 rotation[3];
     BKVertexList *temp_v0_3;
-    bool sp54;
+    n64_bool sp54;
     s32 temp_s1;
     
 
@@ -723,8 +728,8 @@ Actor **actorArray_findJiggyActors(void) {
     return suBaddieJiggyArray;
 }
 
-bool func_803270B8(f32 arg0[3], f32 arg1, enum marker_collision_func_type_e arg2, int (*arg3)(Actor *), ActorMarker * arg4){
-    bool var_s4;
+n64_bool func_803270B8(f32 arg0[3], f32 arg1, enum marker_collision_func_type_e arg2, int (*arg3)(Actor *), ActorMarker * arg4){
+    n64_bool var_s4;
     Actor * start;
     Actor * i_ptr;
 
@@ -763,14 +768,14 @@ Actor *actor_new(s32 position[3], s32 yaw, ActorInfo* actorInfo, u32 flags){
     f32 sp44[3];
     
     if(suBaddieActorArray == NULL){
-        suBaddieActorArray = (ActorArray *)malloc(sizeof(ActorArray) + 20*sizeof(Actor));
+        suBaddieActorArray = (ActorArray *)n64_malloc(sizeof(ActorArray) + 20*sizeof(Actor));
         suBaddieActorArray->cnt = 0;
         suBaddieActorArray->max_cnt = 20;
     }
     
     if(suBaddieActorArray->cnt + 1 > suBaddieActorArray->max_cnt){
         suBaddieActorArray->max_cnt = suBaddieActorArray->cnt + 5;
-        suBaddieActorArray = (ActorArray *)realloc(suBaddieActorArray, sizeof(ActorArray) + suBaddieActorArray->max_cnt*sizeof(Actor));
+        suBaddieActorArray = (ActorArray *)n64_realloc(suBaddieActorArray, sizeof(ActorArray) + suBaddieActorArray->max_cnt*sizeof(Actor));
     }
 
     ++suBaddieActorArray->cnt;
@@ -1040,7 +1045,7 @@ static void __actor_free(ActorMarker *arg0, Actor *arg1){
     arrayEnd = &suBaddieActorArray->data[suBaddieActorArray->cnt - 1];
     func_80325FE8(arg1);
     if((s32)arg1 != arrayEnd)
-        memcpy(arg1, arrayEnd, 0x180); //memcpy
+        n64_memcpy(arg1, arrayEnd, 0x180); //memcpy
     arg1->marker->actrArrayIdx = arg0->actrArrayIdx;
 
     //remove last actor from actor array
@@ -1049,7 +1054,7 @@ static void __actor_free(ActorMarker *arg0, Actor *arg1){
     //shrink actor array capacity
     if(suBaddieActorArray->cnt + 8 <= suBaddieActorArray->max_cnt){
         suBaddieActorArray->max_cnt = suBaddieActorArray->cnt + 4;
-        suBaddieActorArray = (ActorArray *)realloc(suBaddieActorArray, suBaddieActorArray->max_cnt*sizeof(Actor) + sizeof(ActorArray));
+        suBaddieActorArray = (ActorArray *)n64_realloc(suBaddieActorArray, suBaddieActorArray->max_cnt*sizeof(Actor) + sizeof(ActorArray));
     }
 
     marker_free(arg0);
@@ -1158,7 +1163,7 @@ void func_80328478(f32 arg0[3], f32 arg1, f32 arg2){
     arg0[2] += sp1C[2]; 
 }
 
-static bool __subaddie_set_state(Actor *this, s32 state)
+static n64_bool __subaddie_set_state(Actor *this, s32 state)
 {
     ActorAnimationInfo *animInfo;
     s32 index;
@@ -1322,7 +1327,7 @@ void subaddie_set_state_with_direction(Actor * this, s32 state, f32 anim_start_p
     }
 }
 
-bool subaddie_maybe_set_state_position_direction(Actor *this, s32 state, f32 start_position, s32 direction, f32 probability) {
+n64_bool subaddie_maybe_set_state_position_direction(Actor *this, s32 state, f32 start_position, s32 direction, f32 probability) {
     if (randf() < probability) {
         if (__subaddie_set_state(this, state) && this->anctrl) {
             func_803285E8(this, start_position, direction);
@@ -1412,7 +1417,7 @@ s32 func_80329054(s32 arg0, s32 arg1) {
     return !func_8032CA80(arg0, arg1 + 4);
 }
 
-bool func_80329078(Actor *this, s32 arg1, s32 arg2){
+n64_bool func_80329078(Actor *this, s32 arg1, s32 arg2){
     f32 sp1C[3];
 
     if(this->unk10_25 == 0)
@@ -1428,7 +1433,7 @@ bool func_80329078(Actor *this, s32 arg1, s32 arg2){
     return TRUE;
 }
 
-bool func_80329140(Actor *this, s32 arg1, s32 arg2){
+n64_bool func_80329140(Actor *this, s32 arg1, s32 arg2){
     s32 var_v0;
     f32 sp20[3];
 
@@ -1452,7 +1457,7 @@ int func_80329210(Actor * arg0, f32 (* arg1)[3]){
         || func_80307258(arg1, arg0->unk10_25 - 1, arg0->unk10_18-1) != -1;
 }
 
-bool func_80329260(Actor *this, f32 p1[3]){
+n64_bool func_80329260(Actor *this, f32 p1[3]){
     s32 var_v0;
     var_v0 = func_80309D58(p1, this->unk10_18);
     if(this->unk10_18 == 0){
@@ -1464,7 +1469,7 @@ bool func_80329260(Actor *this, f32 p1[3]){
     return TRUE;
 }
 
-bool func_803292E0(Actor *this){
+n64_bool func_803292E0(Actor *this){
     f32 player_position[3];
     if(this->unk10_25 == 0){
         return 1;
@@ -1474,14 +1479,14 @@ bool func_803292E0(Actor *this){
     return func_80307258(player_position, this->unk10_25 - 1, this->unk10_18 - 1) != -1;
 }
 
-bool func_80329354(Actor *this){
+n64_bool func_80329354(Actor *this){
     f32 sp1C[3];
 
     playerPosition_get(sp1C);
     return func_80329260(this, sp1C);
 }
 
-bool func_80329384(Actor *this, f32 arg1){
+n64_bool func_80329384(Actor *this, f32 arg1){
     f32 sp1C[3];
 
     if(this->unk10_25 == 0)
@@ -1494,35 +1499,35 @@ bool func_80329384(Actor *this, f32 arg1){
         && ((this->position[1] - arg1) < sp1C[1]);
 }
 
-bool func_8032944C(Actor *this){
+n64_bool func_8032944C(Actor *this){
     s32 v1;
     
     v1 = this->pitch - this->unk6C;
     return ((-3 <= v1) && (v1 <= 3));
 }
 
-bool func_80329480(Actor *this){
+n64_bool func_80329480(Actor *this){
     s32 v1;
 
     v1 = this->yaw - this->yaw_ideal;
     return ((-3 <= v1) && (v1 <= 3));
 }
 
-bool func_803294B4(Actor *this, s32 arg1){
+n64_bool func_803294B4(Actor *this, s32 arg1){
     s32 v1;
 
     v1 = this->yaw - this->yaw_ideal;
     return ((-arg1 <= v1) && (v1 <= arg1));
 }
 
-bool func_803294F0(Actor *this, s32 arg1, s32 arg2){
+n64_bool func_803294F0(Actor *this, s32 arg1, s32 arg2){
     s32 v1;
 
     v1 = this->yaw - arg2;
     return ((-arg1 <= v1) && (v1 <= arg1));
 }
 
-bool subaddie_playerIsWithinSphereAndActive(Actor *this, s32 dist) {
+n64_bool subaddie_playerIsWithinSphereAndActive(Actor *this, s32 dist) {
     if (func_8028F098()
         && !volatileFlag_get(VOLATILE_FLAG_BF)
         && subaddie_playerIsWithinSphere(this, dist)) {
@@ -1533,7 +1538,7 @@ bool subaddie_playerIsWithinSphereAndActive(Actor *this, s32 dist) {
     return FALSE;
 }
 
-bool subaddie_playerIsWithinSphere(Actor *this, s32 dist){
+n64_bool subaddie_playerIsWithinSphere(Actor *this, s32 dist){
     f32 sp24[3];
     f32 sp18[3];
 
@@ -1550,7 +1555,7 @@ bool subaddie_playerIsWithinSphere(Actor *this, s32 dist){
     return FALSE;
 }
 
-bool subaddie_playerIsWithinAsymmetricCylinder(Actor *this, s32 radius, s32 d_upper, s32 d_lower){
+n64_bool subaddie_playerIsWithinAsymmetricCylinder(Actor *this, s32 radius, s32 d_upper, s32 d_lower){
     f32 sp1C[3];
 
     player_getPosition(sp1C);
@@ -1562,11 +1567,11 @@ bool subaddie_playerIsWithinAsymmetricCylinder(Actor *this, s32 radius, s32 d_up
 
 }
 
-bool subaddie_playerIsWithinCylinder(Actor *this, s32 radius, s32 d_y){
+n64_bool subaddie_playerIsWithinCylinder(Actor *this, s32 radius, s32 d_y){
     return subaddie_playerIsWithinAsymmetricCylinder(this, radius, d_y, d_y);
 }
 
-bool func_803296D8(Actor *this, s32 dist){
+n64_bool func_803296D8(Actor *this, s32 dist){
     if(!this->unk124_7){
         return TRUE;
     }
@@ -1705,7 +1710,7 @@ void actor_copy(Actor *dst, Actor *src){
     dst->unk148 = src->unk148;
     dst->unk14C[0] = src->unk14C[0];
     dst->unk14C[1] = src->unk14C[1];
-    memcpy(src, dst, sizeof(Actor));
+    n64_memcpy(src, dst, sizeof(Actor));
 }
 
 void *actors_appendToSavestate(void * begin, u32 end){
@@ -1727,7 +1732,7 @@ void *actors_appendToSavestate(void * begin, u32 end){
             }
         }
         sp2C = end - (u32)sp3C;
-        sp3C = realloc(sp3C, sp2C + sizeof(u32) + sp30*sizeof(Actor));
+        sp3C = n64_realloc(sp3C, sp2C + sizeof(u32) + sp30*sizeof(Actor));
 
         end = (u32)sp3C + sp2C;
         *(u32 *)end = sp30;
@@ -1738,7 +1743,7 @@ void *actors_appendToSavestate(void * begin, u32 end){
                 && s1->despawn_flag == 0
                 && s1->unk40 == 0
             ){
-                memcpy(s0, s1, sizeof(Actor));
+                n64_memcpy(s0, s1, sizeof(Actor));
                 s0->unk40 = 0;
                 s0->unk138_28 = 1;
                 s0->unk14C[0] =s0->unk14C[1] = NULL;
@@ -1813,9 +1818,9 @@ void func_8032A09C(s32 arg0, ActorListSaveState *arg1) {
 
         var_s3++;
         
-        sp60 = malloc(var_s3*sizeof(Actor *));
+        sp60 = n64_malloc(var_s3*sizeof(Actor *));
         pad = sp5C + var_s2;
-        sp5C = malloc(var_s3*sizeof(Actor *));
+        sp5C = n64_malloc(var_s3*sizeof(Actor *));
         for (var_s2 = 0; var_s2 < var_s3; var_s2++) {
             *(u32*)&sp60[var_s2] = 0; 
             *(u32*)&sp5C[var_s2] = 0;
@@ -1870,8 +1875,8 @@ void func_8032A09C(s32 arg0, ActorListSaveState *arg1) {
             var_s0++;
         }
         func_803283D4();
-        free(sp60);
-        free(sp5C);
+        n64_free(sp60);
+        n64_free(sp5C);
     }
     spawnQueue_unlock();
 }
@@ -1966,7 +1971,7 @@ void func_8032A95C(Actor *arg0, s32 arg1, s32 arg2) {
     arg0->unk10_3 = 0;
 }
 
-bool func_8032A9E4(s32 arg0, s32 arg1, s32 arg2) {
+n64_bool func_8032A9E4(s32 arg0, s32 arg1, s32 arg2) {
     s32 sp1C[3];
 
     player_getPosition_s32(sp1C);
@@ -2196,7 +2201,7 @@ void func_8032B258(Actor *this, enum collision_e arg1) {
     }
 }
 
-bool func_8032B38C(NodeProp *node, s32 arg1){
+n64_bool func_8032B38C(NodeProp *node, s32 arg1){
     return node->actorId == 0xF7;
 }
 
@@ -2338,7 +2343,7 @@ void func_8032BB88(Actor *this, s32 arg1, s32 arg2){
     this->unk138_7 = sp1C;
 }
 
-bool func_8032BBE8(Actor *this){
+n64_bool func_8032BBE8(Actor *this){
     if(this->volatile_initialized){
         return TRUE;
     }

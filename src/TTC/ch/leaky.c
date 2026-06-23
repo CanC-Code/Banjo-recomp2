@@ -22,8 +22,14 @@ ActorInfo gChLeaky = {
     0, 0, 0.0f, 0
 };
 
+
+/* Automated Forward Decls */
+static n64_bool __chLeaky_isCurrentModelShrapnel(Actor *this);
+static void __func_80388F88(void);
+static void __chLeaky_showDoneText(ActorMarker *caller, enum asset_e text_id, s32 arg2);
+
 /* .code */
-static bool __chLeaky_isCurrentModelShrapnel(Actor *this){
+static n64_bool __chLeaky_isCurrentModelShrapnel(Actor *this){
     return this->modelCacheIndex == ACTOR_56_SHRAPNEL;
 }
 
@@ -102,7 +108,7 @@ static void __chLeaky_showDoneText(ActorMarker *caller, enum asset_e text_id, s3
     musicKeepsPlaying();
 }
 
-bool chLeaky_eggCollision(ActorMarker *marker){
+n64_bool chLeaky_eggCollision(ActorMarker *marker){
     Actor *this = marker_getActor(marker);
 
     if (levelSpecificFlags_get(LEVEL_FLAG_2_TTC_UNKNOWN)) {

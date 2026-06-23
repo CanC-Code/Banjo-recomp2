@@ -1,7 +1,8 @@
-#include <os_internal.h>
-#include <rcp.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
 #include "controller.h"
 #include "siint.h"
+#include <n64_types.h>
 
 static void __osPackRamReadData(int channel, u16 address);
 s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer)

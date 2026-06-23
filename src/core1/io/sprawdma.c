@@ -1,6 +1,7 @@
-#include <os_internal.h>
-#include <rcp.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
 #include "osint.h"
+#include <n64_types.h>
 
 s32 __osSpRawStartDma(s32 direction, u32 devAddr, void *dramAddr, u32 size)
 {

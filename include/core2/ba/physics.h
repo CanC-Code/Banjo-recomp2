@@ -1,8 +1,18 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __BA_PHYSICS_H__
 #define __BA_PHYSICS_H__
 
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 typedef enum ba_physics_type_e{
     BA_PHYSICS_NONE,
     BA_PHYSICS_UNK1,
@@ -50,4 +60,9 @@ void baphysics_set_gravity(f32);
 void baphysics_set_terminal_velocity(f32);
 int  baphysics_is_slower_than(f32);
 int  baphysics_goto_done(void);
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

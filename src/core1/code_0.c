@@ -27,7 +27,7 @@ u64 sDebugVar_8027A540; // never used
 u8 sMainThreadStack[MAIN_THREAD_STACK_SIZE]; // The real size of the stack is unclear yet, maybe there are some out-optimized debug variables below the stack
 OSThread sMainThread;
 s32 gBootMap;
-static bool sDisableInput;
+static n64_bool sDisableInput;
 static u64 sDebugVar_8027BEF0; // never used
 
 extern u8 core2_TEXT_START[];

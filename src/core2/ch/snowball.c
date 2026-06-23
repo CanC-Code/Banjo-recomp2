@@ -57,7 +57,7 @@ void __chSnowball_spawnPieces(f32 position[3]) {
     particleEmitter_emitN(pCtrl, 8);
 }
 
-void __chSnowball_collisionCallback(Actor *this, bool water_collision) {
+void __chSnowball_collisionCallback(Actor *this, n64_bool water_collision) {
     static f32 D_803687A4[4] = {0.2f, 0.3f, 1.0f, 1.2f};
     if (water_collision) {
         D_8037E640[0] = this->position[0];

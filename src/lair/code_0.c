@@ -1035,9 +1035,9 @@ void func_80387730(Actor *this) {
 Actor *func_80387DA8(ActorMarker *marker, Gfx **gfx, Mtx **mtx, Vtx **vtx)
 {
     // TODO: Think of a better way of doing this, similar to the SM64 one
-    #define NUM_NOTE_DOORS (12)
-    #define noteDoorIdx    actorTypeSpecificField
-    #define opacityTimer   unk1C[1]
+#define NUM_NOTE_DOORS (12)
+#define noteDoorIdx    actorTypeSpecificField
+#define opacityTimer   unk1C[1]
 
     Actor *actor;
     void  *var1;

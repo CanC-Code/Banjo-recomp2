@@ -1,5 +1,6 @@
 #ifndef __ASSERT_H__
 #define __ASSERT_H__
+#include <n64_types.h>
 #ifdef __cplusplus
 extern "C" {
 #endif

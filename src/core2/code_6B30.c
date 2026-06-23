@@ -8,6 +8,10 @@ extern Actor *actor_spawnWithYaw_f32(enum actor_e, f32[3], s32);
 /* .bss */
 u8 D_8037BFA0;
 
+
+/* Automated Forward Decls */
+static s32 __maybe(int arg0, s32 arg1);
+
 /* code */
 static s32 __maybe(int arg0, s32 arg1){
     if(arg0)

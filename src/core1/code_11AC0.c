@@ -4,7 +4,7 @@
 #include "variables.h"
 
 #include "music.h"
-#include "n_libaudio.h"
+#include "PR/n_libaudio.h"
 
 #include "version.h"
 
@@ -224,12 +224,12 @@ void musicInstruments_init(void){
     f32 tmpf1;
     
     size = soundfont2ctl_ROM_END - soundfont2ctl_ROM_START;
-    bnk_f = malloc(size);
+    bnk_f = n64_malloc(size);
     osWriteBackDCacheAll();
     osPiStartDma(func_802405D0(), 0, 0, (u32)soundfont2ctl_ROM_START, bnk_f, size, func_802405C4());
     osRecvMesg(func_802405C4(), 0, 1); //osRecvMesg
     D_80282104 = 0xAD;
-    D_802820E0 = (MusicTrack **) malloc(D_80282104 * sizeof(MusicTrack *));
+    D_802820E0 = (MusicTrack **) n64_malloc(D_80282104 * sizeof(MusicTrack *));
     for(i = 0; i < D_80282104; i++){
         D_802820E0[i] = NULL;
     }

@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __BANJO_KAZOOIE_VERSION_H__
 #define __BANJO_KAZOOIE_VERSION_H__
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 //These values of `VERSION` match the values defined via the Makefile
 #define VERSION_USA_1_0 0
 #define VERSION_PAL     1
@@ -48,3 +59,8 @@
 #endif
 
 #endif // __BANJO_KAZOOIE_VERSION_H__
+
+
+#ifdef __cplusplus
+}
+#endif

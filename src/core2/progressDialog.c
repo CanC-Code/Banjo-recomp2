@@ -61,6 +61,10 @@ MapProgressFlagToDialogID gVolatileFlagDialogMap[] = {
     { -1, -1 }
 };
 
+
+/* Automated Forward Decls */
+static s32 __findIndex(MapProgressFlagToDialogID *map, s32 key);
+
 static s32 __findIndex(MapProgressFlagToDialogID *map, s32 key) {
     s32 i = 0;
 
@@ -75,7 +79,7 @@ static s32 __findIndex(MapProgressFlagToDialogID *map, s32 key) {
 }
 
 /* Checks for a specific file progress flag and triggers a dialog only if the progress flag was not set and sets the progress flag */
-bool showProgressFlagDialog(enum file_progress_e progressFlag, s32 dialogMask) {
+n64_bool showProgressFlagDialog(enum file_progress_e progressFlag, s32 dialogMask) {
     s32 index;
 
     if (fileProgressFlag_get(progressFlag) != 0) {

@@ -1,4 +1,5 @@
 #include <ultra64.h>
+#include "bka_safe_base.h"
 #include "functions.h"
 #include "variables.h"
 
@@ -36,10 +37,10 @@ int func_8038AAB0(void){return 0;}
 //         D_8038BFC8->unk10 = (s32) D_8038BD40;
 //         D_8038BFC8->unk20 = (s32) D_8038BD44;
 //         D_8038BFC8->unk30 = (s32) D_8038BD48;
-//         func_8031A5E4(&D_8038BD30, &D_8038BD34, (void *)0x8038BFC8, 0xA, &D_8038B490);
+//         func_8031A5E4(&D_8038BD30, &D_8038BD34, (void *)BKA_TRANSLATE_ADDR(0x8038BFC8), 0xA, &D_8038B490);
 //         break;
 //     case 3:
-//         temp_v0 = *(u8 *)0x8038BFC2;
+//         temp_v0 = *(u8 *)BKA_TRANSLATE_ADDR(0x8038BFC2);
 //         if (temp_v0 != 0) {
 //             func_8031B9A4(temp_v0 - 1, 0x80390000);
 //         }

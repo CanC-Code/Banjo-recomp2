@@ -1,6 +1,7 @@
 #include "functions.h"
 
 #include "core2/ba/carry.h"
+#include <n64_types.h>
 
 
 void bacarry_set_offsets(f32 arg0, f32 arg1);

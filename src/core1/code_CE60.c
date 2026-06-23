@@ -27,7 +27,7 @@ static BoundingBox sBoundingBoxes[] = {
 };
 
 static s32 sUnusedCounter; // is only incremented and decremented, but not used
-static bool D_802806F4;
+static n64_bool D_802806F4;
 static s32 sPlayerPosition[4];
 static enum comusic_e sTrackId[4];
 
@@ -39,7 +39,7 @@ void core1_ce60_setChanMaskWithValue(s32 chan_mask, f32 value) {
     func_80250530(0, chan_mask, value);
 }
 
-bool core1_ce60_isPlayerInRange(s32 x, s32 z, s32 distance) {
+n64_bool core1_ce60_isPlayerInRange(s32 x, s32 z, s32 distance) {
     return (x - sPlayerPosition[0]) * (x - sPlayerPosition[0]) + (z - sPlayerPosition[2]) * (z - sPlayerPosition[2]) < distance * distance; 
 }
 
@@ -47,7 +47,7 @@ f32 core1_ce60_getPlayerDistance(f32 x, f32 z) {
     return gu_sqrtf((x - sPlayerPosition[0]) * (x - sPlayerPosition[0]) + (z - sPlayerPosition[2]) * (z - sPlayerPosition[2]));
 }
 
-bool core1_ce60_isPlayerInsideBoundingBox(s32 box_idx) {
+n64_bool core1_ce60_isPlayerInsideBoundingBox(s32 box_idx) {
     return ml_vec3w_inside_box_w(sPlayerPosition,
         sBoundingBoxes[box_idx].x_min, sBoundingBoxes[box_idx].y_min, sBoundingBoxes[box_idx].z_min,
         sBoundingBoxes[box_idx].x_max, sBoundingBoxes[box_idx].y_max, sBoundingBoxes[box_idx].z_max
@@ -150,7 +150,7 @@ void core1_ce60_func_8024AAB0(void) {
     }
 }
 
-void core1_ce60_func_8024ADF0(bool arg0) {
+void core1_ce60_func_8024ADF0(n64_bool arg0) {
     core1_ce60_func_8024AAB0();
 
     if (arg0)
@@ -609,7 +609,7 @@ void core1_ce60_func_8024AF48(void) {
     }
 }
 
-void core1_ce60_incOrDecCounter(bool increment) {
+void core1_ce60_incOrDecCounter(n64_bool increment) {
     if (increment) {
         sUnusedCounter++;
     }

@@ -20,6 +20,13 @@ struct {
     Lighting **capacity_ptr; // copy of end_ptr
 } sLightingVectorList;
 
+
+/* Automated Forward Decls */
+static s32 __lighting_create();
+static void __lighting_setPosition(s32 index , f32 *position);
+static void __lighting_setFadeRadii(s32 index , f32 *fade_radii);
+static void __lighting_setRgb(s32 index , s32 *rgb);
+
 //.code
 static void __lighting_init(f32 position[3], f32 rotation[3], f32 scale, f32 arg3[3], f32 global_norm) {
     Lighting * start_ptr;

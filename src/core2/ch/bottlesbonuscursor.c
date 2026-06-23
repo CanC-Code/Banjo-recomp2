@@ -3,7 +3,7 @@
 #include "functions.h"
 #include "variables.h"
 
-#include "time.h"
+/* Redirected */ #include <n64_time.h>
 
 #ifndef ABS
 #define	ABS(d)		((d) >= 0) ? (d) : -(d)
@@ -79,6 +79,10 @@ f32 D_8037E5F0;
 f32 D_8037E5F4;
 f32 D_8037E5F8[3];
 
+
+/* Automated Forward Decls */
+static f32 __XY_dist_square(f32 arg0[2], f32 arg1[2]);
+
 /* .code */
 void chBottlesBonusCursor_func_802DF460(s32 indx, ActorMarker *caller, f32 arg2[3]) {
     f32 sp1C[3];
@@ -116,7 +120,7 @@ s32 chBottlesBonusCursor_func_802DF50C(void) {
     return -1;
 }
 
-bool chBottlesBonusCursor_checkPuzzleCompletion(void) {
+n64_bool chBottlesBonusCursor_checkPuzzleCompletion(void) {
     s32 i;
 
     D_8037E5C0.is_completed = TRUE;
@@ -450,7 +454,7 @@ s32 chBottlesBonusCursor_func_802E06B4(void){
     return D_8037E5B8;
 }
 
-bool chBottlesBonusCursor_isPuzzleCompleted(void){
+n64_bool chBottlesBonusCursor_isPuzzleCompleted(void){
     return D_8037E5C0.is_completed;
 }
 

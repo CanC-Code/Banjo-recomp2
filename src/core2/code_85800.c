@@ -2,7 +2,7 @@
 #include "core1/core1.h"
 #include "functions.h"
 #include "variables.h"
-#include "n_libaudio.h"
+#include "PR/n_libaudio.h"
 
 extern void func_80335394(N_AL_Struct81s *, f32);
 extern f32 sfx_randf2(f32, f32);
@@ -395,7 +395,7 @@ void func_8030D310(u8 indx){
     }
 }
 
-bool func_8030D5CC(u8 indx){
+n64_bool func_8030D5CC(u8 indx){
     SfxSource * sp1C = sfxsource_at(indx);
     if(!func_8030C814(sp1C, 3))
         return 0;
@@ -771,7 +771,7 @@ s32 func_8030E244(u8 indx){
     }
 }
 
-bool func_8030E280(SfxSource *arg0){
+n64_bool func_8030E280(SfxSource *arg0){
     int temp_v1;
     if(sfxsource_isFlagSet(arg0, SFX_SRC_FLAG_1_UNKOWN)){
         temp_v1 = func_8030CCF0(arg0, arg0->sample_rate);

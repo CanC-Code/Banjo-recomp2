@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef STDARG_H
 #define STDARG_H
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 // When not building with IDO, use the builtin vaarg macros for portability.
 #ifndef __sgi
 #define va_list __builtin_va_list
@@ -39,4 +50,9 @@ typedef char *va_list;
 #define va_end(__list)
 
 #endif
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

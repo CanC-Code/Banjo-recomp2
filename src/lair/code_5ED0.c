@@ -380,6 +380,10 @@ extern struct {
     {MAP_1_SM_SPIRAL_MOUNTAIN,       0x13}
 };
 
+
+/* Automated Forward Decls */
+static s32 __code5ED0_getQuizQuestionTime(s32 questionType, s32 a1);
+
 /* .code */
 // FF: get total number of questions per type
 s16 lair_func_8038C2C0(enum ff_question_type_e type)
@@ -403,7 +407,7 @@ void lair_func_8038C338(enum ff_question_type_e type, s32 questionIdx, int val)
 }
 
 // FF: get isAsked flag for type and question
-bool lair_func_8038C370(enum ff_question_type_e type, s32 questionIdx)
+n64_bool lair_func_8038C370(enum ff_question_type_e type, s32 questionIdx)
 {
     return quizQuestionAskedBitfield_get(FF_QuestionTypeInfoArr[type].startingFlagIdx + questionIdx);
 }
@@ -540,10 +544,10 @@ void lair_func_8038CC9C(void)
 
 void func_8038CCEC(void)
 {
-    free(D_8037DCB8->unk48);
+    n64_free(D_8037DCB8->unk48);
     D_8037DCB8->unk48 = NULL;
 
-    free(D_8037DCB8);
+    n64_free(D_8037DCB8);
     D_8037DCB8 = NULL;
 
     gcquiz_free();
@@ -589,7 +593,7 @@ void func_8038CE28(void)
     s32 i;
 
     gcquiz_init();
-    D_8037DCB8 = malloc(sizeof(struct FF_StorageStruct));
+    D_8037DCB8 = n64_malloc(sizeof(struct FF_StorageStruct));
     quizQuestionAskedBitfield_init();
 
     // dump currently unlocked moves to storage
@@ -607,7 +611,7 @@ void func_8038CE28(void)
     D_8037DCB8->unk14     = 1.f;
     D_8037DCB8->UNK_18     = 0;
     D_8037DCB8->currFfMode = 1;
-    D_8037DCB8->unk48     = malloc(0x90);
+    D_8037DCB8->unk48     = n64_malloc(0x90);
 
     gzquiz_initGruntyQuestions();
 }

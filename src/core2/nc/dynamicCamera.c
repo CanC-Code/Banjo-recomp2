@@ -4,7 +4,7 @@
 #include "variables.h"
 
 
-extern bool func_80245314(f32[3], f32[3], f32, f32, u32);
+extern n64_bool func_80245314(f32[3], f32[3], f32, f32, u32);
 extern int func_80244D94(f32[3], f32[3], f32[3], u32, f32);
 extern int func_8024575C(f32[3], f32[3], f32, f32[3], s32, u32);
 extern f32 func_8028E82C(void);
@@ -65,7 +65,7 @@ u8 D_8037D9F6;
 u8 dynamicCameraInFirstPerson;
 
 /* .code */
-bool func_802BC640(f32 arg0[3], f32 arg1[3], f32 arg2, s32 arg3) {
+n64_bool func_802BC640(f32 arg0[3], f32 arg1[3], f32 arg2, s32 arg3) {
     f32 sp9C[3];
     Struct_core2_356B0_0 *phi_s4;
     f32 *phi_s0;
@@ -253,7 +253,7 @@ f32 func_802BCD60(void) {
 }
 
 
-bool func_802BCE0C(f32 arg0[3], f32 arg1[3]) {
+n64_bool func_802BCE0C(f32 arg0[3], f32 arg1[3]) {
     f32 sp2C[3];
     f32 sp20[3];
 
@@ -502,7 +502,7 @@ void ncDynamicCamera_setState(s32 state){
     dynamicCameraState = state;
 }
 
-void ncDynamicCamera_setUpdateEnabled(bool arg0){
+void ncDynamicCamera_setUpdateEnabled(n64_bool arg0){
     cameraUpdateEnabled = arg0;
 }
 

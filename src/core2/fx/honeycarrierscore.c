@@ -3,7 +3,7 @@
 #include "functions.h"
 #include "variables.h"
 
-#include "time.h"
+/* Redirected */ #include <n64_time.h>
 
 #define _76D90_MAX(s,t) ((s < t)? t : s)
 #define _76D90_MIN(s,t) ((s > t)? t : s)

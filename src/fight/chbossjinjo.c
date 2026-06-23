@@ -148,7 +148,7 @@ void chBossJinjo_update(Actor *this){
     f32 velocity_player[3];
     f32 position_finalboss[3];
     f32 yaw_delta;
-    bool inState3;
+    n64_bool inState3;
     s32 pad;
     s16 new_yaw;
     s16 old_yaw;

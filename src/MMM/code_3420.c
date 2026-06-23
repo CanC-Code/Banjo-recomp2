@@ -313,7 +313,7 @@ void func_80389D9C(s32 key_id){
 void code3420_handleOrganGame(s32 arg0, s32 arg1) {
     Struct_MMM_3420_1 *iPtr;
     f32 key_position[3];
-    bool is_black_key;
+    n64_bool is_black_key;
 
     Me.unk8 = D_8038BF20;
     func_80250170(0, 0x6A, 0);

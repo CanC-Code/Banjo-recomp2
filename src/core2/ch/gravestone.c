@@ -55,7 +55,7 @@ Actor *func_8035ECA0(ActorMarker *marker, Gfx **gfx, Mtx **mtx, Vtx **vtx) {
     return this;
 }
 
-bool func_8035ED60(Actor *this) {
+n64_bool func_8035ED60(Actor *this) {
     f32 temp_f0;
     f32 temp_f2;
 

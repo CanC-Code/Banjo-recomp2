@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef BANJO_KAZOOIE_CORE1_VIEWPORT_H
 #define BANJO_KAZOOIE_CORE1_VIEWPORT_H
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 void viewport_moveAlongZAxis(f32 offset);
 f32 viewport_getDistance(f32 arg0[3]);
 void viewport_getLookVector(f32 arg0[3]);
@@ -50,4 +61,9 @@ void viewport_backupState(void);
 void viewport_restoreState(void);
 void viewport_adjustPointDistance(f32 pos[3], f32 distance);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

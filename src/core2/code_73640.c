@@ -2,7 +2,7 @@
 #include "functions.h"
 #include "variables.h"
 
-#include "time.h"
+/* Redirected */ #include <n64_time.h>
 
 #define _73640_MAX(s,t) ((s < t)? t: s)
 #define _73640_MIN(s,t) ((s > t)? t: s)
@@ -219,7 +219,7 @@ s32 func_802FAD9C(enum item_e item_id){
     return (func_802FB0D4(D_803692F8[item_id].unk14) == 2);
 }
 
-bool func_802FADD4(enum item_e item_id){
+n64_bool func_802FADD4(enum item_e item_id){
     s32 v0 = func_802FB0D4(D_803692F8[item_id].unk14);
     return (v0 == 2)||(v0 == 1);
 }

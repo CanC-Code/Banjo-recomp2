@@ -1,3 +1,14 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
 enum ability_used {
     ABILITY_USED_JUMP = 0x0,
     ABILITY_USED_FLAP = 0x1,
@@ -13,3 +24,8 @@ enum ability_used {
     ABILITY_USED_CLAW = 0xB,
     ABILITY_USED_TWIRL = 0xC
 };
+
+
+#ifdef __cplusplus
+}
+#endif

@@ -11,7 +11,7 @@ s32 usedAbilities;
 
 void ability_use(enum ability_used ability) {
     s32 dialog_id;
-    bool play_ding;
+    n64_bool play_ding;
 
     dialog_id = 0;
     play_ding = TRUE;
@@ -111,7 +111,7 @@ void ability_clearAll(void) {
     usedAbilities = 0;
 }
 
-void ability_setLearned(enum ability_e ability, bool hasLearned) {
+void ability_setLearned(enum ability_e ability, n64_bool hasLearned) {
     if (hasLearned) {
         learnedAbilities |= (1 << ability);
     } else {

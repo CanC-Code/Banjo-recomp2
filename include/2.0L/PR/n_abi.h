@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*====================================================================
  *
  * Copyright 1993, Silicon Graphics, Inc.
@@ -19,7 +23,14 @@
 
 #ifndef __N_ABI__
 #define	__N_ABI__
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /*
  * BEGIN C-specific section: (typedef's)
  */
@@ -120,3 +131,8 @@
 
 
 
+
+
+#ifdef __cplusplus
+}
+#endif

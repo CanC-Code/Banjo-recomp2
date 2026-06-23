@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-#include <PR/ultratypes.h>
+/* Redirected */ #include <n64_types.h>
 
 /*===========================================================================*
  *	Macro
@@ -375,8 +375,8 @@ extern	u64	gspS2DEX2_xbusDataStart[], gspS2DEX2_xbusDataEnd[];
 extern	void	guS2DInitBg(uObjBg *);
 
 #ifdef	F3DEX_GBI_2
-# define guS2DEmuBgRect1Cyc	guS2D2EmuBgRect1Cyc	/*Wrapper*/
-# define guS2DEmuSetScissor	guS2D2EmuSetScissor	/*Wrapper*/
+#define guS2DEmuBgRect1Cyc	guS2D2EmuBgRect1Cyc	/*Wrapper*/
+#define guS2DEmuSetScissor	guS2D2EmuSetScissor	/*Wrapper*/
   extern void	guS2D2EmuSetScissor(u32, u32, u32, u32, u8);
   extern void	guS2D2EmuBgRect1Cyc(Gfx **, uObjBg *);
 #else

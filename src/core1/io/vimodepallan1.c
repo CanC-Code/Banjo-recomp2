@@ -1,6 +1,7 @@
-#include <os.h>
-#include <rcp.h>
+#include <PR/os.h>
+#include <PR/rcp.h>
 #include "viint.h"
+#include <n64_types.h>
 
 OSViMode osViModePalLan1 = {
     OS_VI_PAL_LAN1,  // type

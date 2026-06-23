@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _MBI_H_
 #define	_MBI_H_
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /**************************************************************************
  *									  *
  *		 Copyright (C) 1994, Silicon Graphics, Inc.		  *
@@ -60,16 +71,28 @@
  *
  **************************************************************************/
 
+#ifdef __cplusplus
+}
+#endif
 #include <PR/gbi.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /**************************************************************************
  *
  * Audio Binary Interface
  *
  **************************************************************************/
 
+#ifdef __cplusplus
+}
+#endif
 #include <PR/abi.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /**************************************************************************
  *
  * Task list
@@ -98,3 +121,8 @@
 #endif
 
 #endif /* !_MBI_H_ */
+
+
+#ifdef __cplusplus
+}
+#endif

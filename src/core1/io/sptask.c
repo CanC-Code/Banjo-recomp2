@@ -6,7 +6,11 @@
 		ptr = (void *)osVirtualToPhysical(ptr); \
 	}
 	
-OSTask tmp_task; // TODO bss (static)
+OSTask tmp_task; 
+/* Automated Forward Decls */
+static OSTask *_VirtualToPhysicalTask(OSTask *intp);
+
+// TODO bss (static)
 
 static OSTask *_VirtualToPhysicalTask(OSTask *intp)
 {

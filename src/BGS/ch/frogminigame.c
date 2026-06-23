@@ -19,6 +19,11 @@ ActorInfo gChFrogMinigame = {MARKER_C4_YELLOW_FLIBBIT_CTRL, ACTOR_136_YELLOW_FLI
 /* .bss */
 u8 D_80391240[4];
 
+
+/* Automated Forward Decls */
+static void __chFrogMinigame_spawnJiggy(void);
+static void __chFrogMinigame_textCallback(ActorMarker *marker, enum asset_e text_id, s32 arg2);
+
 /* .code */
 static void __chFrogMinigame_spawnJiggy(void){
     static f32 D_80390AD4[3] = {1985.0f, 200.0f, -1386.0f};

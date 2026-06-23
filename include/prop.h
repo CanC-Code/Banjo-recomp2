@@ -1,6 +1,13 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef PROP_H
 #define PROP_H
 
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
 
 #include "structs.h"
@@ -8,6 +15,9 @@
 #include "core2/modelRender.h"
 #include "core2/skeletalanim.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 typedef struct sprite_prop_s{
     u32 spriteId:12;
     u32 unk0_19:1;
@@ -438,4 +448,9 @@ typedef struct {
     Actor *actor_save_state[];
 }ActorListSaveState;
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

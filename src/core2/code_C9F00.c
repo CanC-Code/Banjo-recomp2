@@ -1,4 +1,5 @@
 #include <ultra64.h>
+#include "bka_safe_base.h"
 #include "functions.h"
 #include "variables.h"
 
@@ -6,7 +7,7 @@ extern BKCollisionTri *func_802E805C(BKCollisionList *arg0, BKVertexList *vtxLis
 extern BKCollisionTri *func_802E9118(BKCollisionList *arg0, BKVertexList *vtxList, f32 arg2[3], f32 arg3[3], f32 arg4, f32 arg5[3], f32 arg6[3], f32 arg7, f32 arg8[3], s32 arg9, s32 arg10);
 extern BKCollisionTri *func_802E9DD8(BKCollisionList *arg0, BKVertexList *vtxList, f32 arg2[3], f32 arg3[3], f32 arg4, f32 arg5[3], f32 arg6, f32 arg7[3], s32 arg8);
 extern s32 func_802EA760(BKModelUnk14List *, s32, f32[3], f32[3], f32, s32, f32*, f32*);
-extern bool func_80309DBC(f32[3], f32[3], f32, f32 sp54[3], s32, s32);
+extern n64_bool func_80309DBC(f32[3], f32[3], f32, f32 sp54[3], s32, s32);
 extern BKCollisionList *model_getCollisionList(BKModelBin *);
 extern BKModelUnk14List *func_8033A12C(BKModelBin *);
 void func_80351954(Struct68s *arg);
@@ -179,7 +180,7 @@ Struct68s * func_8035126C(f32 position[3], f32 arg1[3], f32 arg2, s32 arg3, enum
     if (D_803861B0.unk8 == D_803861B0.unkC) {
         sp2C = D_803861B0.unk8 - D_803861B0.unk4;
         sp1C = sp2C * 2;
-        D_803861B0.unk4 = (Struct68s *) realloc(D_803861B0.unk4, sp1C * sizeof(Struct68s));
+        D_803861B0.unk4 = (Struct68s *) n64_realloc(D_803861B0.unk4, sp1C * sizeof(Struct68s));
         D_803861B0.unk8 = D_803861B0.unk4 + sp2C;
         D_803861B0.unkC = D_803861B0.unk4 + sp1C;
     }
@@ -233,7 +234,7 @@ void func_80351538(Struct68s *arg0){
     }
 }
 
-bool func_803515EC(NodeProp *arg0) {
+n64_bool func_803515EC(NodeProp *arg0) {
     Struct_Core2_C9F00_1 *phi_s0;
     s32 sp48[3];
     s32 sp44;
@@ -262,16 +263,16 @@ bool func_803515EC(NodeProp *arg0) {
     return TRUE;
 }
 
-bool func_80351700(Prop * arg0){
-    if (((*(u16*)((s32)arg0 + 0xA) << 0x1E) >> 0x1F)) {
+n64_bool func_80351700(Prop * arg0){
+    if (((*(u16*)BKA_TRANSLATE_ADDR(((s32)arg0 + 0xA)) << 0x1E) >> 0x1F)) {
         return TRUE;
     }
     return TRUE;
 }
 
-bool func_80351724(void * arg0){
+n64_bool func_80351724(void * arg0){
     ActorProp *a_prop;
-    if (((*(u16*)((s32)arg0 + 0xA) << 0x1E) >> 0x1F) && ((*(u16*)((s32)arg0 + 0xA) << 0x1A) >> 0x1F)) {
+    if (((*(u16*)BKA_TRANSLATE_ADDR(((s32)arg0 + 0xA)) << 0x1E) >> 0x1F) && ((*(u16*)BKA_TRANSLATE_ADDR(((s32)arg0 + 0xA)) << 0x1A) >> 0x1F)) {
         a_prop = (ActorProp *)arg0;
         a_prop->isMirrored = FALSE;
         a_prop->isNotFeatherEggOrNote = TRUE;
@@ -324,11 +325,11 @@ s32 func_80351838(f32 position[3], s32 key_flag, s32 arg2) {
 }
 
 
-bool func_803518C0(Struct68s *arg0){
+n64_bool func_803518C0(Struct68s *arg0){
     return arg0 == D_80386180.unk0;
 }
 
-bool func_803518D4(Struct68s *arg0){
+n64_bool func_803518D4(Struct68s *arg0){
     return arg0 == D_80386180.unk2C;
 }
 
@@ -338,7 +339,7 @@ void func_803518E8(void){
     for(phi_s0 = D_803861B0.unk4; phi_s0 < D_803861B0.unk8; phi_s0++){
         func_803514F4(phi_s0);
     }
-    free(D_803861B0.unk4);
+    n64_free(D_803861B0.unk4);
 }
 
 void func_80351954(Struct68s *arg0){
@@ -351,7 +352,7 @@ void func_80351954(Struct68s *arg0){
 
 void func_80351998(void) {
 
-    D_803861B0.unk4 = (Struct68s*)malloc(2*sizeof(Struct68s));
+    D_803861B0.unk4 = (Struct68s*)n64_malloc(2*sizeof(Struct68s));
     D_803861B0.unk8 = D_803861B0.unk4;
     D_803861B0.unkC = D_803861B0.unk4 + 2;
 

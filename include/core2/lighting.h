@@ -1,6 +1,10 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _LIGHTING_H_
 #define _LIGHTING_H_
-#include <ultratypes.h>
+/* Redirected */ #include <n64_types.h>
 
 typedef struct { 
     f32 position[3];
@@ -16,4 +20,9 @@ typedef struct {
 
 void lighting_free();
 void lighting_init();
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

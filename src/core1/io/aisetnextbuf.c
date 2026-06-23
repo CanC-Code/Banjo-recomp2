@@ -1,6 +1,7 @@
-#include <os_internal.h>
-#include <rcp.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
 #include "osint.h"
+#include <n64_types.h>
 
 s32 osAiSetNextBuffer(void *bufPtr, u32 size)
 {

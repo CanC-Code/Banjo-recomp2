@@ -1,6 +1,7 @@
-#include <os_internal.h>
+#include <PR/os_internal.h>
 #include "controller.h"
 #include "siint.h"
+#include <n64_types.h>
 
 static void _MakeMotorData(int channel, u16 address, u8 *buffer, OSPifRam *mdata);
 // u32 __osMotorinitialized[MAXCONTROLLERS] = {0, 0, 0, 0};

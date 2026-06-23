@@ -1,4 +1,4 @@
-#include <ultratypes.h>
+/* Redirected */ #include <n64_types.h>
 
 //TODO Implement CRC calculation in Makefile(?)
 u32 D_80390B20 = 0x00282B61; //BGS.code CRC1

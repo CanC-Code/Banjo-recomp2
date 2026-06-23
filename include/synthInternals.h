@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*====================================================================
  * audioInternals.h
  *
@@ -22,9 +26,16 @@
 
 #ifndef __audioInternals__
 #define __audioInternals__
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
-#include <libaudio.h>
+#include <PR/libaudio.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /*
  * filter message ids
  */
@@ -338,3 +349,8 @@ ALMicroTime     _samplesToTime(ALSynth *synth, s32 samples);
 
 #endif
 
+
+
+#ifdef __cplusplus
+}
+#endif

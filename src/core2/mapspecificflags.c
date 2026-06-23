@@ -74,16 +74,16 @@ void mapSpecificFlags_setAll(u32 arg0){
 // Unclear, why the bitfield functions are in this file, while they are only used in gccube.c?
 
 struct bitfield_s *bitfield_new(s32 count) {
-    struct bitfield_s *bitfield = (struct bitfield_s*) malloc(sizeof(struct bitfield_s) + ((count + 31) >> 5) * sizeof(s32));
+    struct bitfield_s *bitfield = (struct bitfield_s*) n64_malloc(sizeof(struct bitfield_s) + ((count + 31) >> 5) * sizeof(s32));
     bitfield->count = count;
     return bitfield;
 }
 
 void bitfield_free(struct bitfield_s *this) {
-    free(this);
+    n64_free(this);
 }
 
-void bitfield_setBit(struct bitfield_s *this, s32 index, bool value) {
+void bitfield_setBit(struct bitfield_s *this, s32 index, n64_bool value) {
     if (value) {
         this->data[index >> 5] |= 1 << (index & 0x1F);
     }
@@ -92,11 +92,11 @@ void bitfield_setBit(struct bitfield_s *this, s32 index, bool value) {
     }
 }
 
-bool bitfield_isBitSet(struct bitfield_s *this, s32 index) {
+n64_bool bitfield_isBitSet(struct bitfield_s *this, s32 index) {
     return BOOL(this->data[index >> 5] & (1 << (index & 0x1F)));
 }
 
-void bitfield_setAll(struct bitfield_s *this, bool value) {
+void bitfield_setAll(struct bitfield_s *this, n64_bool value) {
     s32 i;
 
     for (i = 0; i < this->count; i++) {

@@ -1,6 +1,7 @@
-#include "time.h"
+/* Redirected */ #include <n64_time.h>
 
 #include "core1/vimgr.h"
+#include <n64_types.h>
 
 /*.data*/
 static f32 s_timeMultiplier = 1.0f;

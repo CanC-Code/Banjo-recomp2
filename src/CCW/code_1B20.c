@@ -92,7 +92,7 @@ void func_80387F64(Actor *this, s32 next_state){
     this->state = next_state;
 }
 
-bool func_80388260(ActorMarker *marker, s32 arg1){
+n64_bool func_80388260(ActorMarker *marker, s32 arg1){
     return marker->unk40_31 != 1;
 }
 
@@ -135,7 +135,7 @@ void func_803883F4() {
     }
 }
 
-bool func_80388438() {
+n64_bool func_80388438() {
     Actor* actor = actorArray_findActorFromActorId(0x29D);
     if (actor && actor->state == 2) {
         return TRUE;

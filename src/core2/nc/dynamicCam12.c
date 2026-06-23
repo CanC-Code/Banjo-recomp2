@@ -35,7 +35,7 @@ struct {
 }D_8037DBE0;
 
 /* .code */
-bool __is_flying_in_FP(void){
+n64_bool __is_flying_in_FP(void){
     return (gsworld_get_map() == MAP_27_FP_FREEZEEZY_PEAK) && (player_movementGroup() == BSGROUP_A_FLYING);
 }
 
@@ -274,6 +274,6 @@ void func_802C16CC(s32 arg0) {
 }
 
 
-bool func_802C189C(void){
+n64_bool func_802C189C(void){
     return D_8037DBE0.unk28 < 1;
 }

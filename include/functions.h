@@ -1,11 +1,24 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
 
 #include "enums.h"
 #include "structs.h"
-#include "string.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
+/* Redirected */ #include <n64_string.h>
+#ifdef __cplusplus
+}
+#endif
 #include "rand.h"
 
 #include "prop.h"
@@ -13,7 +26,13 @@
 #include "core1/core1.h"
 #include "core2/core2.h"
 
-#include "math.h" // ToDo: sort out actual dependencies
+#ifdef __cplusplus
+extern "C" {
+#endif
+/* Redirected */ #include <n64_math.h> // ToDo: sort out actual dependencies
+#ifdef __cplusplus
+}
+#endif
 #include "bs_funcs.h"
 
 #include "bsint.h"
@@ -23,6 +42,9 @@
 
 #include "core2/ba/timer.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 extern f32 fabsf(f32);
 #pragma intrinsic (fabsf)
 
@@ -41,13 +63,13 @@ void func_80241304(Mtx *m, float x, float y, float z);
 
 void _guMtxIdentF_80245D44(float mf[4][4]); //static should NOT be here
 
-void * malloc(s32 size);
-void free(void*);
-void *realloc(void* ptr, s32 size);
+void * n64_malloc(s32 size);
+void n64_free(void*);
+void *n64_realloc(void* ptr, s32 size);
 
 float gu_sqrtf(float val);
 
-bool  baanim_isAt(f32);
+n64_bool  baanim_isAt(f32);
 void baanim_playForDuration_once(enum asset_e anim_id, f32 duration);
 void baanim_setEnd(f32);
 
@@ -122,7 +144,7 @@ Actor *func_802C8C04(s32 position[3], s32 yaw, ActorInfo* actorInfo, u32 flags);
 
 Actor *marker_getActor(ActorMarker *);
 
-#include "time.h"
+/* Redirected */ #include <n64_time.h>
 void jiggy_spawn(enum jiggy_e jiggy_id, f32 pos[3]);
 
 struct3s *func_802F8264(s32 arg0);
@@ -230,7 +252,7 @@ void baanim_playForDuration_onceSmooth(enum asset_e, f32);
 void baanim_setEndAndDuration(f32, f32);
 int  func_8028AED4(f32*, f32);
 void func_8028E668(f32[3], f32, f32, f32);
-bool player_setCarryObjectPoseInCylinder(f32[3], f32, f32, enum actor_e actor_id, Actor**);
+n64_bool player_setCarryObjectPoseInCylinder(f32[3], f32, f32, enum actor_e actor_id, Actor**);
 void player_setThrowTargetPosition(f32[3]);
 
 f32  func_802915D8(void);
@@ -279,7 +301,7 @@ void baanim_scaleDuration(f32);
 f32  bsStoredState_getLongLegTimer(void);
 f32  bsStoredState_getTurboTimer(void);
 void bsStoredState_setLongLegTimer(f32);
-void bsStoredState_setTrot(bool);
+void bsStoredState_setTrot(n64_bool);
 void bsStoredState_setTurboTimer(f32);
 void func_8029AD28(f32, s32);
 f32  bastick_getY(void);
@@ -293,7 +315,7 @@ void func_8029C3E8(f32, f32);
 void func_8029CF48(s32, s32, f32);
 f32  func_8029DFC8(void);
 f32  func_8029DFD4(void);
-void func_8029E090(bool, f32);
+void func_8029E090(n64_bool, f32);
 void func_8029E0C4(f32);
 void func_8029E0D0(f32);
 void func_802BD8A4(f32, f32, f32);
@@ -374,7 +396,7 @@ void subaddie_set_state(Actor *, u32);
 ActorMarker *func_8032B16C(enum jiggy_e jiggy_id);
 int  subaddie_maybe_set_state(Actor *, s32, f32);
 void subaddie_set_state_with_direction(Actor * this, s32 myAnimId, f32 anim_start_position, s32 direction);
-bool subaddie_maybe_set_state_position_direction(Actor *, s32, f32, s32, f32 );
+n64_bool subaddie_maybe_set_state_position_direction(Actor *, s32, f32, s32, f32 );
 void func_80328CEC(Actor *, s32, s32, s32);
 void subaddie_turnToYaw(Actor *, f32);
 int  func_80329030(Actor *, s32);
@@ -505,8 +527,8 @@ extern s32 itemscore_noteScores_get(enum level_e lvl_id);
 extern void itemscore_timeScores_clear(void);
 
 extern void baflag_clearAll(void);
-extern bool baflag_isTrue(enum misc_flag_e arg0);
-extern bool baflag_isFalse(enum misc_flag_e arg0);
+extern n64_bool baflag_isTrue(enum misc_flag_e arg0);
+extern n64_bool baflag_isFalse(enum misc_flag_e arg0);
 extern void baflag_set(enum misc_flag_e arg0);
 extern void baflag_clear(enum misc_flag_e arg0);
 extern void baflag_toggle(enum misc_flag_e arg0);
@@ -515,4 +537,9 @@ extern void piMgr_read(void *vaddr, s32 devaddr, s32 size);
 
 s32 game_defrag(void);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

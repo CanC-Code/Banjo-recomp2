@@ -969,7 +969,7 @@ void baMarker_collisionOn(void){ //player_collisionOn
     playerMarker->collidable = TRUE;
 }
 
-bool baMarker_isCollidable(void){ //player_isCollidable
+n64_bool baMarker_isCollidable(void){ //player_isCollidable
     return BOOL(playerMarker->collidable);
 }
 

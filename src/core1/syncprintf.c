@@ -1,6 +1,7 @@
-#include <stdarg.h>
-#include <rmon.h>
-#include <os.h>
+/* Redirected */ #include <n64_stdarg.h>
+#include <PR/rmon.h>
+#include <PR/os.h>
+#include <n64_types.h>
 
 void osSyncPrintf(const char *fmt, ...)
 {

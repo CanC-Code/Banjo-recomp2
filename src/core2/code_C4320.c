@@ -73,7 +73,7 @@ s32 D_80386110;                   //current attract demo index
 Struct_core2_C4320_0 *D_80386114; //current attract demo ptr
 s32 D_80386118;
 s32 D_8038611C;
-bool D_80386120;
+n64_bool D_80386120;
 s32 D_80386124; //stored_gameFile_index
 f32 D_80386128;
 
@@ -281,14 +281,14 @@ s32 func_8034BAFC(void){
     return D_80386124;
 }
 
-void func_8034BB08(bool arg0) {
+void func_8034BB08(n64_bool arg0) {
     D_80386120 = arg0;
     func_802E412C(1, 3);
     func_802E40A8(MAP_8C_SM_BANJOS_HOUSE, 2);
     func_802E40C4(1);
 }
 
-bool func_8034BB48(void) {
+n64_bool func_8034BB48(void) {
     if (D_80386120 && gctransition_done()) {
         D_80386120 = FALSE;
         return TRUE;

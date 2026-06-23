@@ -18,7 +18,7 @@ extern void func_80344E18(u8, s32);
 extern void func_80344E3C(u8, f32[3]);
 extern void func_80344EE4(u8, f32, f32);
 extern void func_80354030(f32[3], f32);
-extern bool func_80344EC0(u8);
+extern n64_bool func_80344EC0(u8);
 extern ActorMarker *func_8033E840(void);
 extern ActorProp *func_80320EB0(ActorMarker *, f32, s32);
 
@@ -139,7 +139,7 @@ s32 func_803531C8(u8 projectile_indx, s32 arg1){
     return sp34;
 }
 
-bool fxegg_isCollidingWithPlayer(f32 arg0[3]){
+n64_bool fxegg_isCollidingWithPlayer(f32 arg0[3]){
     f32 sp2C[3];
     f32 sp20[3];
 

@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _YAW_H_
 #define _YAW_H_
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 enum yaw_state_e{
     YAW_STATE_0_NONE,
     YAW_STATE_1_DEFAULT,
@@ -20,4 +31,9 @@ f32 yaw_getIdeal(void);
 void yaw_setVelocityBounded(f32 arg0, f32 arg1);
 void yaw_setVelocityUnbounded(f32 arg0);
 void yaw_rotateTimed(f32 time_sec);
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

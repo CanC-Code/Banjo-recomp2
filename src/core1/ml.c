@@ -272,51 +272,51 @@ void func_80256740(f32 vec[3])
 
 void ml_vec3f_pitch_rotate_copy(f32 dst[3], f32 src[3], f32 pitch)
 {
-    f32 cos, sin;
+    f32 n64_cos, n64_sin;
     f32 val;
 
     pitch *= BAD_DTOR; // M_DTOR
 
-    cos = cosf(pitch);
-    sin = sinf(pitch);
+    n64_cos = cosf(pitch);
+    n64_sin = sinf(pitch);
 
     // weird temp needed for match
     dst[0] =  src[0];
-    val    = (src[1] * cos) - (src[2] * sin);
-    dst[2] = (src[1] * sin) + (src[2] * cos);
+    val    = (src[1] * n64_cos) - (src[2] * n64_sin);
+    dst[2] = (src[1] * n64_sin) + (src[2] * n64_cos);
     dst[1] = val;
 }
 
 void ml_vec3f_yaw_rotate_copy(f32 dst[3], f32 src[3], f32 yaw)
 {
-    f32 cos, sin;
+    f32 n64_cos, n64_sin;
     f32 val;
 
     yaw *= BAD_DTOR; // M_DTOR
 
-    cos = cosf(yaw);
-    sin = sinf(yaw);
+    n64_cos = cosf(yaw);
+    n64_sin = sinf(yaw);
 
     // weird temp needed for match
-    val    = (src[2] * sin) + (src[0] * cos);
+    val    = (src[2] * n64_sin) + (src[0] * n64_cos);
     dst[1] =  src[1];
-    dst[2] = (src[2] * cos) - (src[0] * sin);
+    dst[2] = (src[2] * n64_cos) - (src[0] * n64_sin);
     dst[0] = val;
 }
 
 void ml_vec3f_roll_rotate_copy(f32 dst[3], f32 src[3], f32 roll)
 {
-    f32 cos, sin;
+    f32 n64_cos, n64_sin;
     f32 val;
 
     roll *= BAD_DTOR; // M_DTOR
 
-    cos = cosf(roll);
-    sin = sinf(roll);
+    n64_cos = cosf(roll);
+    n64_sin = sinf(roll);
 
     // weird temp needed for match
-    val = (src[0] * cos) - (src[1] * sin);
-    dst[1] = (src[0] * sin) + (src[1] * cos);
+    val = (src[0] * n64_cos) - (src[1] * n64_sin);
+    dst[1] = (src[0] * n64_sin) + (src[1] * n64_cos);
     dst[2] = src[2];
     dst[0] = val;
 }
@@ -513,7 +513,7 @@ void ml_init(void)
     u16 i;
 
     // Allocate table
-    D_80276CB8 = (u16 *)malloc(10001 * sizeof(u16));
+    D_80276CB8 = (u16 *)n64_malloc(10001 * sizeof(u16));
 
     // Generate all entries in the table
     for (i = 0; i < 10001; i++)
@@ -529,7 +529,7 @@ void ml_init(void)
 //ml_free
 void ml_free(void)
 {
-    free(D_80276CB8);
+    n64_free(D_80276CB8);
     D_80276CB8 = NULL;
 }
 
@@ -572,7 +572,7 @@ void ml_defrag(void)
 
 //ml_timer_update
 //decrement a counter and returns True if timer reaches 0
-bool ml_timer_update(f32 *timer, f32 delta) {
+n64_bool ml_timer_update(f32 *timer, f32 delta) {
     if (*timer > 0) {
         *timer -= delta;
 
@@ -641,7 +641,7 @@ void func_80257918(f32 arg0[3], f32 arg1[3], f32 arg2[3], f32 arg3[3]){
     ml_vec3f_diff_copy(arg0, arg1, sp2C);
 }
 
-bool func_802579B0(f32 vec[3], f32 x1, f32 z1, f32 x2, f32 z2)
+n64_bool func_802579B0(f32 vec[3], f32 x1, f32 z1, f32 x2, f32 z2)
 {
     return x1 <= vec[0]
         && x2 >= vec[0]
@@ -876,36 +876,36 @@ int func_80258210(f32 x, f32 y, f32 *dst)
     return TRUE;
 }
 
-bool ml_isZero_vec3f(f32 vec[3])
+n64_bool ml_isZero_vec3f(f32 vec[3])
 {
     return !(vec[0] != 0 || vec[1] != 0 || vec[2] != 0);
 }
 
-bool ml_isNonzero_vec3f(f32 vec[3])
+n64_bool ml_isNonzero_vec3f(f32 vec[3])
 {
     return vec[0] != 0 || vec[1] != 0 || vec[2] != 0;
 }
 
-bool ml_vec3f_not_on_vertical_axis(f32 vec[3])
+n64_bool ml_vec3f_not_on_vertical_axis(f32 vec[3])
 {
     return vec[0] != 0 && vec[2] != 0;
 }
 
-bool ml_vec3f_inside_box_f(f32 vec[3], f32 minX, f32 minY, f32 minZ, f32 maxX, f32 maxY, f32 maxZ)
+n64_bool ml_vec3f_inside_box_f(f32 vec[3], f32 minX, f32 minY, f32 minZ, f32 maxX, f32 maxY, f32 maxZ)
 {
     return vec[0] > minX && vec[0] < maxX
         && vec[1] > minY && vec[1] < maxY
         && vec[2] > minZ && vec[2] < maxZ;
 }
 
-bool ml_vec3f_inside_box_vec3f(f32 vec[3], f32 min[3], f32 max[3])
+n64_bool ml_vec3f_inside_box_vec3f(f32 vec[3], f32 min[3], f32 max[3])
 {
     return vec[0] > min[0] && vec[0] < max[0]
         && vec[1] > min[1] && vec[1] < max[1]
         && vec[2] > min[2] && vec[2] < max[2];
 }
 
-bool ml_vec3w_inside_box_w(s32 vec[3], s32 minX, s32 minY, s32 minZ, s32 maxX, s32 maxY, s32 maxZ) {
+n64_bool ml_vec3w_inside_box_w(s32 vec[3], s32 minX, s32 minY, s32 minZ, s32 maxX, s32 maxY, s32 maxZ) {
     return vec[0] > minX && vec[0] < maxX
         && vec[1] > minY && vec[1] < maxY
         && vec[2] > minZ && vec[2] < maxZ;
@@ -1212,7 +1212,7 @@ f32 mlDiffDegF(f32 arg0, f32 arg1)
     return diff;
 }
 
-bool ml_vec3f_point_within_horizontal_distance(f32 vec[3], f32 x, f32 z, f32 distance)
+n64_bool ml_vec3f_point_within_horizontal_distance(f32 vec[3], f32 x, f32 z, f32 distance)
 {
     f32 diff[3];
 
@@ -1223,7 +1223,7 @@ bool ml_vec3f_point_within_horizontal_distance(f32 vec[3], f32 x, f32 z, f32 dis
     return _SQ3(diff[0], 0, diff[2]) <= distance * distance;
 }
 
-bool ml_vec3f_within_horizontal_distance(f32 vec1[3], f32 vec2[3], f32 distance)
+n64_bool ml_vec3f_within_horizontal_distance(f32 vec1[3], f32 vec2[3], f32 distance)
 {
     f32 diff[3];
 
@@ -1233,7 +1233,7 @@ bool ml_vec3f_within_horizontal_distance(f32 vec1[3], f32 vec2[3], f32 distance)
     return _SQ3(diff[0], 0, diff[2]) < distance * distance;
 }
 
-bool ml_vec3w_within_horizontal_distance(s32 vec1[3], s32 vec2[3], s32 distance)
+n64_bool ml_vec3w_within_horizontal_distance(s32 vec1[3], s32 vec2[3], s32 distance)
 {
     s32 diff[3];
 
@@ -1243,7 +1243,7 @@ bool ml_vec3w_within_horizontal_distance(s32 vec1[3], s32 vec2[3], s32 distance)
     return _SQ3(diff[0], 0, diff[2]) < distance * distance;
 }
 
-bool ml_vec3f_within_distance(f32 vec1[3], f32 vec2[3], f32 distance)
+n64_bool ml_vec3f_within_distance(f32 vec1[3], f32 vec2[3], f32 distance)
 {
     f32 t[3];
 
@@ -1251,7 +1251,7 @@ bool ml_vec3f_within_distance(f32 vec1[3], f32 vec2[3], f32 distance)
     return LENGTH_SQ_VEC3F(t) <= distance * distance;
 }
 
-bool ml_stub_80259400(f32 x) {
+n64_bool ml_stub_80259400(f32 x) {
     // wtf?
     return *(u32 *)&x == 0x80 || *(u32 *)&x == 0x2A8800;
 }
@@ -1370,7 +1370,7 @@ s32 ml_getViewportYawWithOffset(f32 x) {
     return val;
 }
 
-bool ml_isViewportYawWithOffsetNormalized(f32 x) {
+n64_bool ml_isViewportYawWithOffsetNormalized(f32 x) {
     return ml_getViewportYawWithOffset(x) < 180;
 }
 

@@ -1,6 +1,7 @@
-#include <os_internal.h>
-#include <R4300.h>
+#include <PR/os_internal.h>
+#include <PR/R4300.h>
 #include "osint.h"
+#include <n64_types.h>
 
 u32 osVirtualToPhysical(void *addr)
 {

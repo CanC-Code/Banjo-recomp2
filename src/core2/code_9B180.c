@@ -109,7 +109,7 @@ void func_80322318(Struct_core2_9B180_0 * arg0){
     func_8031D0C0(0, 0);
 }
 
-bool func_80322340(s32 arg0) {
+n64_bool func_80322340(s32 arg0) {
     f32 sp1C[3];
 
     if (nodeProp_findPositionFromActorId(arg0, &sp1C)) {

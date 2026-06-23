@@ -58,7 +58,7 @@ void * func_803209EC(void){
     return D_80383230.unk84;
 }
 
-bool func_803209F8(f32 arg0[3], f32 arg1[3], f32 *arg2, f32 arg3[3]) {
+n64_bool func_803209F8(f32 arg0[3], f32 arg1[3], f32 *arg2, f32 arg3[3]) {
     f32 sp34[3];
     f32 sp28[3];
 

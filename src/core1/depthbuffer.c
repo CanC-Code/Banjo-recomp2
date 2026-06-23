@@ -32,7 +32,7 @@ int func_80253400(void){
     return sDepthBuffer.unk4;
 }
 
-bool depthBuffer_isPointerSet(void) {
+n64_bool depthBuffer_isPointerSet(void) {
     return sDepthBuffer.data != NULL;
 }
 

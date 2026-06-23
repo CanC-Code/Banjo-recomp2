@@ -30,13 +30,13 @@
 #ifndef _OS_LIBC_H_
 #define	_OS_LIBC_H_
 
-#include "os_pfs.h"
+#include "PR/os_pfs.h"
 
 #ifdef _LANGUAGE_C_PLUS_PLUS
 extern "C" {
 #endif
 
-#include <PR/ultratypes.h>
+/* Redirected */ #include <n64_types.h>
 
 #if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)
 
@@ -87,7 +87,7 @@ extern void     bzero(void *, int);
 
 /* Printf */
 
-extern int		sprintf(char *s, const char *fmt, ...);
+extern int		n64_sprintf(char *s, const char *fmt, ...);
 extern void		osSyncPrintf(const char *fmt, ...);
 
 

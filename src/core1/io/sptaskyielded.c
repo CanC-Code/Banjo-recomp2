@@ -1,6 +1,7 @@
-#include <os_internal.h>
-#include <rcp.h>
-#include <sptask.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
+#include <PR/sptask.h>
+#include <n64_types.h>
 
 OSYieldResult osSpTaskYielded(OSTask *tp)
 {

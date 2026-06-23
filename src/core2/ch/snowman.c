@@ -147,7 +147,7 @@ void __chSnowman_setYawTarget(Actor *this, f32 max_rotation){
     subaddie_turnToYaw(this, 6.0f);
 }
 
-bool __chSnowman_isYawNearYawTarget(Actor *this, s32 max_angle_degree){
+n64_bool __chSnowman_isYawNearYawTarget(Actor *this, s32 max_angle_degree){
     f32 dYaw;
     dYaw = this->yaw - this->yaw_ideal;
     if((dYaw < max_angle_degree) && (-max_angle_degree < dYaw)){

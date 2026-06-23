@@ -44,6 +44,17 @@ ActorInfo gChBlubber = {
     0, 0x399, 1.8f, 0
 };
 
+
+/* Automated Forward Decls */
+static void __chBlubber_initialize(Actor *this);
+static void __chBlubber_showTextCallback(ActorMarker *caller, enum asset_e text_id, s32 arg1);
+static void __chBlubber_showTextCallback2(ActorMarker *caller, enum asset_e text_id, s32 arg1);
+static void __chBlubber_showJiggySpawnedText(ActorMarker *marker);
+static void __chBlubber_checkJiggySpawnedTextAndAdvanceState(Actor *this);
+static void __func_8038771C(Actor *this);
+static void __func_80387774(Actor **this_ptr);
+static void __func_80387830(Actor *this , f32 arg1, f32 arg2);
+
 /* .code */
 static void __chBlubber_initialize(Actor *this){
     ActorLocal_Blubber *local = (ActorLocal_Blubber *)&this->local;

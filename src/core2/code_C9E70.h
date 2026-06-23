@@ -1,11 +1,21 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __CORE2_C9E70_H__
 #define __CORE2_C9E70_H__
 
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
 #include "structs.h"
 
 #include "gc/zoombox.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 typedef struct {
     s16 unk0[4];
     u8 unk8; //FF_TileType
@@ -81,4 +91,9 @@ struct FF_StorageStruct {
 
     /* 48 */ struct FF_StorageStruct_48 *unk48;
 }; // 0x4C
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

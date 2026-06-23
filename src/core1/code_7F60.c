@@ -14,6 +14,12 @@ u8 D_80275900[8] = {0xD3, 0x9E, 0xA6, 0x20, 0xC7, 0x7E, 0xD5, 0xC6};
 
 f32 D_80275908 = BAD_DTOR;
 
+
+/* Automated Forward Decls */
+static s32 guFToFix32(f32 arg0);
+static void __guMtxF2L(float mf[4][4], Mtx *m);
+static void _guNormalize(f32 *arg0, f32 *arg1, f32 *arg2);
+
 static s32 guFToFix32(f32 arg0){
 	return arg0*65536.0f;
 }

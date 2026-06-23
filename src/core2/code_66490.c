@@ -3,7 +3,7 @@
 #include "variables.h"
 
 
-bool func_802ED420(BKModelUnk20List *arg0, u8 *arg1, u32 arg2) {
+n64_bool func_802ED420(BKModelUnk20List *arg0, u8 *arg1, u32 arg2) {
     BKModelUnk20_0 *start_ptr;
 
     start_ptr = (BKModelUnk20_0 *)(arg0 + 1);

@@ -1,7 +1,8 @@
-#include <os_internal.h>
-#include <rcp.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
 #include "siint.h"
 #include "controller.h"
+#include <n64_types.h>
 
 static void __osPackReadData(void);
 s32 osContStartReadData(OSMesgQueue *mq)

@@ -11,7 +11,7 @@ extern void fxRipple_802F363C(f32);
 extern void func_802F9D38(s32);
 extern void func_802EE2E8(Actor *arg0, s32 arg1, s32 cnt, s32 arg3, f32 arg4, f32 arg5, f32 arg6);
 extern void gcquiz_func_80319EA4(void);
-extern void fileProgressFlag_set(enum file_progress_e, bool);
+extern void fileProgressFlag_set(enum file_progress_e, n64_bool);
 
 void func_802D3D54(Actor *this);
 void func_802D3DA4(Actor *this);
@@ -501,7 +501,7 @@ void func_802D4250(Actor *this){
 
 
 
-bool func_802D42F8(Actor *this) {
+n64_bool func_802D42F8(Actor *this) {
     s32 i;
 
     for(i = 0; D_803679B0[i] != -1 && this->actorTypeSpecificField != D_803679B0[i]; i+=2){
@@ -559,7 +559,7 @@ Actor *func_802D4588(ActorMarker *marker, Gfx **gfx, Mtx **mtx, Vtx **vtx) {
     return actor_draw(marker, gfx, mtx, vtx);
 }
 
-bool func_802D4608(void){
+n64_bool func_802D4608(void){
     return D_803676AC;
 }
 
@@ -775,7 +775,7 @@ void func_802D5000(enum map_e map_id){
     transitionToMap(D_80367684, 0x65, 0);
 }
 
-void func_802D5058(enum map_e map_id, s32 arg1, bool arg2) {
+void func_802D5058(enum map_e map_id, s32 arg1, n64_bool arg2) {
     volatileFlag_set(VOLATILE_FLAG_1, 1);
     D_80367684 = map_id;
     D_80367688 = arg1;

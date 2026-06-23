@@ -35,7 +35,7 @@ ActorInfo gChYumblie = {MARKER_C7_YUMBLIE, ACTOR_139_YUMBLIE, ASSET_3F6_MODEL_YU
 };
 
 /* .code */
-bool func_8038B160(Actor *this){
+n64_bool func_8038B160(Actor *this){
     ActorLocal_Yumblie *local;
     s32 temp_v0;
 
@@ -93,7 +93,7 @@ void chYumblie_setState(Actor* this, enum chyumblie_state_e next_state){
     this->state = next_state;
 }
 
-bool chyumblie_is_edible(ActorMarker * arg0){
+n64_bool chyumblie_is_edible(ActorMarker * arg0){
     volatile Actor* actPtr;
 
     actPtr = marker_getActor(arg0);
@@ -130,7 +130,7 @@ Actor *chYumblie_draw(ActorMarker *this, Gfx **gfx, Mtx** mtx, Vtx **vtx){
     return thisActor;
 }
 
-bool func_8038B684(ActorMarker * arg0){
+n64_bool func_8038B684(ActorMarker * arg0){
     Actor* actPtr = marker_getActor(arg0);
 
     if( actPtr->state < 5){

@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _ABI_H_
 #define	_ABI_H_
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /**************************************************************************
  *									  *
  *		 Copyright (C) 1994, Silicon Graphics, Inc.		  *
@@ -408,3 +419,8 @@ typedef short ENVMIX_STATE[40];
 
 
 
+
+
+#ifdef __cplusplus
+}
+#endif

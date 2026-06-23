@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef BANJO_KAZOOIE_CORE1_MLMTX_H
 #define BANJO_KAZOOIE_CORE1_MLMTX_H
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 void mlMtxGet(MtxF *dst);
 MtxF *mlMtx_get_stack_pointer(void);
 void mlMtxApply(Mtx *mPtr);
@@ -42,4 +53,9 @@ void func_80252F50(f32 rotation[3]);
 void func_80252F8C(f32 rotation[3]);
 void func_80252FC8(f32 rotation[3]);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

@@ -4,7 +4,7 @@
 
 //THIS VALUE 
 #ifndef CORE2_CODE_CRC2
-    #define CORE2_CODE_CRC2 0x9E44C2DC
+#define CORE2_CODE_CRC2 0x9E44C2DC
 #endif
 
 // bk_boot segment start (skipping entry function)

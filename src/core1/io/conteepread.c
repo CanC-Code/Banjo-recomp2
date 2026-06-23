@@ -1,6 +1,7 @@
-#include <rcp.h>
+#include <PR/rcp.h>
 #include "controller.h"
 #include "siint.h"
+#include <n64_types.h>
 
 static void __osPackEepReadData(u8 address);
 OSPifRam __osEepPifRam; // todo bss

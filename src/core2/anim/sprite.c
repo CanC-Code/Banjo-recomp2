@@ -10,6 +10,12 @@
 u8 D_80379B90[0x10];
 static AnimSprite s_animsprite_list[40];
 
+
+/* Automated Forward Decls */
+static void __animsprite_reset_loop(AnimSprite *this);
+static void __animsprite_update_looped(AnimSprite *this);
+static void __animsprite_update_once(AnimSprite *this);
+
 /* .code */
 static void __animsprite_reset_loop(AnimSprite *this){
     this->remaining_time += this->steps[this->current_step].duration*(1.0/30.0)*this->speed_multiplier;

@@ -330,7 +330,7 @@ void func_802B1BCC(void){
 
 void func_802B1BF4(void) {
     AnimCtrl *anim_ctrl;
-    bool smooth_transition;
+    n64_bool smooth_transition;
 
     anim_ctrl = baanim_getAnimCtrlPtr();
     smooth_transition = TRUE;
@@ -386,7 +386,7 @@ void func_802B1DA4(void){
     baMarker_collisionOn();
 }
 
-bool bsjump_jumpingFromWater(void){
+n64_bool bsjump_jumpingFromWater(void){
     return D_8037D4C1;
 }
 

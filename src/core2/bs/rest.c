@@ -47,9 +47,9 @@ void func_802B3AAC(enum asset_e anim_id, f32 anim_duration) {
 }
 
 
-bool func_802B3BB0(void) {
+n64_bool func_802B3BB0(void) {
     AnimCtrl *anim_ctrl;
-    bool sp20;
+    n64_bool sp20;
 
     anim_ctrl = baanim_getAnimCtrlPtr();
     func_802B3A50();

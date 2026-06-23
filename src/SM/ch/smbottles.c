@@ -62,12 +62,16 @@ ChSmBottlesDialog chSmBottlesDialogTable[8] = {
 
 s32 chSmBottlesDialogIndex = 0;
 
+
+/* Automated Forward Decls */
+static void __chSmBottles_textActions(ActorMarker *marker, enum asset_e text_id, s32 arg2);
+
 /* .code */
 
 /**
  * @brief Checks if any Spiral Mountain abilities have been learned
  */
-bool __chSmBottles_isAnySpiralMountainAbilityLearned(void) {
+n64_bool __chSmBottles_isAnySpiralMountainAbilityLearned(void) {
     return ability_isUnlocked(ABILITY_F_DIVE) ||
            ability_isUnlocked(ABILITY_4_CLAW_SWIPE) ||
            ability_isUnlocked(ABILITY_C_ROLL) ||

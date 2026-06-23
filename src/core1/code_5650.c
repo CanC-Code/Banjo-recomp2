@@ -2,7 +2,7 @@
 #include "core1/core1.h"
 #include "functions.h"
 #include "variables.h"
-#include "n_libaudio.h"
+#include "PR/n_libaudio.h"
 #include "n_synth.h"
 
 void  func_802444C0(N_AL_Struct81s *arg0);
@@ -104,7 +104,7 @@ void func_802432F8(N_ALSndPlayer *sndp, N_ALEvent *event) {
     s32 spA4;
     s32 temp_t6;
     s32 var_v0;
-    bool var_s2;
+    n64_bool var_s2;
     s32 sp94;
     s32 sp90;
     N_ALVoice *voice;
@@ -562,7 +562,7 @@ s32 func_802445AC(N_AL_Struct81s *arg0){
     return 0;
 }
 
-bool func_802445C4(ALBank *bank, s16 arg1){
+n64_bool func_802445C4(ALBank *bank, s16 arg1){
     ALSound *snd = bank->instArray[0]->soundArray[arg1-1];
     if (snd->envelope->decayTime == -1)
         return TRUE;

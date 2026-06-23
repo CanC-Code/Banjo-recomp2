@@ -48,7 +48,8 @@ void chLeafBoat_update(Actor *this){
     f32 sp64[3];
     f32 player_position[3];
     ActorLocal_Leafboat *local;
-    u8 tmp[6] = D_80390DA0;
+    u8 tmp[6];
+    n64_memcpy(tmp, D_80390DA0, 6 * sizeof(u8));
     f32 pad0;
     f32 sp44;
     f32 sp40;

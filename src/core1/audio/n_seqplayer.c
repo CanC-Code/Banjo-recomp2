@@ -1,5 +1,5 @@
 #include <ultra64.h>
-#include "n_libaudio.h"
+#include "PR/n_libaudio.h"
 #include "n_synth.h"
 #include "file_and_line.h"
 #include "assert.h"

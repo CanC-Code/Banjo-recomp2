@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /**************************************************************************
  *
@@ -9,7 +13,14 @@
 
 #ifndef _RDB_H
 #define _RDB_H
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /* U64 side address */
 #define	RDB_BASE_REG		0xc0000000
 #define RDB_WRITE_INTR_REG	(RDB_BASE_REG + 0x8)
@@ -91,3 +102,8 @@ extern unsigned int	__osRdbSendMessage;
 #endif /* _LANGUAGE_C */
 
 #endif /* !_RDB_H */
+
+
+#ifdef __cplusplus
+}
+#endif

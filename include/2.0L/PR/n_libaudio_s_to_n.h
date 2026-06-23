@@ -1,3 +1,14 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
 #define ALVoice   		N_ALVoice
 #define ALSynth 		N_ALSynth
 #define ALGlobals 		N_ALGlobals
@@ -118,3 +129,8 @@
 
 
 
+
+
+#ifdef __cplusplus
+}
+#endif

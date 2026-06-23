@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  *  F i l e N a m e  :  l e o a p p l i . h
  *
@@ -14,6 +18,13 @@
 /*-----------------------------------*/
 /*   DRIVE PARAMETER                 */
 /*-----------------------------------*/
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
 #define  LEO_DISK_TYPE_MIN    0
 #define  LEO_DISK_TYPE_MAX    6
 
@@ -272,3 +283,8 @@ typedef LEOCmdReadTimer LEOCmdSetTimer;
 /*-------end of leoappli.h--------------------------*/
 
 
+
+
+#ifdef __cplusplus
+}
+#endif

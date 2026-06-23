@@ -16,9 +16,10 @@
  * DOD or NASA FAR Supplement. Unpublished - rights reserved under the
  * Copyright Laws of the United States.
  *====================================================================*/
-#include <os_internal.h>
-#include <ultraerror.h>
+#include <PR/os_internal.h>
+#include <PR/ultraerror.h>
 #include "n_synth.h"
+#include <n64_types.h>
 
 void n_alSynStartVoice( N_ALVoice *v, ALWaveTable *table)
 {

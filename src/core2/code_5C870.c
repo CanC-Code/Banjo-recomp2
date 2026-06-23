@@ -4,7 +4,7 @@
 #include "variables.h"
 
 #include "gc/gctransition.h"
-#include "time.h"
+/* Redirected */ #include <n64_time.h>
 
 extern void func_802F5374(void);
 extern void func_802FA0F8(void);
@@ -431,7 +431,7 @@ void func_802E4384(void){
     D_8037E8E0.unk8 += time_getDelta();
 }
 
-bool func_802E4424(void) {
+n64_bool func_802E4424(void) {
     s32 sp1C;
     u8 temp_v0;
 
@@ -624,7 +624,7 @@ s32 getGameMode(void){
     return D_8037E8E0.game_mode;
 }
 
-bool func_802E4A08(void){
+n64_bool func_802E4A08(void){
     return (D_8037E8E0.game_mode == GAME_MODE_6_FILE_PLAYBACK) 
         || (D_8037E8E0.game_mode == GAME_MODE_5_UNKNOWN)
         || (D_8037E8E0.game_mode == GAME_MODE_7_ATTRACT_DEMO)

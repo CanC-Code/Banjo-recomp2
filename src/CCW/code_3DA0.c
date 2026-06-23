@@ -72,7 +72,7 @@ Actor*  chcaterpillar_draw(ActorMarker *marker, Gfx **gfx, Mtx **mtx, Vtx **vtx)
 }
 
 void chcaterpillar_update(Actor *this){
-    bool sp8C;
+    n64_bool sp8C;
     ActorLocal_Caterpillar *local = (ActorLocal_Caterpillar *)&this->local;
     f32  sp84;
     enum map_e map_id;

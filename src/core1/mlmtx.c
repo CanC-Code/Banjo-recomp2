@@ -262,116 +262,116 @@ void mlMtxRotate(f32 a, f32 x, f32 y, f32 z) {
 }
 
 void mlMtxRotPitch(f32 arg0) {
-    f32 cos;
-    f32 sin;
+    f32 n64_cos;
+    f32 n64_sin;
     f32 var_f10;
     f32 var_f18;
 
     if (arg0 != 0.0f) {
         arg0 *= D_80276578;
-        sin = sinf(arg0);
-        cos = cosf(arg0);
+        n64_sin = sinf(arg0);
+        n64_cos = cosf(arg0);
         var_f18 = s_mtx_stack->m[1][0];
         var_f10 = s_mtx_stack->m[2][0];
-        s_mtx_stack->m[1][0] = var_f18*cos + var_f10*sin;
-        s_mtx_stack->m[2][0] = var_f18*-sin + var_f10*cos;
+        s_mtx_stack->m[1][0] = var_f18*n64_cos + var_f10*n64_sin;
+        s_mtx_stack->m[2][0] = var_f18*-n64_sin + var_f10*n64_cos;
 
         var_f18 = s_mtx_stack->m[1][1];
         var_f10 = s_mtx_stack->m[2][1];
-        s_mtx_stack->m[1][1] = var_f18*cos + var_f10*sin;
-        s_mtx_stack->m[2][1] = var_f18*-sin + var_f10*cos;
+        s_mtx_stack->m[1][1] = var_f18*n64_cos + var_f10*n64_sin;
+        s_mtx_stack->m[2][1] = var_f18*-n64_sin + var_f10*n64_cos;
 
         var_f18 = s_mtx_stack->m[1][2];
         var_f10 = s_mtx_stack->m[2][2];
-        s_mtx_stack->m[1][2] = var_f18*cos + var_f10*sin;
-        s_mtx_stack->m[2][2] = var_f18*-sin + var_f10*cos;
+        s_mtx_stack->m[1][2] = var_f18*n64_cos + var_f10*n64_sin;
+        s_mtx_stack->m[2][2] = var_f18*-n64_sin + var_f10*n64_cos;
     }
 }
 
 void mlMtxRotYaw(f32 arg0) {
-    f32 cos;
-    f32 sin;
+    f32 n64_cos;
+    f32 n64_sin;
     f32 var_f10;
     f32 var_f18;
     s32 i;
 
     if (arg0 != 0.0f) {
         arg0 *= BAD_DTOR;
-        sin = sinf(arg0);
-        cos = cosf(arg0);
+        n64_sin = sinf(arg0);
+        n64_cos = cosf(arg0);
         for(i = 0; i < 3; i++){
             var_f18 = s_mtx_stack->m[0][i];
             var_f10 = s_mtx_stack->m[2][i];
-            s_mtx_stack->m[0][i] = var_f18*cos - var_f10*sin;
-            s_mtx_stack->m[2][i] = var_f18*sin + var_f10*cos;
+            s_mtx_stack->m[0][i] = var_f18*n64_cos - var_f10*n64_sin;
+            s_mtx_stack->m[2][i] = var_f18*n64_sin + var_f10*n64_cos;
         }
     }
 }
 
 void mlMtxRotRoll(f32 arg0) {  
-    f32 cos;
-    f32 sin;
+    f32 n64_cos;
+    f32 n64_sin;
     f32 var_f10;
     f32 var_f18;
 
     if (arg0 != 0.0f) {
         arg0 *= D_8027657C;
-        sin = sinf(arg0);
-        cos = cosf(arg0);
+        n64_sin = sinf(arg0);
+        n64_cos = cosf(arg0);
         var_f18 = s_mtx_stack->m[0][0];
         var_f10 = s_mtx_stack->m[1][0];
-        s_mtx_stack->m[0][0] = var_f18*cos + var_f10*sin;
-        s_mtx_stack->m[1][0] = var_f18*-sin + var_f10*cos;
+        s_mtx_stack->m[0][0] = var_f18*n64_cos + var_f10*n64_sin;
+        s_mtx_stack->m[1][0] = var_f18*-n64_sin + var_f10*n64_cos;
 
         var_f18 = s_mtx_stack->m[0][1];
         var_f10 = s_mtx_stack->m[1][1];
-        s_mtx_stack->m[0][1] = var_f18*cos + var_f10*sin;
-        s_mtx_stack->m[1][1] = var_f18*-sin + var_f10*cos;
+        s_mtx_stack->m[0][1] = var_f18*n64_cos + var_f10*n64_sin;
+        s_mtx_stack->m[1][1] = var_f18*-n64_sin + var_f10*n64_cos;
 
         var_f18 = s_mtx_stack->m[0][2];
         var_f10 = s_mtx_stack->m[1][2];
-        s_mtx_stack->m[0][2] = var_f18*cos + var_f10*sin;
-        s_mtx_stack->m[1][2] = var_f18*-sin + var_f10*cos;
+        s_mtx_stack->m[0][2] = var_f18*n64_cos + var_f10*n64_sin;
+        s_mtx_stack->m[1][2] = var_f18*-n64_sin + var_f10*n64_cos;
     }
 }
 
 
 void mlMtx_rotate_pitch_deg(f32 arg0) {
-    f32 cos;
-    f32 sin;
+    f32 n64_cos;
+    f32 n64_sin;
     f32 var_f10;
     f32 var_f18;
     s32 i;
 
     if (arg0 != 0.0f) {
         arg0 *= BAD_DTOR;
-        sin = sinf(arg0);
-        cos = cosf(arg0);
+        n64_sin = sinf(arg0);
+        n64_cos = cosf(arg0);
         for(i = 0; i < 3; i++){
             var_f18 = s_mtx_stack->m[1][i];
             var_f10 = s_mtx_stack->m[2][i];
-            s_mtx_stack->m[1][i] = var_f18*cos + var_f10*sin;
-            s_mtx_stack->m[2][i] = var_f18*-sin +var_f10*cos;
+            s_mtx_stack->m[1][i] = var_f18*n64_cos + var_f10*n64_sin;
+            s_mtx_stack->m[2][i] = var_f18*-n64_sin +var_f10*n64_cos;
         }
     }
 }
 
 void mlMtx_rotate_yaw_deg(f32 arg0) {
-    f32 cos;
-    f32 sin;
+    f32 n64_cos;
+    f32 n64_sin;
     f32 var_f10;
     f32 var_f18;
     s32 i;
 
     if (arg0 != 0.0f) {
         arg0 *= BAD_DTOR;
-        sin = sinf(arg0);
-        cos = cosf(arg0);
+        n64_sin = sinf(arg0);
+        n64_cos = cosf(arg0);
         for(i = 0; i < 3; i++){
             var_f18 = s_mtx_stack->m[0][i];
             var_f10 = s_mtx_stack->m[2][i];
-            s_mtx_stack->m[0][i] = var_f18*cos - var_f10*sin;
-            s_mtx_stack->m[2][i] = var_f18*sin + var_f10*cos;
+            s_mtx_stack->m[0][i] = var_f18*n64_cos - var_f10*n64_sin;
+            s_mtx_stack->m[2][i] = var_f18*n64_sin + var_f10*n64_cos;
         }
     }
 }

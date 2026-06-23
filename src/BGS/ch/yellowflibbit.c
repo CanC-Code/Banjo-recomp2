@@ -48,7 +48,7 @@ void func_8038D1E0(Actor *this) {
     sfx_playFadeShorthandDefault(SFX_30_MAGIC_POOF, 1.0f, 25000, this->position, 500, 2500);
 }
 
-s32 func_8038D2F4(Actor *this, f32 *arg1, bool arg2) {
+s32 func_8038D2F4(Actor *this, f32 *arg1, n64_bool arg2) {
     ActorLocal_Yellow_Flibbit *local;
 
     local = (ActorLocal_Yellow_Flibbit *)&this->local;
@@ -67,7 +67,7 @@ s32 func_8038D2F4(Actor *this, f32 *arg1, bool arg2) {
     return TRUE;
 }
 
-bool func_8038D468(Actor *this) {
+n64_bool func_8038D468(Actor *this) {
     f32 player_position[3];
     f32 sp50;
     f32 sp4C;
@@ -94,7 +94,7 @@ bool func_8038D468(Actor *this) {
     return FALSE;
 }
 
-bool func_8038D5A8(Actor *this) {
+n64_bool func_8038D5A8(Actor *this) {
     f32 sp64[3];
     f32 sp60;
     f32 sp5C;
@@ -161,7 +161,7 @@ s32 func_8038D768(Actor *this) {
     return FALSE;
 }
 
-bool func_8038D930(Actor *this) {
+n64_bool func_8038D930(Actor *this) {
     f32 player_position[3];
     s32 var_v1;
 

@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*====================================================================
  * sched.h
  *
@@ -31,8 +35,14 @@
 #ifndef __sched__
 #define __sched__
 
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #define OS_SC_STACKSIZE      0x2000
 
 #define OS_SC_RETRACE_MSG       1
@@ -113,3 +123,8 @@ OSMesgQueue     *osScGetCmdQ(OSSched *s);
 
 #endif
 
+
+
+#ifdef __cplusplus
+}
+#endif

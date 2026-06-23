@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _RAMROM_H
 #define	_RAMROM_H
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 /**************************************************************************
  *									  *
  *		 Copyright (C) 1994, Silicon Graphics, Inc.		  *
@@ -111,3 +122,8 @@ void __RamRomDestroy(int key);
 #endif /* _EMULATOR */
 
 #endif /* !_RAMROM_H */
+
+
+#ifdef __cplusplus
+}
+#endif

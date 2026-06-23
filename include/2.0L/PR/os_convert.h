@@ -34,7 +34,8 @@
 extern "C" {
 #endif
 
-#include <PR/ultratypes.h>
+/* Redirected */ #include <n64_types.h>
+#include "bka_safe_base.h"
 
 #if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)
 
@@ -79,8 +80,8 @@ extern "C" {
 #define	OS_K1_TO_PHYSICAL(x)	((char *)(x)-0xa0000000)
 #endif
 
-#define	OS_PHYSICAL_TO_K0(x)	(void *)(((u32)(x)+0x80000000))
-#define	OS_PHYSICAL_TO_K1(x)	(void *)(((u32)(x)+0xa0000000))
+#define OS_PHYSICAL_TO_K0(x) (BKA_TRANSLATE_ADDR(x))
+#define OS_PHYSICAL_TO_K1(x) (BKA_TRANSLATE_ADDR(x))
 
 
 /**************************************************************************

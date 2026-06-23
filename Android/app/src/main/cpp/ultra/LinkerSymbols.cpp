@@ -1,3 +1,4 @@
+#include "bka_safe_base.h"
 // File: Android/app/src/main/cpp/ultra/LinkerSymbols.cpp
 #include <cstdint>
 #include <cstdlib>
@@ -91,63 +92,63 @@ void InitN64Registers(const char* /*assetDir*/) {
 // ============================================================
 // 3. HARDWARE REGISTER POINTER MAPPING (True N64 Physical Offsets)
 // ============================================================
-RECOMP_SYMBOL uint32_t* SP_DMEM              = (uint32_t*)(s_N64_Reg_Memory + 0x000000);
-RECOMP_SYMBOL uint32_t* SP_IMEM              = (uint32_t*)(s_N64_Reg_Memory + 0x001000);
-RECOMP_SYMBOL uint32_t* SP_STATUS_REG        = (uint32_t*)(s_N64_Reg_Memory + 0x040000);
+RECOMP_SYMBOL uint32_t* SP_DMEM              = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x000000));
+RECOMP_SYMBOL uint32_t* SP_IMEM              = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x001000));
+RECOMP_SYMBOL uint32_t* SP_STATUS_REG        = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x040000));
 
-RECOMP_SYMBOL uint32_t* DPC_START_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x100000);
-RECOMP_SYMBOL uint32_t* DPC_END_REG           = (uint32_t*)(s_N64_Reg_Memory + 0x100004);
-RECOMP_SYMBOL uint32_t* DPC_CURRENT_REG       = (uint32_t*)(s_N64_Reg_Memory + 0x100008);
-RECOMP_SYMBOL uint32_t* DPC_STATUS_REG        = (uint32_t*)(s_N64_Reg_Memory + 0x10000C);
-RECOMP_SYMBOL uint32_t* DPC_CLOCK_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x100010);
-RECOMP_SYMBOL uint32_t* DPC_BUFBUSY_REG       = (uint32_t*)(s_N64_Reg_Memory + 0x100014);
-RECOMP_SYMBOL uint32_t* DPC_PIPEBUSY_REG      = (uint32_t*)(s_N64_Reg_Memory + 0x100018);
-RECOMP_SYMBOL uint32_t* DPC_TMEM_REG          = (uint32_t*)(s_N64_Reg_Memory + 0x10001C);
+RECOMP_SYMBOL uint32_t* DPC_START_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x100000));
+RECOMP_SYMBOL uint32_t* DPC_END_REG           = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x100004));
+RECOMP_SYMBOL uint32_t* DPC_CURRENT_REG       = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x100008));
+RECOMP_SYMBOL uint32_t* DPC_STATUS_REG        = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x10000C));
+RECOMP_SYMBOL uint32_t* DPC_CLOCK_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x100010));
+RECOMP_SYMBOL uint32_t* DPC_BUFBUSY_REG       = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x100014));
+RECOMP_SYMBOL uint32_t* DPC_PIPEBUSY_REG      = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x100018));
+RECOMP_SYMBOL uint32_t* DPC_TMEM_REG          = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x10001C));
 
-RECOMP_SYMBOL uint32_t* MI_INIT_MODE_REG     = (uint32_t*)(s_N64_Reg_Memory + 0x300000);
-RECOMP_SYMBOL uint32_t* MI_VERSION_REG       = (uint32_t*)(s_N64_Reg_Memory + 0x300004);
-RECOMP_SYMBOL uint32_t* MI_INTR_REG          = (uint32_t*)(s_N64_Reg_Memory + 0x300008);
-RECOMP_SYMBOL uint32_t* MI_INTR_MASK_REG     = (uint32_t*)(s_N64_Reg_Memory + 0x30000C);
+RECOMP_SYMBOL uint32_t* MI_INIT_MODE_REG     = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x300000));
+RECOMP_SYMBOL uint32_t* MI_VERSION_REG       = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x300004));
+RECOMP_SYMBOL uint32_t* MI_INTR_REG          = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x300008));
+RECOMP_SYMBOL uint32_t* MI_INTR_MASK_REG     = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x30000C));
 
-RECOMP_SYMBOL uint32_t* VI_STATUS_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x400000);
-RECOMP_SYMBOL uint32_t* VI_ORIGIN_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x400004);
-RECOMP_SYMBOL uint32_t* VI_WIDTH_REG          = (uint32_t*)(s_N64_Reg_Memory + 0x400008);
-RECOMP_SYMBOL uint32_t* VI_V_INTR_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x40000C);
-RECOMP_SYMBOL uint32_t* VI_V_CURRENT_LINE_REG = (uint32_t*)(s_N64_Reg_Memory + 0x400010);
-RECOMP_SYMBOL uint32_t* VI_BURST_REG          = (uint32_t*)(s_N64_Reg_Memory + 0x400014);
-RECOMP_SYMBOL uint32_t* VI_V_SYNC_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x400018);
-RECOMP_SYMBOL uint32_t* VI_H_SYNC_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x40001C);
-RECOMP_SYMBOL uint32_t* VI_LEAP_REG           = (uint32_t*)(s_N64_Reg_Memory + 0x400020);
-RECOMP_SYMBOL uint32_t* VI_H_START_REG        = (uint32_t*)(s_N64_Reg_Memory + 0x400024);
-RECOMP_SYMBOL uint32_t* VI_V_START_REG        = (uint32_t*)(s_N64_Reg_Memory + 0x400028);
-RECOMP_SYMBOL uint32_t* VI_V_BURST_REG        = (uint32_t*)(s_N64_Reg_Memory + 0x40002C);
-RECOMP_SYMBOL uint32_t* VI_X_SCALE_REG        = (uint32_t*)(s_N64_Reg_Memory + 0x400030);
-RECOMP_SYMBOL uint32_t* VI_Y_SCALE_REG        = (uint32_t*)(s_N64_Reg_Memory + 0x400034);
+RECOMP_SYMBOL uint32_t* VI_STATUS_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x400000));
+RECOMP_SYMBOL uint32_t* VI_ORIGIN_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x400004));
+RECOMP_SYMBOL uint32_t* VI_WIDTH_REG          = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x400008));
+RECOMP_SYMBOL uint32_t* VI_V_INTR_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x40000C));
+RECOMP_SYMBOL uint32_t* VI_V_CURRENT_LINE_REG = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x400010));
+RECOMP_SYMBOL uint32_t* VI_BURST_REG          = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x400014));
+RECOMP_SYMBOL uint32_t* VI_V_SYNC_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x400018));
+RECOMP_SYMBOL uint32_t* VI_H_SYNC_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x40001C));
+RECOMP_SYMBOL uint32_t* VI_LEAP_REG           = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x400020));
+RECOMP_SYMBOL uint32_t* VI_H_START_REG        = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x400024));
+RECOMP_SYMBOL uint32_t* VI_V_START_REG        = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x400028));
+RECOMP_SYMBOL uint32_t* VI_V_BURST_REG        = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x40002C));
+RECOMP_SYMBOL uint32_t* VI_X_SCALE_REG        = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x400030));
+RECOMP_SYMBOL uint32_t* VI_Y_SCALE_REG        = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x400034));
 
-RECOMP_SYMBOL uint32_t* AI_DRAM_ADDR_REG      = (uint32_t*)(s_N64_Reg_Memory + 0x500000);
-RECOMP_SYMBOL uint32_t* AI_LEN_REG            = (uint32_t*)(s_N64_Reg_Memory + 0x500004);
-RECOMP_SYMBOL uint32_t* AI_CONTROL_REG        = (uint32_t*)(s_N64_Reg_Memory + 0x500008);
-RECOMP_SYMBOL uint32_t* AI_STATUS_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x50000C);
+RECOMP_SYMBOL uint32_t* AI_DRAM_ADDR_REG      = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x500000));
+RECOMP_SYMBOL uint32_t* AI_LEN_REG            = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x500004));
+RECOMP_SYMBOL uint32_t* AI_CONTROL_REG        = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x500008));
+RECOMP_SYMBOL uint32_t* AI_STATUS_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x50000C));
 
-RECOMP_SYMBOL uint32_t* PI_DRAM_ADDR_REG      = (uint32_t*)(s_N64_Reg_Memory + 0x600000);
-RECOMP_SYMBOL uint32_t* PI_CART_ADDR_REG      = (uint32_t*)(s_N64_Reg_Memory + 0x600004);
-RECOMP_SYMBOL uint32_t* PI_RD_LEN_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x600008);
-RECOMP_SYMBOL uint32_t* PI_WR_LEN_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x60000C);
-RECOMP_SYMBOL uint32_t* PI_STATUS_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x600010);
+RECOMP_SYMBOL uint32_t* PI_DRAM_ADDR_REG      = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x600000));
+RECOMP_SYMBOL uint32_t* PI_CART_ADDR_REG      = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x600004));
+RECOMP_SYMBOL uint32_t* PI_RD_LEN_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x600008));
+RECOMP_SYMBOL uint32_t* PI_WR_LEN_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x60000C));
+RECOMP_SYMBOL uint32_t* PI_STATUS_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x600010));
 
-RECOMP_SYMBOL uint32_t* RI_CONFIG_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x700000);
-RECOMP_SYMBOL uint32_t* RI_CURRENT_LOAD_REG   = (uint32_t*)(s_N64_Reg_Memory + 0x700004);
-RECOMP_SYMBOL uint32_t* RI_SELECT_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x700008);
-RECOMP_SYMBOL uint32_t* RI_REFRESH_REG        = (uint32_t*)(s_N64_Reg_Memory + 0x700010);
+RECOMP_SYMBOL uint32_t* RI_CONFIG_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x700000));
+RECOMP_SYMBOL uint32_t* RI_CURRENT_LOAD_REG   = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x700004));
+RECOMP_SYMBOL uint32_t* RI_SELECT_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x700008));
+RECOMP_SYMBOL uint32_t* RI_REFRESH_REG        = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x700010));
 
-RECOMP_SYMBOL uint32_t* SI_DRAM_ADDR_REG      = (uint32_t*)(s_N64_Reg_Memory + 0x800000);
-RECOMP_SYMBOL uint32_t* SI_PIF_ADDR_RD64B_REG = (uint32_t*)(s_N64_Reg_Memory + 0x800004);
-RECOMP_SYMBOL uint32_t* SI_PIF_ADDR_WR64B_REG = (uint32_t*)(s_N64_Reg_Memory + 0x800010);
-RECOMP_SYMBOL uint32_t* SI_STATUS_REG         = (uint32_t*)(s_N64_Reg_Memory + 0x800018);
+RECOMP_SYMBOL uint32_t* SI_DRAM_ADDR_REG      = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x800000));
+RECOMP_SYMBOL uint32_t* SI_PIF_ADDR_RD64B_REG = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x800004));
+RECOMP_SYMBOL uint32_t* SI_PIF_ADDR_WR64B_REG = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x800010));
+RECOMP_SYMBOL uint32_t* SI_STATUS_REG         = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_Reg_Memory + 0x800018));
 
 // PIF symbols used by the recompiled code
-RECOMP_SYMBOL uint32_t* PIF_RAM               = (uint32_t*)(s_N64_PIF_Memory + 0x0000);
-RECOMP_SYMBOL uint32_t* PIF_ROM               = (uint32_t*)(s_N64_PIF_Memory + 0x0000);
+RECOMP_SYMBOL uint32_t* PIF_RAM               = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_PIF_Memory + 0x0000));
+RECOMP_SYMBOL uint32_t* PIF_ROM               = (uint32_t*)BKA_TRANSLATE_ADDR((s_N64_PIF_Memory + 0x0000));
 
 // ============================================================
 // 4. MATH & ENGINE GLOBALS

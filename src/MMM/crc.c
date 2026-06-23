@@ -1,4 +1,4 @@
-#include <ultratypes.h>
+/* Redirected */ #include <n64_types.h>
 
 u32 D_8038C300 = 0x00146061;
 u32 D_8038C304 = 0xEC79D7B4;

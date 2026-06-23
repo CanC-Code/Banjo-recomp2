@@ -1,4 +1,4 @@
-#include <ultratypes.h>
+/* Redirected */ #include <n64_types.h>
 
 /* .data */
 //TODO Implement CRC calculation in Makefile(?)

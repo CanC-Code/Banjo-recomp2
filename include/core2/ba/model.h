@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _PLAYER_MODEL_H_
 #define _PLAYER_MODEL_H_
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 enum player_model_direction_e {
     PLAYER_MODEL_DIR_BANJO = 1,
     PLAYER_MODEL_DIR_KAZOOIE = 2,
@@ -14,4 +25,9 @@ void baModel_setYDisplacement(f32);
 void baModel_8029217C(f32);
 void baModel_setVisible(s32 arg0);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

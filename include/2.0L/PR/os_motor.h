@@ -14,9 +14,9 @@
 extern "C" {
 #endif
 
-#include <PR/ultratypes.h>
-#include "os_message.h"
-#include "os_pfs.h"
+/* Redirected */ #include <n64_types.h>
+#include "PR/os_message.h"
+#include "PR/os_pfs.h"
 
 
 #if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)

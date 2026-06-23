@@ -53,11 +53,11 @@ void chTumblar_copyPosition(s32 arg0, Struct68s *arg1, f32 arg2[3]) {
     func_8035179C_copyPosition(arg1, arg2);
 }
 
-bool chTumblar_isDisappeared(Struct_MMM_47D0_0 *arg0, s32 arg1) {
+n64_bool chTumblar_isDisappeared(Struct_MMM_47D0_0 *arg0, s32 arg1) {
     return arg0->state == TUMBLAR_STATE_3_DISAPPEARED;
 }
 
-bool chTumblar_isBanjoAbove(Struct_MMM_47D0_0 *arg0, Struct68s *arg1) {
+n64_bool chTumblar_isBanjoAbove(Struct_MMM_47D0_0 *arg0, Struct68s *arg1) {
     f32 plyr_pos[3];
     f32 position[3];
 

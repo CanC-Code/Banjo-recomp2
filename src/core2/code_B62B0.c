@@ -265,7 +265,7 @@ s32 func_8033D2A8(ActorMarker *arg0, ActorMarker *arg1){
 
 void func_8033D2F4(void) {
     s32 var_a0;
-    bool var_a1;
+    n64_bool var_a1;
     s32 var_v1;
     s32 var_v0 = COLLISION_TABLE_SIZE;
 
@@ -285,7 +285,7 @@ void func_8033D2F4(void) {
     }
 }
 
-bool func_8033D410(ActorMarker *arg0, ActorMarker *arg1) {
+n64_bool func_8033D410(ActorMarker *arg0, ActorMarker *arg1) {
     s32 var_s2;
     s32 collision_index;
     s16 temp_t0;

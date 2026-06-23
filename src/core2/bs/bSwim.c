@@ -62,7 +62,7 @@ void func_802A7304() {
     pitch_setIdeal(ml_map_f(temp_f0, 0.0f, 1.0f, 0.0f, 85.0f));
 }
 
-bool func_802A73BC(void) {
+n64_bool func_802A73BC(void) {
     f32 sp1C;
 
     sp1C = (gsworld_get_map() == MAP_46_CCW_WINTER) ? 90.0f : 130.0f;
@@ -85,7 +85,7 @@ void func_802A744C(void) {
 }
 
 
-bool bsbswim_inSet(enum bs_e move_id){
+n64_bool bsbswim_inSet(enum bs_e move_id){
     return move_id == BS_2B_DIVE_IDLE
         || move_id == BS_2C_DIVE_B
         || move_id == BS_39_DIVE_A
@@ -97,7 +97,7 @@ bool bsbswim_inSet(enum bs_e move_id){
         ;
 }
 
-bool func_802A7588(void){
+n64_bool func_802A7588(void){
     return bsbswim_inSet(bs_getState());
 }
 

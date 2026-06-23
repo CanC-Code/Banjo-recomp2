@@ -4,8 +4,8 @@
 #include "variables.h"
 
 int collisionTri_isHitFromAbove_actor(f32 arg0[3], Actor *arg1, s32 arg2);
-extern bool func_80320DB0(f32[3], f32, f32[3], u32);
-extern bool func_80323240(struct56s *, f32, f32[3]);
+extern n64_bool func_80320DB0(f32[3], f32, f32[3], u32);
+extern n64_bool func_80323240(struct56s *, f32, f32[3]);
 extern BKCollisionTri *func_80320B98(f32[3], f32[3], f32[3], u32);
 extern BKCollisionTri *func_80320C94(f32 arg0[3], f32 arg1[3], f32 arg2, f32 arg3[3], s32 arg4, u32 arg5);
 extern f32 floor_getXPosition(struct0*);
@@ -157,10 +157,10 @@ void func_802451A4(f32 arg0[3], f32 arg1[3], f32 arg2[3], f32 arg3[3], f32 arg4[
     arg1[2] += phi_f12 * sp48[2];
 }
 
-bool func_80245314(f32 arg0[3], f32 arg1[3], f32 arg2, f32 arg3, s32 arg4) {
+n64_bool func_80245314(f32 arg0[3], f32 arg1[3], f32 arg2, f32 arg3, s32 arg4) {
     f32 sp2C[3];
     f32 sp20[3];
-    bool temp_v0;
+    n64_bool temp_v0;
 
     ml_vec3f_copy(sp2C, arg0);
     ml_vec3f_copy(sp20, arg0);
@@ -173,7 +173,7 @@ bool func_80245314(f32 arg0[3], f32 arg1[3], f32 arg2, f32 arg3, s32 arg4) {
     return temp_v0;
 }
 
-bool func_802453A0(f32 arg0[3], f32 arg1[3], f32 arg2[3]){
+n64_bool func_802453A0(f32 arg0[3], f32 arg1[3], f32 arg2[3]){
     f32 sp24[3];
     f32 sp18[3];
     ml_vec3f_copy(sp18, arg1);
@@ -220,7 +220,7 @@ int func_8024549C(f32 arg0[3], f32 arg1){
     return sp1C;
 }
 
-bool func_80245524(f32 arg0[3], void *arg1, s32 *arg2, f32 *arg3){
+n64_bool func_80245524(f32 arg0[3], void *arg1, s32 *arg2, f32 *arg3){
     *arg2 = func_8034C630(arg1);
     if(*arg2 == NULL){
         *arg3 = arg0[1];

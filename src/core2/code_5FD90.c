@@ -200,7 +200,7 @@ void collisionList_getTris(BKCollisionList *collision_list, BKCollisionTri **beg
 }
 
 
-bool func_802E74A0(f32 arg0[3], f32 arg1, f32 arg2[3], f32 arg3[3]) {
+n64_bool func_802E74A0(f32 arg0[3], f32 arg1, f32 arg2[3], f32 arg3[3]) {
     f32 sp24[3];
     f32 sp20;
 
@@ -217,7 +217,7 @@ bool func_802E74A0(f32 arg0[3], f32 arg1, f32 arg2[3], f32 arg3[3]) {
     return TRUE;
 }
 
-bool func_802E7588(f32 arg0[3], f32 arg1, f32 arg2[3], f32 arg3) {
+n64_bool func_802E7588(f32 arg0[3], f32 arg1, f32 arg2[3], f32 arg3) {
     return (ml_vec3f_distance(arg0, arg2) < (arg1 + arg3));
 }
 

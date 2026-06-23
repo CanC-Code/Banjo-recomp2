@@ -153,7 +153,7 @@ void __chCrab_mutantTextCallback(ActorMarker *caller, enum asset_e text_id, s32 
     levelSpecificFlags_set(LEVEL_FLAG_E_CC_UNKNOWN, FALSE);
 }
 
-bool __chCrab_802CB76C(ActorMarker *marker, ActorMarker *other) {
+n64_bool __chCrab_802CB76C(ActorMarker *marker, ActorMarker *other) {
     Actor *this;
 
     this = marker_getActor(marker);
@@ -167,8 +167,8 @@ void __chCrab_die(ActorMarker *marker, ActorMarker *other){
     Actor *this;
     f32 jiggy_spawn_position[3];
     f32 sp44;
-    bool is_mutant_snippet;
-    bool is_black_snippet;
+    n64_bool is_mutant_snippet;
+    n64_bool is_black_snippet;
     s32 model_id;
     ParticleEmitter *p_ctrl;
 
@@ -226,7 +226,7 @@ void __chCrab_walkSfxUpdate(Actor *this) {
 void chCrab_update(Actor *this) {
     s32 sp34;
     f32 sp30;
-    bool is_mutant_snippet;
+    n64_bool is_mutant_snippet;
     static s32 D_803670B0 = 0;
     static s32 D_803670B4 = 0;
 

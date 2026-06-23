@@ -71,8 +71,15 @@ ParticleSettingsVelocityPosition CH_TREASUREHUNT_VELOCITY_RANGES = {
     {{-60.0f, 0.0f, -60.0f}, {60.0f, 30.0f, 60.0f}},
 };
 
+
+/* Automated Forward Decls */
+static n64_bool __chTreasurehunt_isActiveHitboxBeakBusterHitbox(void);
+static void __chTreasurehunt_spawnRedXForNextStep(void);
+static void __chTreasurehunt_spawnActorForNextStep(void);
+static void __chTreasurehunt_checkStepProgress(s32 currentStep);
+
 /* .code */
-static bool __chTreasurehunt_isActiveHitboxBeakBusterHitbox(void) {
+static n64_bool __chTreasurehunt_isActiveHitboxBeakBusterHitbox(void) {
     enum comusic_e comusic_id;
     s32 music_volume;
 

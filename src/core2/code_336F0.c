@@ -15,6 +15,11 @@ static void __code336F0_func_802BA8DC(CameraNodeType1 *this, s32 arg1);
 static void __code336F0_func_802BA8FC(CameraNodeType1 *this, s32 arg1);
 static void __code336F0_func_802BA91C(CameraNodeType1 *this, s32 arg1);
 
+
+/* Automated Forward Decls */
+static void __code336F0_func_802BA680(CameraNodeType1 *this, s32 arg1, s32 arg2);
+static n64_bool __code336F0_func_802BA6B0(CameraNodeType1 *this, s32 arg1);
+
 static void __code336F0_func_802BA680(CameraNodeType1 *this, s32 arg1, s32 arg2) {
     if(arg1) {
         this->unknownFlag |= arg2;
@@ -23,7 +28,7 @@ static void __code336F0_func_802BA680(CameraNodeType1 *this, s32 arg1, s32 arg2)
     }
 }
 
-static bool __code336F0_func_802BA6B0(CameraNodeType1 *this, s32 arg1) {
+static n64_bool __code336F0_func_802BA6B0(CameraNodeType1 *this, s32 arg1) {
     if (this->unknownFlag & arg1) 
         return TRUE;
 
@@ -34,7 +39,7 @@ CameraNodeType1 *cameraNodeType1_init() {
     CameraNodeType1 *this;
     f32 sp20[3];
 
-    this = (CameraNodeType1 *)malloc(sizeof(CameraNodeType1));
+    this = (CameraNodeType1 *)n64_malloc(sizeof(CameraNodeType1));
     ml_vec3f_clear(sp20);
     __cameraNodeType1_setPosition(this, sp20);
     __cameraNodeType1_func_802BA808(this, sp20);
@@ -47,7 +52,7 @@ CameraNodeType1 *cameraNodeType1_init() {
 }
 
 void cameraNodeType1_free(CameraNodeType1 *this) {
-    free(this);
+    n64_free(this);
 }
 
 void cameraNodeType1_getPosition(CameraNodeType1 *this, f32 position[3]) {
@@ -86,15 +91,15 @@ static void __cameraNodeType1_setRotationAndAccelaration(CameraNodeType1 *this, 
     this->accelaration = accelaration;
 }
 
-bool code336F0_func_802BA87C(CameraNodeType1 *this) {
+n64_bool code336F0_func_802BA87C(CameraNodeType1 *this) {
     return __code336F0_func_802BA6B0(this, 0x1);
 }
 
-bool code336F0_func_802BA89C(CameraNodeType1 *this) {
+n64_bool code336F0_func_802BA89C(CameraNodeType1 *this) {
     return __code336F0_func_802BA6B0(this, 0x4);
 }
 
-bool code336F0_func_802BA8BC(CameraNodeType1 *this) {
+n64_bool code336F0_func_802BA8BC(CameraNodeType1 *this) {
     return __code336F0_func_802BA6B0(this, 0x2);
 }
 

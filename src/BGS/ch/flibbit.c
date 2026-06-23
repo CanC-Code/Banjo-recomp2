@@ -32,7 +32,7 @@ ActorInfo gChFlibbit = {
 f32 D_803906B4[3] = {0.0f, 0.0f, 0.0f};
 
 /* .code */
-bool BGS_func_803863F0(Actor *this, f32 arg1[3], s32 arg2){
+n64_bool BGS_func_803863F0(Actor *this, f32 arg1[3], s32 arg2){
 
     ActorLocal_Flibbit *local = (ActorLocal_Flibbit *)&this->local;
 
@@ -52,7 +52,7 @@ bool BGS_func_803863F0(Actor *this, f32 arg1[3], s32 arg2){
     return TRUE;
 }
 
-bool func_80386564(Actor *this){
+n64_bool func_80386564(Actor *this){
     f32 plyrPos[3]; //sp54
     f32 sp48;
     f32 sp44;
@@ -115,7 +115,7 @@ s32 func_803866A4(Actor *this) {
 }
 
 
-bool func_8038686C(Actor *this) {
+n64_bool func_8038686C(Actor *this) {
     f32 sp84[3];
     f32 sp80;
     f32 sp7C;
@@ -149,9 +149,9 @@ bool func_8038686C(Actor *this) {
 }
 
 
-bool func_80386A34(Actor * this){
+n64_bool func_80386A34(Actor * this){
     f32 plyrPos[3];
-    bool out;
+    n64_bool out;
 
     if(volatileFlag_get(VOLATILE_FLAG_C1_IN_FINAL_CHARACTER_PARADE))
         return 0;

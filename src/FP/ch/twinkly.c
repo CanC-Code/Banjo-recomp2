@@ -196,7 +196,7 @@ void chTwinkly_hopToTree(Actor *arg0, f32 arg1[3], f32 arg2)
     }
 }
 
-bool chTwinkly_hopOutBox(Actor *this, f32 arg1){
+n64_bool chTwinkly_hopOutBox(Actor *this, f32 arg1){
     f32 tmp;
 
     this->position[0] += this->velocity[0];
@@ -215,7 +215,7 @@ bool chTwinkly_hopOutBox(Actor *this, f32 arg1){
     return TRUE;
 }
 
-bool func_8038C844(f32 arg0[3], f32 arg1[3]){ //connected to twinklies entering tree and interacting with munchers 
+n64_bool func_8038C844(f32 arg0[3], f32 arg1[3]){ //connected to twinklies entering tree and interacting with munchers 
     if( (arg0[0] - arg1[0] < 26.0f && -26.0f < arg0[0] - arg1[0])
         && (arg0[1] - arg1[1] < 26.0f && -26.0f < arg0[1] - arg1[1])
         && (arg0[2] - arg1[2] < 26.0f && -26.0f < arg0[2] - arg1[2])

@@ -1,7 +1,8 @@
-#include <os_internal.h>
-#include <rcp.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
 #include "viint.h"
 #include "osint.h"
+#include <n64_types.h>
 
 OSDevMgr __osViDevMgr = {0};
 

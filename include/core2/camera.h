@@ -1,8 +1,18 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _CAMERA_H_
 #define _CAMERA_H_
-#include <ultratypes.h>
+/* Redirected */ #include <n64_types.h>
+#ifdef __cplusplus
+}
+#endif
 #include <core2/file.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 typedef struct {
     s32 type: 24;
     s32 valid: 8;
@@ -70,4 +80,9 @@ typedef struct {
 CameraNodeType4 *cameraNodeType4_init();
 void cameraNodeType4_free(CameraNodeType4 *this);
 void cameraNodeType4_fromFile(File *file_ptr, CameraNodeType4 *this);
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

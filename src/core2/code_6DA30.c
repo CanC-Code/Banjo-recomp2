@@ -1,4 +1,5 @@
 #include <ultra64.h>
+#include "bka_safe_base.h"
 #include "core1/core1.h"
 #include "functions.h"
 #include "variables.h"
@@ -210,7 +211,7 @@ s32 D_80380AF8;
 s32 D_80380AFC;
 s32 D_80380B00;
 s32 D_80380B04;
-bool print_sInFontFormatMode;
+n64_bool print_sInFontFormatMode;
 s32 D_80380B0C;
 s32 D_80380B10;
 s32 D_80380B14;
@@ -285,7 +286,7 @@ void func_802F4B58(BKSpriteTextureBlock *alphaMask, BKSpriteTextureBlock *textur
 FontLetter *func_802F4C3C(BKSprite *alphaMask, BKSprite *textureSprite){
     BKSpriteFrame * font = sprite_getFramePtr(alphaMask, 0);
     BKSpriteTextureBlock *chunkPtr;
-    FontLetter * sp2C = malloc((font->chunkCnt + 1)*sizeof(FontLetter));
+    FontLetter * sp2C = n64_malloc((font->chunkCnt + 1)*sizeof(FontLetter));
     u8* palDataPtr;
     u8* chunkDataPtr;
     s32 chunkSize;
@@ -301,7 +302,7 @@ FontLetter *func_802F4C3C(BKSprite *alphaMask, BKSprite *textureSprite){
                     chunkDataPtr++;
                 
                 palDataPtr = chunkDataPtr;
-                chunkPtr = (BKSpriteTextureBlock *) (palDataPtr + 2*0x100);
+                chunkPtr = (BKSpriteTextureBlock *)BKA_TRANSLATE_ADDR((palDataPtr + 2*0x100));
                 
                 for(i= 0; i < font->chunkCnt; i++){
                     
@@ -366,11 +367,11 @@ void func_802F4F64(void){
         assetcache_release(D_80380AB8[i]);
         D_80380AB8[i] = NULL;
         if(i < 4){
-            free(print_sFonts[i]);
+            n64_free(print_sFonts[i]);
             print_sFonts[i] = NULL;
         }
     }
-    free(print_sPrintBuffer);
+    n64_free(print_sPrintBuffer);
     print_sPrintBuffer = NULL;
 }
 
@@ -400,10 +401,10 @@ void func_802F5060(s32 textureId){
         }
     }//L802F510C
     D_80380AB8[4] = assetcache_get(textureId);
-    free(print_sFonts[1]);
+    n64_free(print_sFonts[1]);
     print_sFonts[1] = func_802F4C3C(D_80380AB8[1], D_80380AB8[4]);
     if(D_80380AB8[3]){
-        free(print_sFonts[3]);
+        n64_free(print_sFonts[3]);
         print_sFonts[3] = func_802F4C3C(D_80380AB8[3], D_80380AB8[4]);
     }
     assetcache_release(D_80380AB8[4]);
@@ -421,7 +422,7 @@ void func_802F51B8(void){
     s32 length;
     int found;
 
-    length = strlen(D_80369200);
+    length = n64_strlen(D_80369200);
     D_80380AE8 = \
     D_80380AEC = \
     D_80380AF0 = \
@@ -440,7 +441,7 @@ void func_802F51B8(void){
     D_80380AB8[4] = assetcache_get(func_802F49C0());
     print_sFonts[0] =  func_802F4C3C(D_80380AB8[0], D_80380AB8[4]);
     print_sFonts[1] =  func_802F4C3C(D_80380AB8[1], D_80380AB8[4]);
-    print_sPrintBuffer = malloc(0x20*sizeof(PrintBuffer));
+    print_sPrintBuffer = n64_malloc(0x20*sizeof(PrintBuffer));
     func_802F5010();
 
     for(i = 0; i < 0x80; i++){//L802F52EC
@@ -463,7 +464,7 @@ void func_802F5374(void){
     if(D_80380B18 > 0 && --D_80380B18 == 0){
         assetcache_release(D_80380AB8[3]);
         D_80380AB8[3] = 0;
-        free(print_sFonts[3]);
+        n64_free(print_sFonts[3]);
         print_sFonts[3] = NULL;
     }
 }
@@ -474,7 +475,7 @@ void func_802F53D0(void){
         D_80380AB8[3] = NULL;
     }
     if(print_sFonts[3]){
-        free(print_sFonts[3]);
+        n64_free(print_sFonts[3]);
         print_sFonts[3] = NULL;
     }
     D_80380B18 = 0;
@@ -772,7 +773,7 @@ void _printbuffer_draw_letter(char letter, f32* xPtr, f32* yPtr, f32 arg3, Gfx *
 f32 func_802F6C90(u8 letter, f32* xPtr, f32 *yPtr, f32 arg3){
     s32 sp44;
     s32 i;
-    bool var_v0;
+    n64_bool var_v0;
     f32 sp38;
     s32 sp34;
     f32 var_f2;
@@ -841,7 +842,7 @@ void printbuffer_draw(Gfx **gfx, Mtx **mtx, Vtx **vtx) {
                 _printbuffer_draw_letter(print_sCurrentPtr->fmtString[j], &_x, &_y, 1.0f, gfx, mtx, vtx);
             }
             if (D_80380B00 != 0) {
-                width = (strlen(print_sCurrentPtr->string) -1)*D_80369068[D_80380AE8];
+                width = (n64_strlen(print_sCurrentPtr->string) -1)*D_80369068[D_80380AE8];
                 gDPPipeSync((*gfx)++);
                 gDPSetPrimColor((*gfx)++, 0, 0, 0x00, 0x00, 0x00, 0x64);
                 gDPSetCombineMode((*gfx)++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
@@ -909,7 +910,7 @@ void _printbuffer_push_new(s32 x, s32 y, u8 * string) {
 void print_bold_overlapping(s32 x, s32 y, f32 arg2, u8* string){
     _printbuffer_push_new(x, y, string);
     if(print_sCurrentPtr){
-        strcpy(print_sCurrentPtr->fmtString, "fl");
+        n64_strcpy(print_sCurrentPtr->fmtString, "fl");
         print_sCurrentPtr->unk10 = arg2;
     }
 }
@@ -917,21 +918,21 @@ void print_bold_overlapping(s32 x, s32 y, f32 arg2, u8* string){
 void print_bold_spaced(s32 x, s32 y, u8* string){
     _printbuffer_push_new(x, y, string);
     if(print_sCurrentPtr){
-        strcpy(print_sCurrentPtr->fmtString, "f");
+        n64_strcpy(print_sCurrentPtr->fmtString, "f");
     }
 }
 
 void print_dialog(s32 x, s32 y, u8* string){
     _printbuffer_push_new(x, y, string);
     if(print_sCurrentPtr){
-        strcpy(print_sCurrentPtr->fmtString, "elq");
+        n64_strcpy(print_sCurrentPtr->fmtString, "elq");
     }
 }
 
 void print_dialog_w_bg(s32 x, s32 y, u8* string){
     _printbuffer_push_new(x, y, string);
     if(print_sCurrentPtr){
-        strcpy(print_sCurrentPtr->fmtString, "pb");
+        n64_strcpy(print_sCurrentPtr->fmtString, "pb");
     }
 }
 
@@ -940,7 +941,7 @@ void print_dialog_gradient(s32 x, s32 y, u8* string, u8 arg3, u8 arg4){
     if(print_sCurrentPtr){
         print_sCurrentPtr->unk4 = arg3;
         print_sCurrentPtr->unk6 = arg4;
-        strcpy(print_sCurrentPtr->fmtString, "v");
+        n64_strcpy(print_sCurrentPtr->fmtString, "v");
     }
 }
 
@@ -949,7 +950,7 @@ void func_802F79D0(s32 x, s32 y, u8* string, s32 arg3, s32 arg4){
     if(print_sCurrentPtr){
         print_sCurrentPtr->unk4 = arg3;
         print_sCurrentPtr->unk6 = arg4;
-        strcpy(print_sCurrentPtr->fmtString, "delq");
+        n64_strcpy(print_sCurrentPtr->fmtString, "delq");
 
     }
 }

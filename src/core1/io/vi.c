@@ -1,7 +1,8 @@
-#include <os_internal.h>
-#include <R4300.h>
-#include <rcp.h>
+#include <PR/os_internal.h>
+#include <PR/R4300.h>
+#include <PR/rcp.h>
 #include "viint.h"
+#include <n64_types.h>
 
 static __OSViContext vi[2] = {0};
 __OSViContext *__osViCurr = &vi[0];

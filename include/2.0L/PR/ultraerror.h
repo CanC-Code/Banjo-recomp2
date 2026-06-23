@@ -33,7 +33,7 @@
 extern "C" {
 #endif
 
-#include <PR/ultratypes.h>
+/* Redirected */ #include <n64_types.h>
 
 #define	OS_ERROR_FMT	"/usr/lib/PR/error.fmt"
 #define OS_ERROR_MAGIC	0x6b617479

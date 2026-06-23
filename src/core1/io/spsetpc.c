@@ -1,5 +1,6 @@
-#include <os_internal.h>
-#include <rcp.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
+#include <n64_types.h>
 
 s32 __osSpSetPc(u32 data)
 {

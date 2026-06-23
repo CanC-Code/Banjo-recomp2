@@ -1,7 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _VIINT_H
 #define _VIINT_H
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #define OS_TV_TYPE_PAL 0
 #define OS_TV_TYPE_NTSC 1
 #define OS_TV_TYPE_MPAL 2
@@ -67,4 +77,9 @@ extern __OSViContext *__osViCurr;
 extern __OSViContext *__osViNext;
 __OSViContext *__osViGetCurrentContext(void);
 void __osViInit(void);
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

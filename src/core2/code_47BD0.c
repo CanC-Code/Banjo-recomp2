@@ -5,8 +5,8 @@
 #include "code_C9E70.h"
 
 extern void func_8030DBFC(u32, f32, f32, f32);
-extern bool func_80309DBC(f32[3], f32[3], f32, f32 sp54[3], s32, s32);
-extern void fileProgressFlag_set(enum file_progress_e, bool);
+extern n64_bool func_80309DBC(f32[3], f32[3], f32, f32 sp54[3], s32, s32);
+extern void fileProgressFlag_set(enum file_progress_e, n64_bool);
 extern void sfxsource_set_fade_distances(u8, f32, f32);
 extern void sfxsource_set_position(u8, f32[3]);
 extern void sfxSource_func_8030E2C4(u8);
@@ -66,7 +66,7 @@ void chBeeSwarm_802CEBA8(Actor *this){
     local = (ActorLocal_core2_47BD0 *)&this->local;
     this->partnerActor = NULL;
     
-    free(local->unk8);
+    n64_free(local->unk8);
     local->unk8 = NULL;
     
     assetcache_release(local->unk20);
@@ -164,7 +164,7 @@ void chBeeSwarm_802CF040(Actor *this) {
     ActorLocal_core2_47BD0 *local;
 
     local = (ActorLocal_core2_47BD0 *) &this->local;
-    local->unk8 = (Struct_core2_47BD0_0 *) malloc(local->unk0 * sizeof(Struct_core2_47BD0_0));
+    local->unk8 = (Struct_core2_47BD0_0 *) n64_malloc(local->unk0 * sizeof(Struct_core2_47BD0_0));
     
     for(phi_s1 = 0, phi_s0 = local->unk8; phi_s1 < local->unk0; phi_s1++){
         phi_s0->unk0[0] = randf2(-150.0f, 150.0f);
@@ -263,10 +263,10 @@ void chBeeSwarm_802CF57C(Actor *this) {
     }
 }
 
-bool chBeeSwarm_802CF5E4(Actor *this){
+n64_bool chBeeSwarm_802CF5E4(Actor *this){
     ActorLocal_core2_47BD0 *local;
     ActorMarker *other;
-    bool out = 1;
+    n64_bool out = 1;
 
     local = (ActorLocal_core2_47BD0 *) &this->local;
     out = (this->partnerActor != NULL) ? out = local->unk24 != this->partnerActor->unk5C

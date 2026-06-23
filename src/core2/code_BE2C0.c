@@ -65,14 +65,14 @@ void func_80345274(f32 arg0[4], f32 arg1[3][3]) {
     arg1[2][2] = 1.0 - (sp28 + sp1C);
 }
 
-bool vec4f_isZero(f32 arg0[4]){
+n64_bool vec4f_isZero(f32 arg0[4]){
     return ((arg0[0] == 0.0f) 
         && (arg0[1] == 0.0f)
         && (arg0[2] == 0.0f)
         && (arg0[3] == 1.0f));
 }
 
-bool vec4f_isAlmostZero(f32 arg0[4]) {
+n64_bool vec4f_isAlmostZero(f32 arg0[4]) {
     return (((0.0f <= arg0[0]) ? arg0[0] : - arg0[0]) < 0.01)
         && (((0.0f <= arg0[1]) ? arg0[1] : - arg0[1]) < 0.01)
         && (((0.0f <= arg0[1]) ? arg0[1] : - arg0[1]) < 0.01)

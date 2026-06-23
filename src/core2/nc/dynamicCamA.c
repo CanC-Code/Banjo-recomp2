@@ -21,7 +21,7 @@ void ncDynamicCamA_init(void){}
 
 void ncDynamicCamA_end(void){}
 
-bool ncDynamicCamA_func_802C1DB0(f32 arg0) {
+n64_bool ncDynamicCamA_func_802C1DB0(f32 arg0) {
     f32 pad4C;
     f32 camera_position[3];
     f32 sp34[3];
@@ -50,7 +50,7 @@ bool ncDynamicCamA_func_802C1DB0(f32 arg0) {
     return FALSE;
 }
 
-bool ncDynamicCamA_func_802C1EE0(void){
+n64_bool ncDynamicCamA_func_802C1EE0(void){
     return D_80365DB0;
 }
 

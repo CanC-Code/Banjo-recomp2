@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef BANJO_KAZOOIE_CORE1_MAIN_H
 #define BANJO_KAZOOIE_CORE1_MAIN_H
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 void func_8023DA20(s32 arg0);
 void func_8023DA74(void);
 void func_8023DA9C(s32 arg0);
@@ -23,4 +34,9 @@ void mainThread_create(void);
 OSThread *mainThread_get(void);
 void disableInput_set(void);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

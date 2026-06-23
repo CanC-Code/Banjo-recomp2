@@ -71,28 +71,28 @@ void func_8034E8E4(Struct73s *arg0, BKModel *arg1, s32 arg2) {
     f32 sp3C;
     f32 sp38;
     f32 sp30[2];
-    f32 sin;
-    f32 cos;
+    f32 n64_sin;
+    f32 n64_cos;
     f32 sp2C;
     f32 sp28;
 
     sp38 = time_getDelta();
     arg0->unk4 += sp38;
-    cos = cosf(arg0->unk4 * 0.2 * BAD_PI);
-    sin = sinf(arg0->unk4 * 0.08 * BAD_PI);
-    sp30[0] = (sin*100.0f + 150.0f*cos)*0.8;
+    n64_cos = cosf(arg0->unk4 * 0.2 * BAD_PI);
+    n64_sin = sinf(arg0->unk4 * 0.08 * BAD_PI);
+    sp30[0] = (n64_sin*100.0f + 150.0f*n64_cos)*0.8;
 
     
-    cos = sinf(arg0->unk4 * 0.5 * BAD_PI);
-    sin = cosf(arg0->unk4 * 0.22 * BAD_PI);
-    sp30[1] = (sin* 100.0f + 50.0f*cos)*0.8;
+    n64_cos = sinf(arg0->unk4 * 0.5 * BAD_PI);
+    n64_sin = cosf(arg0->unk4 * 0.22 * BAD_PI);
+    sp30[1] = (n64_sin* 100.0f + 50.0f*n64_cos)*0.8;
 
     arg0->d_tc[0] = (sp30[0] >= 0.0) ? sp30[0] + 0.5 : sp30[0] - 0.5;
     arg0->d_tc[1] = (sp30[1] >= 0.0) ? sp30[1] + 0.5 : sp30[1] - 0.5;
 
-    cos = cosf(arg0->unk4 * 0.5 * BAD_PI);
-    sin = sinf(arg0->unk4 * 0.11 * BAD_PI);
-    sp2C = sin*(arg0->unk8 * 0.25) + (arg0->unk8* 0.75)*cos;
+    n64_cos = cosf(arg0->unk4 * 0.5 * BAD_PI);
+    n64_sin = sinf(arg0->unk4 * 0.11 * BAD_PI);
+    sp2C = n64_sin*(arg0->unk8 * 0.25) + (arg0->unk8* 0.75)*n64_cos;
     
     if (arg0->unk14 < arg0->unk1C) {
         arg0->unk18 = arg0->unk14;

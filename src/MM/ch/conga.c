@@ -2,7 +2,7 @@
 #include "rand.h"
 #include "functions.h"
 #include "variables.h"
-#include <math.h>
+/* Redirected */ #include <n64_math.h>
 
 #include "conga.h"
 
@@ -55,7 +55,7 @@ ActorInfo chCongaInfo = { MARKER_7_CONGA, ACTOR_8_CONGA, ASSET_35C_MODEL_CONGA,
 
 
 /* code */
-bool __chConga_isPlayerNearCongaTree(Actor * this){
+n64_bool __chConga_isPlayerNearCongaTree(Actor * this){
     f32 plyr_pos[3];
     f32 unused_tmpz;
 

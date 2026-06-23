@@ -3,7 +3,7 @@
 #include "functions.h"
 #include "variables.h"
 
-#include "time.h"
+/* Redirected */ #include <n64_time.h>
 
 void func_80346DB4(s32);
 
@@ -578,7 +578,7 @@ void func_80347A14(s32 arg0){
     }
 }
 
-bool func_80347A4C(void){
+n64_bool func_80347A4C(void){
     return (D_80386038 != 0) ? FALSE : TRUE;
 }
 

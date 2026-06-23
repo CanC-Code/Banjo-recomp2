@@ -1,5 +1,6 @@
-#include <os_internal.h>
+#include <PR/os_internal.h>
 #include "controller.h"
+#include <n64_types.h>
 s32 osEepromLongRead(OSMesgQueue *mq, u8 address, u8 *buffer, int length)
 {
     s32 ret;

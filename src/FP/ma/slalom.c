@@ -597,7 +597,7 @@ f32 maSlalom_compareBoggyToPlayer(f32 boggy_position[3]){
     return -gate_diff;
 }
 
-bool maSlalom_isActive(void){
+n64_bool maSlalom_isActive(void){
     if ( Me.state == MA_SLALOM_STATE_2_RACING 
          || Me.state == MA_SLALOM_STATE_3_WIN 
          || Me.state == MA_SLALOM_STATE_4_LOSE 
@@ -608,7 +608,7 @@ bool maSlalom_isActive(void){
     return FALSE;
 }
 
-bool maSlolam_WithinRadiusOfBoggy(f32 position[3], s32 radius){
+n64_bool maSlolam_WithinRadiusOfBoggy(f32 position[3], s32 radius){
     Actor *pntBoggy;
 
     // WARNING: (maslalom.c) - You must set a valid radius.

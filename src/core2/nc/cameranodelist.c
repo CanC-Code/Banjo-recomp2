@@ -14,6 +14,10 @@ static void __ncCameraNodeList_setCameraNodeType(int camera_node_index, s32 type
 /* .bss */
 CameraNode sNcCameraNodeList[NC_CAMERA_NODE_LIST_CAPACITY];
 
+
+/* Automated Forward Decls */
+static void __ncCameraNodeList_addNode(int camera_node_index);
+
 /* .code */
 void ncCameraNodeList_init() {
     int i;

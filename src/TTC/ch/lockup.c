@@ -39,6 +39,13 @@ ActorInfo chLockupFast = {
 static s32 SMOKE_COLOR[4] = { 120, 120, 120, 120 };
 static s32 SMOKE_VELOCITY[3] = { 0, 0, 0 };
 
+
+/* Automated Forward Decls */
+static Actor *chLockup_draw(ActorMarker *marker, Gfx **gfx, Mtx **mtx, Vtx **vtx);
+static void close(Actor *this);
+static void open(Actor *this);
+static void chLockup_update(Actor *this);
+
 static Actor *chLockup_draw(ActorMarker *marker, Gfx **gfx, Mtx **mtx, Vtx **vtx) {
     Actor *actor = marker_getActor(marker);
     func_8033A45C(3, actor->unk38_31);

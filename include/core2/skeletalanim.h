@@ -1,9 +1,20 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _SKELETAL_ANIMATION_H_
 #define _SKELETAL_ANIMATION_H_
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 #include "core2/vla.h"
 #include "generic.h"
 #include "bonetransform.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 enum skeletal_anim_e {
     SKELETAL_ANIM_1_LOOP = 1,
     SKELETAL_ANIM_2_ONCE,
@@ -55,4 +66,9 @@ void               skeletalAnim_setProgress(SkeletalAnimation *self, f32 progres
 void               skeletalAnim_setDuration(SkeletalAnimation *self, f32 duration);
 void               skeletalAnim_setBehavior(SkeletalAnimation *self, enum skeletal_anim_e behavior);
 void               skeletalAnim_update(SkeletalAnimation *self, f32 dt, s32 arg2);
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

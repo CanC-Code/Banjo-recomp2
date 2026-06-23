@@ -1,6 +1,17 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef BANJO_KAZOOIE_CORE1_VIMGR_H
 #define BANJO_KAZOOIE_CORE1_VIMGR_H
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 typedef struct struct_1_s{
     OSMesgQueue *messageQueue;
     OSMesg message;
@@ -25,4 +36,9 @@ void viMgr_clearFramebuffers(void);
 s32 viMgr_func_8024C4E8(void);
 void viMgr_func_8024C4F8(s32 arg0);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

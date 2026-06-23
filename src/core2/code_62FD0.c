@@ -28,7 +28,7 @@ BKMesh * meshList_getMesh(BKMeshList *meshList, s32 mesh_id){
     return NULL;
 }
 
-bool meshList_meshContainsVtx(BKMeshList * meshList, s32 mesh_id, void *vtx_id){
+n64_bool meshList_meshContainsVtx(BKMeshList * meshList, s32 mesh_id, void *vtx_id){
     s32 i;
     BKMesh *v0 = meshList_getMesh(meshList, mesh_id);
 

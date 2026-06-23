@@ -2,7 +2,7 @@
 #include "functions.h"
 #include "variables.h"
 
-#include "math.h" // for SQ()
+/* Redirected */ #include <n64_math.h> // for SQ()
 
 void chVacationTextTrigger_update(Actor* this);
 
@@ -15,13 +15,17 @@ ActorInfo gChVacationTextTrigger = {
     0, 0, 0.0f, 0
 };
 
+
+/* Automated Forward Decls */
+static n64_bool __playerIsWithinTrigger(s32 x, s32 z, s32 distance);
+
 /* .code */
 
 /**
  * @brief Returns if player is within a specified horizontal radius of the 
  * supplied x,z positions.
  */
-static bool __playerIsWithinTrigger(s32 x, s32 z, s32 distance) {
+static n64_bool __playerIsWithinTrigger(s32 x, s32 z, s32 distance) {
     s32 player_position[3];
 
     player_getPosition_s32(player_position);

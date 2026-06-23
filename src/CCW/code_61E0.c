@@ -54,7 +54,7 @@ void CCW_func_8038C6A0(Actor *this, s32 next_state) {
 
 
 void func_8038C7A8(Actor *this) {
-    bool sp4C;
+    n64_bool sp4C;
     ActorLocal_CCW_61E0 *local;
     f32 sp44;
     f32 sp38[3];

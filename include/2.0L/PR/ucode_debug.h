@@ -1,4 +1,5 @@
 /*---------------------------------------------------------------------*
+#include <n64_types.h>
 	Copyright (C) 1998, Nintendo.
 	
 	File		ucode_debug.h

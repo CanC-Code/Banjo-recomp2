@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <pthread.h>
-#include <sched.h>
+#include <PR/sched.h>
 #include <unordered_map>
 #include <mutex>
 #include <deque>

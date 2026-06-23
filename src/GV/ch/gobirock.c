@@ -77,7 +77,7 @@ Actor *chGobiRock_draw(ActorMarker *this_marker, Gfx **gfx, Mtx **mtx, Vtx **vtx
     
 }
 
-bool chGobiRock_isDestroyed(void){
+n64_bool chGobiRock_isDestroyed(void){
     return chGobiRockDestroyed;
 }
 

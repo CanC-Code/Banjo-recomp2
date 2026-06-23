@@ -1,4 +1,5 @@
 #include <ultra64.h>
+#include "bka_safe_base.h"
 #include "functions.h"
 #include "variables.h"
 #include "core2/particle.h"
@@ -305,7 +306,7 @@ void func_80391EA8(ActorMarker *marker, ActorMarker *a1, f32 a2[3], f32 f1, f32 
 
     actor->partnerActor = a1;
 
-    *(f32 *)(unk + 0x04) = f2 > 0 ? 0.5 : 0.0;
-    *(s32 *)(unk + 0x0C) = f2 < 0 ? 2.5 : 1.0;
+    *(f32 *)BKA_TRANSLATE_ADDR((unk + 0x04)) = f2 > 0 ? 0.5 : 0.0;
+    *(s32 *)BKA_TRANSLATE_ADDR((unk + 0x0C)) = f2 < 0 ? 2.5 : 1.0;
 }
 

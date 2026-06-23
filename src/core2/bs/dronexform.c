@@ -29,6 +29,10 @@ struct {
     u8 state;
 } D_8037D470;
 
+
+/* Automated Forward Decls */
+static void __bsdronexform_setState(int next_state);
+
 /* .code */
 void func_802AF7A0(ParticleEmitter *arg0, enum asset_e arg1){
     particleEmitter_manualFree(arg0);

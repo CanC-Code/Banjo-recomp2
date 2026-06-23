@@ -120,7 +120,7 @@ s32 func_8034DC78(Struct6Ds *arg0){
     return arg0->unk4C;
 }
 
-bool func_8034DC80(Struct6Ds *arg0, f32 arg1[3]) {
+n64_bool func_8034DC80(Struct6Ds *arg0, f32 arg1[3]) {
     return (arg0->unk14[0] <= arg1[0]) && (arg1[0] < arg0->unk1A[0])
         && (arg0->unk14[2] <= arg1[2]) && (arg1[2] < arg0->unk1A[2]);
 }

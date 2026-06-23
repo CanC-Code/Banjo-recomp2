@@ -1,11 +1,22 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __CORE_2_H__
 #define __CORE_2_H__
+#ifdef __cplusplus
+}
+#endif
+#include <n64_types.h>
 
 #include "core2/timedfunc.h"
 #include "gc/gc.h"
 #include "core2/code_6DA30.h"
 #include "core2/anctrl.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 void func_80351A04(Struct68s *arg0, s32 arg1);
 void func_80351A14(Struct68s *arg0, Struct68DrawMethod arg1);
 void func_8035179C_copyPosition(Struct68s* arg0, f32 arg1[3]);
@@ -28,9 +39,9 @@ struct bitfield_s {
 
 struct bitfield_s *bitfield_new(s32 count);
 void bitfield_free(struct bitfield_s *this);
-void bitfield_setBit(struct bitfield_s *this, s32 index, bool value);
-bool bitfield_isBitSet(struct bitfield_s *this, s32 index);
-void bitfield_setAll(struct bitfield_s *this, bool value);
+void bitfield_setBit(struct bitfield_s *this, s32 index, n64_bool value);
+n64_bool bitfield_isBitSet(struct bitfield_s *this, s32 index);
+void bitfield_setAll(struct bitfield_s *this, n64_bool value);
 
 void playerPosition_init(void);
 void playerPosition_func_8029842C(void);
@@ -45,4 +56,9 @@ void playerPosition_getOffset(f32 offset[3]);
 void playerPosition_setOffset(f32 offset[3]);
 void playerPosition_applyOffset(void);
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

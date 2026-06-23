@@ -1,5 +1,6 @@
-#include <rcp.h>
+#include <PR/rcp.h>
 #include "osint.h"
+#include <n64_types.h>
 
 s32 osAiSetFrequency(u32 frequency)
 {

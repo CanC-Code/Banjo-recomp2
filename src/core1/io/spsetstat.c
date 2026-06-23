@@ -1,5 +1,6 @@
-#include <os_internal.h>
-#include <rcp.h>
+#include <PR/os_internal.h>
+#include <PR/rcp.h>
+#include <n64_types.h>
 
 void __osSpSetStatus(u32 data){
     IO_WRITE(SP_STATUS_REG, data);

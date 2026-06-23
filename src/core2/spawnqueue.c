@@ -1,4 +1,5 @@
 #include <ultra64.h>
+#include "bka_safe_base.h"
 #include "core1/core1.h"
 #include "functions.h"
 #include "variables.h"
@@ -186,7 +187,7 @@ FunctionQueue *spawnQueue = NULL;
 /* .code */
 void spawnQueue_malloc(void){
     u32 tmp = (gsworld_get_map() == MAP_90_GL_BATTLEMENTS)? 50: 15;
-    spawnQueue = (FunctionQueue *) malloc(tmp * sizeof(FunctionQueue));
+    spawnQueue = (FunctionQueue *) n64_malloc(tmp * sizeof(FunctionQueue));
 }
 
 void spawnQueue_reset(void){
@@ -415,7 +416,7 @@ void spawnQueue_free(void){
     spawnableActorList_free();
     actorArray_free();
     func_80305D94();
-    free(spawnQueue);
+    n64_free(spawnQueue);
     spawnQueue = NULL;
     spawnQueueLength = 0;
     
@@ -424,7 +425,7 @@ void spawnQueue_free(void){
 void spawnQueue_func_802C39D4(void){
     func_803268B4();
     if(!levelSpecificFlags_validateCRC2()){
-        eeprom_writeBlocks(0, 0, (void*)0x80749530, EEPROM_MAXBLOCKS);
+        eeprom_writeBlocks(0, 0, (void*)BKA_TRANSLATE_ADDR(0x80749530), EEPROM_MAXBLOCKS);
     }
 }
 

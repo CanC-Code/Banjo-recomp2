@@ -25,7 +25,7 @@ void func_8031B5C4(s32 arg0) {
     D_80383150 = 1;
 }
 
-bool func_8031B604(char *arg0) {
+n64_bool func_8031B604(char *arg0) {
     return (arg0[0] == 0xFD) && (arg0[1] == 0x6A);
 }
 

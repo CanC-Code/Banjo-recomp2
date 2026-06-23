@@ -17,7 +17,7 @@ f32 D_8037DBA8;
 f32 D_8037DBAC;
 
 /* .code */
-bool func_802C0640(void){
+n64_bool func_802C0640(void){
     return mlAbsF(mlDiffDegF(D_8037DBA4, D_8037DBA8)) < 4.0;
 }
 

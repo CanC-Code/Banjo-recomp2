@@ -133,7 +133,7 @@ void chWozza_facePlayer(Actor *this, f32 arg1){
     subaddie_turnToYaw(this, arg1);
 }
 
-bool chWozza_retreatToCaveAnimation(Actor *this, f32 arg1[3], f32 arg2, f32 arg3, s32 arg4){
+n64_bool chWozza_retreatToCaveAnimation(Actor *this, f32 arg1[3], f32 arg2, f32 arg3, s32 arg4){
     f32 sp24;
 
     sp24 = anctrl_getAnimTimer(this->anctrl);
@@ -150,7 +150,7 @@ bool chWozza_retreatToCaveAnimation(Actor *this, f32 arg1[3], f32 arg2, f32 arg3
 
 }
 
-bool chWozza_rotate(Actor *this, f32 arg1[3], f32 arg2){
+n64_bool chWozza_rotate(Actor *this, f32 arg1[3], f32 arg2){
     s32 dTheta;
 
     subaddie_set_ideal_yaw(this, subaddie_getYawToPosition(this, arg1));

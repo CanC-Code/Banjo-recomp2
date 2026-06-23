@@ -100,7 +100,7 @@ void func_8031FEC0(void) {
     *obscured_addr = func_8031FE40();
 }
 
-bool fileProgressFlag_get(enum file_progress_e index) {
+n64_bool fileProgressFlag_get(enum file_progress_e index) {
     return bitfieldarray_getBit(gFileProgressFlags.unk8, index);
 }
 

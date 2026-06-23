@@ -57,7 +57,7 @@ s32 D_802765A4 = 0;
 void *D_802765A8 = NULL;
 s32 D_802765AC = 0;
 struct{
-    bool unk0;
+    n64_bool unk0;
 }D_802765B0 = {0};
 UNK_TYPE(void *) D_802765B4 = NULL;
 
@@ -78,6 +78,10 @@ struct {
 EmptyHeapBlock *func_802549BC(s32 size);
 void _heap_sortEmptyBlock(EmptyHeapBlock * arg0);
 void func_80255ACC(void);
+
+
+/* Automated Forward Decls */
+static u32 _heap_get_occupied_size(void);
 
 /* .code */
 s32 __heap_align(s32 size){
@@ -135,7 +139,7 @@ void func_8025456C(EmptyHeapBlock * arg0){
     _heap_defragEmptyBlock(arg0);
 }
 
-void memcpy(void * dst, void *src, int size){
+void n64_memcpy(void * dst, void *src, int size){
     while(size > 0){
         *(u8*)dst = *(u8*)src;
         size--;
@@ -153,7 +157,7 @@ void wmemcpy(void * dst, void *src, int size){
     }
 }
 
-void memmove(u8* dst, u8* src, s32 n) {
+void n64_memmove(u8* dst, u8* src, s32 n) {
     if(dst < src){ //copy
         while(n--){
             *(dst++) = *(src++);
@@ -216,27 +220,27 @@ void heap_init(void){
 }
 
 void *func_8025484C(s32 size){
-    D_802765B4 = malloc(ALIGN((u32)&D_8002D500[1] + 0x100, 0x100)  - (u32)&D_8002D500[1] - sizeof(EmptyHeapBlock));
-    return malloc(0x80);
+    D_802765B4 = n64_malloc(ALIGN((u32)&D_8002D500[1] + 0x100, 0x100)  - (u32)&D_8002D500[1] - sizeof(EmptyHeapBlock));
+    return n64_malloc(0x80);
 }
 
 void *func_80254898(s32 arg0){
-    void * sp1C = malloc(ALIGN(((u32)&D_8002D500[LAST_HEAP_BLOCK] - (u32)D_8002D500[LAST_HEAP_BLOCK].prev_free) - 0x2FF, 0x100) + - sizeof(EmptyHeapBlock));
-    void * sp18 = malloc(0x80);
-    free(sp1C);
-    free(D_802765B4);
+    void * sp1C = n64_malloc(ALIGN(((u32)&D_8002D500[LAST_HEAP_BLOCK] - (u32)D_8002D500[LAST_HEAP_BLOCK].prev_free) - 0x2FF, 0x100) + - sizeof(EmptyHeapBlock));
+    void * sp18 = n64_malloc(0x80);
+    n64_free(sp1C);
+    n64_free(D_802765B4);
     D_802765B4 =  NULL;
     return sp18;
 }
 
 void func_80254908(void){
     if(D_802765A0){
-        free(D_802765A0);
+        n64_free(D_802765A0);
         D_802765A0 = NULL;
     }
 
     if(D_802765A8){
-        free(D_802765A8);
+        n64_free(D_802765A8);
         D_802765A8 = NULL;
     }
 }
@@ -249,7 +253,7 @@ u32 heap_get_occupied_size(void){
     return _heap_get_occupied_size();
 }
 
-bool func_8025498C(s32 size){
+n64_bool func_8025498C(s32 size){
     s32 v0 = func_802549BC(size);
     return BOOL(v0);
 }
@@ -267,7 +271,7 @@ EmptyHeapBlock *func_802549BC(s32 size){
    return (chunkSize(&a1->hdr) < aligned_size)? 0 : a1;
 }
 
-EmptyHeapBlock *func_80254A60(bool arg0){
+EmptyHeapBlock *func_80254A60(n64_bool arg0){
         EmptyHeapBlock *v1;
         EmptyHeapBlock *v0;
     if(!arg0){
@@ -332,7 +336,7 @@ void func_80254C98(void){
     D_802765B0.unk0 = TRUE;
 }
 
-void *malloc(s32 size){
+void *n64_malloc(s32 size){
     u32 capacity;
     EmptyHeapBlock *v1;
     EmptyHeapBlock *a0;
@@ -462,7 +466,7 @@ void _heap_sortEmptyBlock(EmptyHeapBlock * arg0){
     }
 }
 
-void free(void * ptr) {
+void n64_free(void * ptr) {
     HeapHeader *sPtr; //stack_ptr
     
     if(ptr){
@@ -489,7 +493,7 @@ void func_80255170(void **arg0){
 void func_80255198(void){
     while(D_80283238.unk40 > &D_80283238.unk0[0]){
         D_80283238.unk40--;
-        free(*D_80283238.unk40);
+        n64_free(*D_80283238.unk40);
     }
 }
 
@@ -541,7 +545,7 @@ void *func_8025534C(void){
     return D_80283228;
 }
 
-void *realloc(void *ptr, s32 size){
+void *n64_realloc(void *ptr, s32 size){
     
     HeapHeader *sPtr;
     void *newSeg;
@@ -573,12 +577,12 @@ void *realloc(void *ptr, s32 size){
         return ptr;
     }//L80255430
 
-    if(!(newSeg = malloc(size))){
+    if(!(newSeg = n64_malloc(size))){
         return 0;
     }
 
     func_80253010(newSeg, ptr, __heap_align(size));
-    free(ptr);
+    n64_free(ptr);
     ptr = newSeg;
     D_8027659C = 0;
     D_80283228 = newSeg;
@@ -613,11 +617,11 @@ void func_80255524(void){
     D_80283220 = (D_80276598)? -6000000 : 0;
 
     if(D_802765A0 && D_802765A4 + 1 < D_802765AC){
-        free(D_802765A0);
+        n64_free(D_802765A0);
         D_802765A0 = NULL;
 
         if(D_802765A8){
-            free(D_802765A8);
+            n64_free(D_802765A8);
             D_802765A8 = NULL;
         }
     }
@@ -627,7 +631,7 @@ void func_802555C4(void){
     D_8028322C = FALSE;
 }
 
-bool func_802555D0(void){
+n64_bool func_802555D0(void){
     return D_8028322C;
 }
 
@@ -721,7 +725,7 @@ void *func_80255774(void *this){
         return this;
     }
 
-    sp24 = malloc(size - sizeof(HeapHeader));
+    sp24 = n64_malloc(size - sizeof(HeapHeader));
     func_80253010(sp24, this, size - sizeof(HeapHeader));
     osWritebackDCache(sp24, size - sizeof(HeapHeader));
     D_80283220 += size  - sizeof(HeapHeader);
@@ -754,7 +758,7 @@ void *func_802558D8(void *arg0, void *arg1){
     }
 }
 
-bool func_80255920(void *arg0) {
+n64_bool func_80255920(void *arg0) {
     HeapHeader *block;
 
     if ((arg0 == NULL) || (arg0 == D_8027659C) || (D_802765A0 != NULL)) {
@@ -774,7 +778,7 @@ void func_80255980(void *arg0, int arg1){
     D_802765A4 = D_802765AC;
 }
 
-bool func_802559A0(void) {
+n64_bool func_802559A0(void) {
     return (D_80276598 == 0) ? (D_80283220 >= 0xF4240) || ((D_80276594 == 1) ? 0 : 1) : 0;
 }
 
@@ -816,7 +820,7 @@ void func_80255ACC(void){
     D_802765AC++;
 }
 
-bool func_80255AE4(void){
+n64_bool func_80255AE4(void){
     return (D_802765A0) ? 1 : 0; 
 }
 

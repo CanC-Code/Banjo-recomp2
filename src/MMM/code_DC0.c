@@ -72,7 +72,7 @@ void chFlowerpot_update(Actor *this) {
     }
 }
 
-bool chFlowerpot_eggCollision(ActorMarker *marker) {
+n64_bool chFlowerpot_eggCollision(ActorMarker *marker) {
     Actor *actor = marker_getActor(marker);
     f32 position[3];
     s32 remaining;

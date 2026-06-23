@@ -13,10 +13,10 @@ extern NodeProp *func_80304ED0(void*, f32 *);
 extern void func_8031CD44(enum map_e, s32, f32, f32, s32);
 extern void mapSpecificFlags_set(s32, s32);
 
-bool cutscene_skipEnterLairCutsceneCheck(void);
-bool cutscene_skipGameOverCutsceneCheck(void);
-bool cutscene_skipIntroCutsceneCheck(void);
-bool cutscene_skipBeachCutsceneCheck(void);
+n64_bool cutscene_skipEnterLairCutsceneCheck(void);
+n64_bool cutscene_skipGameOverCutsceneCheck(void);
+n64_bool cutscene_skipIntroCutsceneCheck(void);
+n64_bool cutscene_skipBeachCutsceneCheck(void);
 
 extern void func_802DC560(s32, s32);
 
@@ -30,7 +30,7 @@ u8 D_80383190;
 
 /* .code */
 // func_8031C640
-bool cutscene_skipIntroCutsceneCheck(void) {
+n64_bool cutscene_skipIntroCutsceneCheck(void) {
     if ((func_8024E698(0) == 1) && (gameFile_anyNonEmpty() != 0)) {
         return TRUE;
     }
@@ -38,7 +38,7 @@ bool cutscene_skipIntroCutsceneCheck(void) {
 }
 
 // func_8031C688
-bool cutscene_skipEnterLairCutsceneCheck(void) {
+n64_bool cutscene_skipEnterLairCutsceneCheck(void) {
     if ((func_8024E698(0) == 1) 
         && ((D_8037DCCE[0] != 0) 
             || (D_8037DCCE[1] != 0) 
@@ -49,7 +49,7 @@ bool cutscene_skipEnterLairCutsceneCheck(void) {
 }
 
 
-bool cutscene_skipGameOverCutsceneCheck(void) {
+n64_bool cutscene_skipGameOverCutsceneCheck(void) {
     s32 sp24;
 
     sp24 = func_8024E698(0);
@@ -69,13 +69,13 @@ bool cutscene_skipGameOverCutsceneCheck(void) {
     return FALSE;
 }
 
-bool cutscene_skipBeachCutsceneCheck(void){
+n64_bool cutscene_skipBeachCutsceneCheck(void){
     func_803219F4(1);
     return FALSE;
 }
 
 //checks is a cutscene can be inturrupted and performs take me there
-void cutscenetrigger_check(s32 cs_map, s32 arg1, s32 return_map, s32 return_exit, bool (* condFunc)(void)){
+void cutscenetrigger_check(s32 cs_map, s32 arg1, s32 return_map, s32 return_exit, n64_bool (* condFunc)(void)){
     if(gsworld_get_map() != cs_map)
         return;
 

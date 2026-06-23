@@ -1,8 +1,18 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef MUSIC_H
 #define MUSIC_H
+#ifdef __cplusplus
+}
+#endif
 #include <ultra64.h>
 #include "structs.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 typedef struct struct_B_s{
     s32 unk0;
     s32 chan;
@@ -30,4 +40,9 @@ typedef struct music_track_meta_s {
     u16  volume;
 } MusicTrackMeta;
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif

@@ -84,8 +84,10 @@ void chorange_update(Actor *this) {
 
 Actor *chorange_draw(ActorMarker *this, Gfx **dl, Mtx **mptr, Vtx **vtx) {
     Actor *actorPtr = actor_drawFullDepth(this, dl, mptr, vtx);
-    f32 sp60[3] = D_803899F4;
-    f32 rotation[3] = D_80389A00;
+    f32 sp60[3];
+    n64_memcpy(sp60, D_803899F4, 3 * sizeof(f32));
+    f32 rotation[3];
+    n64_memcpy(rotation, D_80389A00, 3 * sizeof(f32));
     f32 position[3];
 
     if (actorPtr->state == ORANGE_STATE_2_LANDED) {

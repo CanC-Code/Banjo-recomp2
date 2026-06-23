@@ -22,6 +22,21 @@ ActorInfo gChClam = {
     4500, 0x366, 1.6f, 0
 };
 
+
+/* Automated Forward Decls */
+static void __chClam_playSfx(enum sfx_e sfx_id, f32 volume, s32 sampleRate, f32 position[3], f32 minFadeDistance, f32 maxFadeDistance);
+static void __chClam_func_80386454(Actor *this);
+static n64_bool __chClam_updateFuncTarget(Actor *this, f32 arg1);
+static n64_bool __chClam_rotateTowardTarget(Actor *this, s32 arg1);
+static void __chClam_particalEmitterInit(ParticleEmitter *pCtrl, f32 position[3]);
+static void __chClam_emitLargeShellParticles(f32 position[3], s32 count);
+static void __chClam_emitEyeParticles(f32 position[3], s32 count);
+static void __chClam_emitSmallShellParticles(f32 position[3], s32 count);
+static void __chClam_emitEatencollectibleParticles(f32 position[3], enum asset_e sprite_id, s32 count);
+static void __chClam_takeDamage(ActorMarker *this_marker, ActorMarker *other_marker);
+static void __chClam_playerDropsItem(enum bundle_e bundle_id, enum item_e item_id);
+static void __chClam_attackOther(ActorMarker *this_marker, ActorMarker *other_marker);
+
 /* .code */
 static void __chClam_playSfx(enum sfx_e sfx_id, f32 volume, s32 sampleRate, f32 position[3], f32 minFadeDistance, f32 maxFadeDistance){
     if(gcdialog_hasCurrentTextId()){
@@ -39,7 +54,7 @@ static void __chClam_func_80386454(Actor *this){
     anctrl_setDuration(this->anctrl, randf2(1.9f, 2.1f));
 }
 
-static bool __chClam_updateFuncTarget(Actor *this, f32 arg1) {
+static n64_bool __chClam_updateFuncTarget(Actor *this, f32 arg1) {
     f32 egg_dist;
     f32 red_feather_dist;
     f32 pad;
@@ -89,7 +104,7 @@ static bool __chClam_updateFuncTarget(Actor *this, f32 arg1) {
 
 }
 
-static bool __chClam_rotateTowardTarget(Actor *this, s32 arg1) {
+static n64_bool __chClam_rotateTowardTarget(Actor *this, s32 arg1) {
     f32 temp_f0_2;
     s32 position;
     s32 sp2C;

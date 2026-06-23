@@ -149,9 +149,22 @@ static ParticleSettingsVelocityAccelerationPosition sD_8038AF0C = {
     {{-100.0f, -100.0f, -100.0f}, {100.0f, 100.0f, 100.0f}}, 
 };
 
+
+/* Automated Forward Decls */
+static void __chVegetables_setSpriteDustParticles(ParticleEmitter *emitter, f32 *position, s32 emit_count);
+static void __chVegetables_setParticlesForModel(ParticleEmitter *emitter, f32 *position, s32 emit_count, enum asset_e model_id);
+static void __chVegetables_setParticlesForModel2(ParticleEmitter *emitter, f32 *position, s32 emit_count, enum asset_e model_id);
+static void __chVegetables_setParticlesForHittingEnemyModel(ParticleEmitter *emitter, f32 position[3], s32 emit_count, enum asset_e model_id);
+static void __chVegetables_vegetableDeathParticles(Actor* this);
+static void __chVegetables_vegetableMarkerDeathParticles(ActorMarker* marker, ActorMarker* other_marker);
+static void __chVegetables_moveVegetable(Actor* this);
+static void __chVegetables_elevateAndMoveVegetable(Actor* this);
+static n64_bool __chVegetables_func_80387FA8(Actor* this, sChVegetable* local, s32 yaw, s32 arg3);
+
 /* .code */
 static void __chVegetables_setSpriteDustParticles(ParticleEmitter *emitter, f32 *position, s32 emit_count) {
-    s32 sp24[3] = sChVegetablesParticleRGB;
+    s32 sp24[3];
+    n64_memcpy(sp24, sChVegetablesParticleRGB, 3 * sizeof(s32));
     particleEmitter_setRGB(emitter, sp24);
     particleEmitter_setSprite(emitter, ASSET_700_SPRITE_DUST);
     particleEmitter_setStartingFrameRange(emitter, 0, 7);
@@ -275,7 +288,7 @@ static void __chVegetables_elevateAndMoveVegetable(Actor* this) {
 }
 
 // determine some kind of position logic
-static bool __chVegetables_func_80387FA8(Actor* this, sChVegetable* local, s32 yaw, s32 arg3) {
+static n64_bool __chVegetables_func_80387FA8(Actor* this, sChVegetable* local, s32 yaw, s32 arg3) {
     f32 sp24[3];
     f32 sp18[3];
     

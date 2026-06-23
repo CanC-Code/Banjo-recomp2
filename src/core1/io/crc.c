@@ -1,4 +1,5 @@
-#include <os_internal.h>
+#include <PR/os_internal.h>
+#include <n64_types.h>
 
 u8 __osContAddressCrc(u16 addr)
 {
