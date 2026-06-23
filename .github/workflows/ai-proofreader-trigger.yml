@@ -1,0 +1,19 @@
+name: AI Proofreader
+
+# 1. Triggers for the analysis
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  # The workflow_dispatch is critical—it enables the manual "Run workflow" button
+  workflow_dispatch: 
+
+jobs:
+  call-proofreader:
+    name: Execute Diagnostic Agent
+    # 2. Points to your central engine repository
+    uses: CanC-Code/repo_proofreader/.github/workflows/run-analysis.yml@main
+    with:
+      target_branch: ${{ github.head_ref || github.ref_name }}
+    secrets:
+      # Optional: Pass this if you ever switch from the local llama.cpp to an external API
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
