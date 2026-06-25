@@ -47,6 +47,7 @@ void ResourceMgr_Init(const char* assetDir) {
         // Prevent memory leaks if the Activity restarts and re-initializes the bridge
         if (gN64_ROM_Base) {
             free(gN64_ROM_Base);
+            gN64_ROM_Base = nullptr;
         }
 
         gN64_ROM_Base = static_cast<uint8_t*>(malloc(romSize));
@@ -54,11 +55,18 @@ void ResourceMgr_Init(const char* assetDir) {
             fread(gN64_ROM_Base, 1, romSize, f);
             LOGI("ResourceMgr: Successfully loaded rom_base.bin (%zu bytes) into contiguous memory.", romSize);
         } else {
-            LOGE("ResourceMgr: FATAL - Memory allocation failed for ROM buffer.");
+            LOGE("ResourceMgr: FATAL - Memory allocation failed for ROM buffer. Required: %zu bytes", romSize);
         }
         fclose(f);
     } else {
-        LOGE("ResourceMgr: FATAL - Could not find rom_base.bin at %s", romPath);
+        LOGE("ResourceMgr: FATAL - Could not find rom_base.bin at %s. Ensure OTR generation is complete before native init.", romPath);
+    }
+
+    // Check if the ROM base has been successfully loaded before proceeding with further initialization
+    if (gN64_ROM_Base == nullptr) {
+        // Handle the failure gracefully, aborting initialization to prevent silent segfaults and thread locks
+        LOGE("ResourceMgr: Failed to load ROM base. Halting native initialization to prevent deadlock.");
+        return; 
     }
 }
 
