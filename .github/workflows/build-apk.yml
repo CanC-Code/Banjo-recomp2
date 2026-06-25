@@ -25,12 +25,12 @@ jobs:
       - name: 🛠️ Set up Android SDK
         uses: android-actions/setup-android@v3
 
+      # FIX: Added the 'v' to the version tag (v4 instead of 4)
       - name: 🐘 Setup Gradle
-        uses: gradle/actions/setup-gradle@4
+        uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.2
 
-      # CRITICAL FIX: Ensure assets and manifests are packaged before Gradle builds
       - name: 🗂️ Prepare & Package Android Assets
         run: |
           echo "Creating Android assets directory..."
