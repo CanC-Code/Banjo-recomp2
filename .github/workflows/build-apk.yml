@@ -26,9 +26,32 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: 🐘 Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@4
         with:
           gradle-version: 8.2
+
+      # CRITICAL FIX: Ensure assets and manifests are packaged before Gradle builds
+      - name: 🗂️ Prepare & Package Android Assets
+        run: |
+          echo "Creating Android assets directory..."
+          mkdir -p Android/app/src/main/assets
+          
+          # 1. Copy the root assets folder if it exists in your repository
+          if [ -d "assets" ]; then
+            echo "Copying root assets directory..."
+            cp -r assets/* Android/app/src/main/assets/ || true
+          fi
+          
+          # 2. If you have a specific script to generate the manifest without a ROM, 
+          # you can optionally run it here before the find command.
+          # Example: python3 tools/generate_manifest.py 
+          
+          # 3. Find any .bin manifests that might have been generated or stored elsewhere 
+          # in the repository and force them into the Android assets directory so they are bundled.
+          find . -type f -name "manifest*.bin" -exec cp {} Android/app/src/main/assets/ \;
+          
+          echo "Contents of Android/app/src/main/assets/:"
+          ls -la Android/app/src/main/assets/
 
       - name: 🐘 Compile & Build APK
         run: |
