@@ -14,6 +14,3 @@ jobs:
     uses: CanC-Code/repo_proofreader/.github/workflows/run-analysis.yml@main
     with:
       target_branch: ${{ github.head_ref || github.ref_name }}
-    secrets:
-      # Optional: Pass this if you ever switch from the local llama.cpp to an external API
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
