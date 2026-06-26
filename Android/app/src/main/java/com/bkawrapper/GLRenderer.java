@@ -1,4 +1,3 @@
-// File: Android/app/src/main/java/com/bkawrapper/GLRenderer.java
 package com.bkawrapper;
 
 import android.content.Context;
@@ -14,6 +13,7 @@ import javax.microedition.khronos.opengles.GL10;
  * GLRenderer
  *
  * Drives the N64 framebuffer → Android display pipeline.
+ * Ensures the native engine boot is deferred until the GL context is fully ready.
  */
 public class GLRenderer implements GLSurfaceView.Renderer {
 
@@ -23,7 +23,8 @@ public class GLRenderer implements GLSurfaceView.Renderer {
     private final String assetDir;
     private final AssetManager mgr;
 
-    private static boolean engineBooted = false;
+    // Use a volatile flag to ensure thread-safe access from the GLThread
+    private static volatile boolean engineBooted = false;
     private boolean isSurfaceReady = false;
 
     public GLRenderer(Context context, String assetDir, AssetManager mgr) {
@@ -46,24 +47,22 @@ public class GLRenderer implements GLSurfaceView.Renderer {
         // Tell the native side the GL context is alive and provide ACTUAL dimensions
         NativeBridge.surfaceReady(width, height);
         isSurfaceReady = true;
-
-        // Protected by the static flag so it only runs once per app process.
-        if (!engineBooted) {
-            engineBooted = true;
-            Log.i(TAG, "Game thread starting — assetDir=" + assetDir);
-            
-            // CRITICAL FIX: Removed the unnecessary Java Thread wrapper. 
-            // nativeGameBoot safely spawns its own detached C++ pthread, so calling 
-            // it here is perfectly non-blocking and prevents transient thread GC crashes.
-            NativeBridge.nativeGameBoot(assetDir, mgr);
-        }
     }
 
     @Override
     public void onDrawFrame(GL10 gl) {
-        // Guard against calling updateTexture before the native side knows about the surface
+        // Defer boot to the first frame render. 
+        // This ensures the GL context is fully bound, preventing early initialization crashes.
+        if (!engineBooted && isSurfaceReady) {
+            engineBooted = true;
+            Log.i(TAG, "Booting native engine on first frame — assetDir=" + assetDir);
+            
+            // NativeBridge.nativeGameBoot spawns the detached pthread and returns immediately.
+            NativeBridge.nativeGameBoot(assetDir, mgr);
+        }
+
         if (isSurfaceReady) {
-            // Clear the screen buffer before asking native to draw the quad
+            // Standard frame render cycle
             GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
             NativeBridge.updateTexture(0);
         }
