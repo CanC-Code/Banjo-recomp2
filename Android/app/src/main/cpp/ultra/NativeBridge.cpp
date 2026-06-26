@@ -7,7 +7,7 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <stdint.h>
-#include <GLES2/gl2.h>
+#include <GLES3/gl3.h> // Upgraded to GLES3 to match your Java GLSurfaceView context
 
 #define LOG_TAG "NativeBridge"
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO,  LOG_TAG, __VA_ARGS__)
@@ -82,18 +82,18 @@ void* game_thread_fn(void* arg) {
         }
     }
 
+    // Launch the emulator logic
     BKA_StartEngine();
 
-    // CRITICAL FIX: The bootloader has returned, but the asynchronous game threads 
-    // are now alive in the background. We must block this host thread forever 
-    // to prevent it from reaching HardwareRegs_Shutdown() and wiping the RDRAM.
     LOGI("NativeBridge: Bootloader finished. Engine is now alive. Securing runtime environment...");
     
+    // Fallback: If BKA_StartEngine returns asynchronously, this blocks the thread 
+    // from terminating and wiping RDRAM, keeping the JNI attachment alive.
     while (true) {
-        sleep(1000); // Sleep indefinitely (Android will safely claim memory when the app process is closed)
+        sleep(1000); 
     }
 
-    // Unreachable Code
+    // Unreachable Code (Included for memory safety bounds)
     HardwareRegs_Shutdown();
 
     if (attached && g_jvm != nullptr) {
@@ -104,11 +104,14 @@ void* game_thread_fn(void* arg) {
 
 extern "C" {
 
+// Maps to: public static native void nativeInit(OtrService service);
 JNIEXPORT void JNICALL
-Java_com_bkawrapper_NativeBridge_nativeInit(JNIEnv* env, jclass clazz, jobject context) {
+Java_com_bkawrapper_NativeBridge_nativeInit(JNIEnv* env, jclass clazz, jobject service) {
     if (g_jvm == nullptr) env->GetJavaVM(&g_jvm);
+    LOGI("NativeBridge: Initialized via OtrService");
 }
 
+// Maps to: public static native void nativeGameBoot(String otrPath, AssetManager assetManager);
 JNIEXPORT void JNICALL
 Java_com_bkawrapper_NativeBridge_nativeGameBoot(JNIEnv* env, jclass clazz, jstring otrPathStr, jobject assetManagerObj) {
     const char* otrPath = env->GetStringUTFChars(otrPathStr, nullptr);
@@ -129,14 +132,17 @@ Java_com_bkawrapper_NativeBridge_nativeGameBoot(JNIEnv* env, jclass clazz, jstri
     }
 }
 
+// Maps to: public static native void surfaceReady(int width, int height);
 JNIEXPORT void JNICALL 
 Java_com_bkawrapper_NativeBridge_surfaceReady(JNIEnv* env, jclass clazz, jint w, jint h) {
     g_surfaceWidth = w;
     g_surfaceHeight = h;
+    LOGI("NativeBridge: Surface Ready - %dx%d", w, h);
 }
 
+// Maps to: public static native void updateTexture(int unused);
 JNIEXPORT void JNICALL 
-Java_com_bkawrapper_NativeBridge_updateTexture(JNIEnv* env, jclass clazz, jint textureId) {
+Java_com_bkawrapper_NativeBridge_updateTexture(JNIEnv* env, jclass clazz, jint unused) {
     if (gN64_RDRAM == nullptr || gN64_Reg_Base == nullptr) return;
 
     BKA_ClaimEngineLock();
@@ -153,15 +159,16 @@ Java_com_bkawrapper_NativeBridge_updateTexture(JNIEnv* env, jclass clazz, jint t
     }
     pthread_mutex_unlock(&g_vblankMutex);
 
-    VideoPlugin_OutputFrameTexture((uint32_t)textureId);
+    VideoPlugin_OutputFrameTexture((uint32_t)unused);
 
     BKA_DropEngineLock();
 }
 
+// Maps to: public static native void nativeUpdateInput(int buttonMask, float stickX, float stickY);
 JNIEXPORT void JNICALL 
-Java_com_bkawrapper_NativeBridge_nativeUpdateInput(JNIEnv* env, jclass clazz, jint buttons, jfloat stickX, jfloat stickY) {
+Java_com_bkawrapper_NativeBridge_nativeUpdateInput(JNIEnv* env, jclass clazz, jint buttonMask, jfloat stickX, jfloat stickY) {
     pthread_mutex_lock(&g_inputMutex);
-    g_inputMirror.button = (uint16_t)buttons;
+    g_inputMirror.button = (uint16_t)buttonMask;
     g_inputMirror.stick_x = (int8_t)(stickX * 80.0f);
     g_inputMirror.stick_y = (int8_t)(stickY * 80.0f);
     g_inputMirror.errno_val = 0;
